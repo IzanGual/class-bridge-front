@@ -1,0 +1,98 @@
+.navbar {
+    background-color: var(--accent-color);
+    backdrop-filter: blur(7px);    
+    width: 80%; 
+    position: fixed!important;
+    top: 10px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    padding: 10px 0; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; /* Evita que otros elementos lo cubran */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Estilo para los enlaces del menú */
+nav ul {
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina padding por defecto */
+  list-style-type: none; /* Elimina los puntos de la lista */
+  display: flex; /* Muestra los elementos en una fila */
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+nav ul li {
+  margin: 0 20px; /* Espaciado entre los elementos */
+}
+
+nav ul li a {
+  color: white; /* Color blanco para los enlaces */
+  text-decoration: none; /* Elimina el subrayado */
+  font-size: 18px; /* Tamaño de fuente */
+  padding: 15px 20px; /* Espaciado interno */
+  display: block; /* Asegura que todo el área del enlace sea clickeable */
+  transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+nav ul li a:hover {
+  background-color: #555; /* Fondo gris cuando se pasa el ratón por encima */
+}
+
+
+  /* Estilos del logo */
+  .navbar-brand img {
+    height: 40px;
+    display: block;
+  }
+  
+  /* Estilos del botón de menú (hamburguesa) */
+  .dropdown button#btn-menu {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .dropdown button#btn-menu:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del menú desplegable */
+  .dropdown-menu {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+  }
+  
+  /* Estilos de los ítems del menú */
+  .dropdown-item {
+    color: #333;
+    padding: 10px 15px;
+    transition: background 0.3s;
+  }
+  
+  .dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del botón de registro */
+  .navbar a {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .navbar a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  

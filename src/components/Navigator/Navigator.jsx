@@ -29,7 +29,7 @@ export default function Navigator() {
       )}
 
       {/* Logo centrado */}
-      <a className="navbar-brand mx-auto" href="/">
+      <a className="navbar-brand " href="/">
         <img src="/assets/images/logos/logo.png" alt="Logo" />
       </a>
 
