@@ -1,7 +1,20 @@
 :root {
-  --accent-color: #;
+  --background-color: #FAFAF5;
+  --primary-color: #ffffff;
+  --accent-color: linear-gradient(135deg, #ff7e5f, #feb47b);
+  --accent-background-color-h:#feb47b;
+  --accent-background-color-l:#ff7e5f;
+  --text-color: #1d1d1d;
+  --text-color-light: #FAFAF5;
   --color-primario: #3498db;
   --color-secundario: #2ecc71;
   --fuente-principal: 'Arial', sans-serif;
   --espaciado: 16px;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--background-color)!important;
+  margin: 0;
+  padding: 0;
 }

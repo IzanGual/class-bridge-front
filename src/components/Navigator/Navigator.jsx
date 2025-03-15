@@ -29,13 +29,16 @@ export default function Navigator() {
       )}
 
       {/* Logo centrado */}
-      <a className="navbar-brand " href="/">
+      <Link to="/" className="navbar-brand">
         <img src="/assets/images/logos/logo.png" alt="Logo" />
-      </a>
+      </Link>
 
       {/* Botón de registro, solo visible si no estamos en la página de registro */}
       {!isRegisterPage && (
-        <Link to="/register">REGISTRARSE</Link>
+        <Link id="register-pont" to="/register">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
+
+        </Link>
       )}
     </nav>
   );
