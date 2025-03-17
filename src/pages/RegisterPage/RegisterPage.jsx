@@ -1,33 +1,71 @@
+import { useState , useEffect} from 'react';
+import "./RegisterPage.css";
+import UsersModel from '../../models/UsersModel'; 
+
+
+
 export default function RegisterPage() {
-  
 
-  return (
-    <div className="registro-container">
-      <h2>Formulario de Registro</h2>
-      <form>
-        <label>Nombre:</label>
-        <input
-          type="text"
-          placeholder="Tu nombre"
-          required
-        />
+    const [nombre, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [contraseña, setContraseña] = useState('');
+    const [mensaje, setMensaje] = useState('');
 
-        <label>Email:</label>
-        <input
-          type="email"
-          placeholder="Tu correo"
-          required
-        />
 
-        <label>Contraseña:</label>
-        <input
-          type="password"
-          placeholder="Tu contraseña"
-          required
-        />
+    useEffect(() => {
+      const queryParams = new URLSearchParams(window.location.search);
+      const locParam = queryParams.get('loc'); // Obtén el valor del parámetro 'loc'
 
-        <button type="submit" className="btn btn-success">Registrarse</button>
-      </form>
-    </div>
-  );
+      if (locParam === 'plan') {
+          // Si 'loc' es igual a 'plan', ejecuta alguna acción
+          setMensaje('Antes de seleccionar el plan debes registrarte');
+      } 
+  }, []);
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await UsersModel.registerUser(nombre, email, contraseña);
+
+            switch(response){
+                case "insertCorrect":
+                    setMensaje('Usuario registrado con éxito');
+                    break;
+                case "emailDup":
+                    setMensaje('El email ya está registrado');
+                    break;
+                case "insertError":
+                    setMensaje('Error al registrar el usuario');
+                    break;
+                default:
+                    setMensaje('Error al registrar el usuario');
+                    break;
+            }
+
+        } catch (error) {
+            setMensaje(`Error: ${error.message}`);
+        }
+    };
+
+    return (
+        <div className="registro-container">
+            <h2>Formulario de Registro</h2>
+            {mensaje && <p>{mensaje}</p>}
+            <form onSubmit={handleSubmit}>
+                <label>Nombre:</label>
+                <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+
+                <label>Email:</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+
+                <label>Contraseña:</label>
+                <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
+
+                <button type="submit" className="btn btn-success">Registrarse</button>
+            </form>
+        </div>
+    );
 }

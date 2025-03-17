@@ -83,10 +83,12 @@
   
   /* Planes */
   .planes-container {
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+    overflow-x: auto;  /* Permite el scroll horizontal */
   }
 
   .logo-container{
