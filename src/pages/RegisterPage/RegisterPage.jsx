@@ -66,6 +66,10 @@ export default function RegisterPage() {
 
                 <button type="submit" className="btn btn-success">Registrarse</button>
             </form>
+            <div id='login-pont-container'>
+                <p>¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a></p>
+            </div>
         </div>
+        
     );
 }

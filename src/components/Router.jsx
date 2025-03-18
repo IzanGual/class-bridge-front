@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 /**
  * This Comopnent generates the Routes from a predetermined list defined in the same file (see below)
@@ -42,5 +43,6 @@ const ROUTE_LIST = [
     new RoutePage("404", "*", <NotFoundPage/> ),
     new RoutePage("home","", <LandingPage/>),
     new RoutePage("register","register", <RegisterPage/>),
+    new RoutePage("login","login", <LoginPage/>),
 
 ];

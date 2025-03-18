@@ -7,12 +7,12 @@ export default function Navigator() {
   const location = useLocation();
 
   // Verifica si estamos en la página de registro
-  const isRegisterPage = location.pathname === "/register"; // Ahora usa location.pathname
+  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login"; 
 
   return (
     <nav className="navbar">
       {/* Menú hamburguesa con Bootstrap, solo visible si no estamos en la página de registro */}
-      {!isRegisterPage && (
+      {!IsFullNavNotAvilabe && (
         <div className="dropdown">
           <button className="dropdown" id="btn-menu" type="button" data-bs-toggle="dropdown">
             <svg xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px" fill="#000000">
@@ -34,7 +34,7 @@ export default function Navigator() {
       </Link>
 
       {/* Botón de registro, solo visible si no estamos en la página de registro */}
-      {!isRegisterPage && (
+      {!IsFullNavNotAvilabe && (
         <Link id="register-pont" to="/register">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
 
