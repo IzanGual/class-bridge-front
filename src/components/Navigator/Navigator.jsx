@@ -1,13 +1,22 @@
 import { Link, useLocation } from "react-router-dom"; // Importa useLocation
-
+import { useState, useEffect } from "react";
 import './Navigator.css';
+import { checkAuthStatus } from "../../utils/auth.js"; // Importamos la función de autenticación
 
 export default function Navigator() {
-  // Obtiene el objeto location actual de react-router-dom
-  const location = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const location = useLocation(); // Obtiene la ruta actual
 
-  // Verifica si estamos en la página de registro
-  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login"; 
+  useEffect(() => {
+    const verifyAuth = async () => {
+      const isLoggedIn = await checkAuthStatus();
+      setIsAuthenticated(isLoggedIn);
+    };
+    verifyAuth();
+  }, [location.pathname]); // Se ejecuta cada vez que cambia la URL
+
+  // Verifica si estamos en la página de registro o login
+  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login";
 
   return (
     <nav className="navbar">
@@ -33,12 +42,19 @@ export default function Navigator() {
         <img src="/assets/images/logos/logo.png" alt="Logo" />
       </Link>
 
-      {/* Botón de registro, solo visible si no estamos en la página de registro */}
+      {/* Botón de registro o perfil */}
       {!IsFullNavNotAvilabe && (
-        <Link id="register-pont" to="/register">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
-
-        </Link>
+        isAuthenticated ? (
+          <Link id="profile-btn" to="/myprofile">
+            Perfil
+          </Link>
+        ) : (
+          <Link id="register-pont" to="/register">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5">
+              <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+            </svg>
+          </Link>
+        )
       )}
     </nav>
   );

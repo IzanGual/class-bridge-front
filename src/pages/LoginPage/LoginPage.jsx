@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import "./LoginPage.css";
 import UsersModel from '../../models/UsersModel';
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [mensaje, setMensaje] = useState('');
+    const navigate = useNavigate();
+
 
 
     const handleSubmit = async (e) => {
@@ -18,7 +22,7 @@ export default function LoginPage() {
                 case "correctLogin":
                     setMensaje('Inicio de sesión exitoso');
                     // Redirigir al usuario
-                    //window.location.href = "/dashboard";
+                    navigate("/");
                     break;
                 case "incorrectCredentials":
                     setMensaje('Email o contraseña incorrectos');

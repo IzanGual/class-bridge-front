@@ -1,6 +1,8 @@
 import { useState , useEffect} from 'react';
 import "./RegisterPage.css";
 import UsersModel from '../../models/UsersModel'; 
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -10,6 +12,7 @@ export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [mensaje, setMensaje] = useState('');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -33,6 +36,7 @@ export default function RegisterPage() {
             switch(response){
                 case "insertCorrect":
                     setMensaje('Usuario registrado con éxito');
+                    handleLoginAfterRegister(email, contraseña);
                     break;
                 case "emailDup":
                     setMensaje('El email ya está registrado');
@@ -50,6 +54,35 @@ export default function RegisterPage() {
         }
     };
 
+    const handleLoginAfterRegister = async (email, pass) => {
+
+        try {
+            const response = await UsersModel.loginUser(email, pass);
+    
+            switch(response) {
+                case "correctLogin":
+                    setMensaje('Inicio de sesión exitoso');
+                    // Redirigir al usuario
+                    navigate("/");
+                    break;
+                case "incorrectCredentials":
+                    setMensaje('Email o contraseña incorrectos');
+                    break;
+                case "consultError":
+                    setMensaje('Error al iniciar sesión');
+                    break;
+                default:
+                    setMensaje('Error al iniciar sesión');
+                    break;
+            }
+        } catch (error) {
+            setMensaje(`Error: ${error.message}`);
+        }
+    
+    };
+
+
+   
     return (
         <div className="registro-container">
             <h2>Formulario de Registro</h2>
