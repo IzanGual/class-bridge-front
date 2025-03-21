@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"; // Importa useLocation
 import { useState, useEffect } from "react";
 import './Navigator.css';
 import { checkAuthStatus } from "../../utils/auth.js"; // Importamos la función de autenticación
+import ProfileIcon from "../ProfileIcon/ProfileIcon.jsx";
 
 export default function Navigator() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,7 +17,7 @@ export default function Navigator() {
   }, [location.pathname]); // Se ejecuta cada vez que cambia la URL
 
   // Verifica si estamos en la página de registro o login
-  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login";
+  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login" || location.pathname === "/myprofile";
 
   return (
     <nav className="navbar">
@@ -45,9 +46,9 @@ export default function Navigator() {
       {/* Botón de registro o perfil */}
       {!IsFullNavNotAvilabe && (
         isAuthenticated ? (
-          <Link id="profile-btn" to="/myprofile">
-            Perfil
-          </Link>
+          
+            <ProfileIcon />
+          
         ) : (
           <Link id="register-pont" to="/register">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5">

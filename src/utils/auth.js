@@ -1,3 +1,5 @@
+import APIurl from "../models/APIurl";
+
 export const checkAuthStatus = async () => {
     const token = localStorage.getItem("jwt");
     if (!token) {
@@ -5,8 +7,11 @@ export const checkAuthStatus = async () => {
         return false;
     }
 
+    const validateEndPoint = APIurl.getAPIurl("getValidateToken"); // Obtenemos la URL para obtener todos los planes
+    
+
     try {
-        const response = await fetch("http://localhost/classbridgeapi/auth/validate-token.php", {
+        const response = await fetch(validateEndPoint, {
             method: "GET", // Asegúrate de usar el método adecuado (GET o POST según tu backend)
             headers: { Authorization: `Bearer ${token}` }
         });

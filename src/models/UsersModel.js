@@ -102,6 +102,53 @@ class UsersModel {
 
 
 
+  static async getUser(id) {
+    const apiUrl = APIurl.getAPIurl("getUser", id);  // Asegúrate de que esta URL sea correcta
+
+    if (!apiUrl) {
+        console.error('URL no válida');
+        return false;
+    }
+
+    // Suponiendo que el token JWT está almacenado en el localStorage o sessionStorage
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+
+    if (!token) {
+        console.error('Token no encontrado');
+        return false;
+    }
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario
+
+            if (data.success) {
+                console.log("Datos del usuario:", data);
+                return data.user;  // Puedes retornar los datos del usuario aquí
+            } else {
+                console.error('Error en la respuesta de la API:', data.error);
+                return false;
+            }
+        } else {
+            console.error('Error en la respuesta de la API:', response.status);
+            return false;
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+        return false;  // En caso de error, retornamos null
+    }
+}
+
+
+
 
 
 
