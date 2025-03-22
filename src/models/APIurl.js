@@ -18,6 +18,9 @@ export default class APIurl {
 
           case "getUser":
             return this.URLbase+"usuarios.php?id="+id;
+
+          case "updateUserImage":
+            return this.URLbase+"usuarios.php";
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
             console.error(`Introduce propiedades validas: products, categegories`);

@@ -147,6 +147,56 @@ class UsersModel {
     }
 }
 
+static async uploadUserImage(id, file) {
+  const apiUrl = APIurl.getAPIurl("updateUserImage"); // Asegúrate de definir esta ruta en `APIurl.js`
+  
+  if (!apiUrl) {
+      console.error('URL no válida');
+      return false;
+  }
+
+  const token = localStorage.getItem('jwt'); 
+  if (!token) {
+      console.error('Token no encontrado');
+      return false;
+  }
+
+  const formData = new FormData();
+  formData.append('id', id);
+  formData.append('imagen', file); // `imagen` debe coincidir con el campo esperado en el backend
+
+  console.log("formaDFattaaaa", formData.get('imagen'));
+  console.log("iddddddddddddd", formData.get('id'));
+
+  try {
+      const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+              'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
+          },
+          body: formData
+      });
+
+      if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+              console.log("respuesta:",data.message);
+              return data.imageUrl; // Devuelve la URL de la imagen
+          } else {
+              console.error("Error en la API:", data.error);
+              return false;
+          }
+      } else {
+          console.error("Error en la respuesta del servidor:", response.status);
+          return false;
+      }
+  } catch (error) {
+      console.error("Error al subir la imagen:", error);
+      return false;
+  }
+}
+
+
 
 
 
