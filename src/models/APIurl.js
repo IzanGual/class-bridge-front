@@ -28,8 +28,10 @@ export default class APIurl {
             return this.URLbase+"usuarios.php";
 
           case "sendEmailCode":
-              return this.URLbase+"auth/mails/sendVerificationCode.php";
-    
+              return this.URLbase+"auth/mails/mailer.php";
+          
+            case "verifyCode":
+              return this.URLbase+"auth/mails/mailer.php";
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
             console.error(`Introduce propiedades validas: products, categegories`);

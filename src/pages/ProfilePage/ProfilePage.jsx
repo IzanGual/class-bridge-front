@@ -54,9 +54,10 @@ export default function ProfilePage() {
 
     const handleSendVerificationCode = async () => {
         const response = await UsersModel.sendEmailVerificationCode(userData.email);
-        if (response.success) {
+
+        if (response) {
             alert("Código enviado a tu correo.");
-            //setEmailVerificationStep("code_sent");
+            setEmailVerificationStep("code_sent");
         } else {
             alert("Error al enviar el código.");
         }
@@ -64,7 +65,7 @@ export default function ProfilePage() {
 
     const handleVerifyCode = async () => {
         const response = await UsersModel.verifyEmailCode(userData.email, verificationCode);
-        if (response.success) {
+        if (response) {
             alert("Código verificado. Ahora puedes cambiar tu correo.");
             setEmailVerificationStep("verified");
         } else {

@@ -278,6 +278,7 @@ static async uploadUserName(name) {
   static async sendEmailVerificationCode(email) {
   const apiUrl = APIurl.getAPIurl("sendEmailCode");  // Necesitarías agregar un caso en la clase APIurl para esta operación
   const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+  const action = "sendCode";
 
 
   if (!apiUrl) {
@@ -294,6 +295,7 @@ static async uploadUserName(name) {
       }, 
       body: JSON.stringify({
         email,
+        action,
       }),
     });
 
@@ -301,7 +303,7 @@ static async uploadUserName(name) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
               console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
-              return "correctNameUpdate";
+              return true;
           }else{
             console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
@@ -315,6 +317,48 @@ static async uploadUserName(name) {
   }
 }
 
+
+
+static async verifyEmailCode(email, verificationCode) {
+  const apiUrl = APIurl.getAPIurl("verifyCode");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+  const action = "verifyCode";
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      }, 
+      body: JSON.stringify({
+        verificationCode,
+        action,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              return true;
+          }else{
+            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            return false;
+          
+      }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
 
   
   // Método para mostrar el usuario como una representación legible
