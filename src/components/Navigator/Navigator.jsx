@@ -1,7 +1,7 @@
-import { Link, useLocation } from "react-router-dom"; // Importa useLocation
+import { Link, useLocation } from "react-router-dom"; 
 import { useState, useEffect } from "react";
 import './Navigator.css';
-import { checkAuthStatus } from "../../utils/auth.js"; // Importamos la función de autenticación
+import { checkAuthStatus } from "../../utils/auth.js"; 
 import ProfileIcon from "../ProfileIcon/ProfileIcon.jsx";
 
 export default function Navigator() {

@@ -125,6 +125,7 @@ class UsersModel {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
             }
+            
         });
 
         if (response.ok) {
@@ -197,10 +198,122 @@ static async uploadUserImage(id, file) {
 }
 
 
+static async deleteUserImage() {
+  const apiUrl = APIurl.getAPIurl("deleteUserImage");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  
+  const token = localStorage.getItem('jwt');
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
+    },
+    
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Imagen Borrada, RESPUESTA DEL SERVER:",data.message);
+              console.log("URL",data.imageUrl);
+              return data.imageUrl;
+          }else{
+              console.log("Error al borrar la imagen, ERROR DEL SERIDOR:", data.error);
+              return false;     
+          }
+    }
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
 
 
+static async uploadUserName(name) {
+  const apiUrl = APIurl.getAPIurl("uploadUserName");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
 
 
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              return "correctNameUpdate";
+          }else{
+            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            return false;
+          
+      }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
+
+  static async sendEmailVerificationCode(email) {
+  const apiUrl = APIurl.getAPIurl("sendEmailCode");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      }, 
+      body: JSON.stringify({
+        email,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              return "correctNameUpdate";
+          }else{
+            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            return false;
+          
+      }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
 
 
   
