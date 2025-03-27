@@ -27,6 +27,9 @@ export default class APIurl {
           case "uploadUserName":
             return this.URLbase+"usuarios.php";
 
+          case "uploadUserMail":
+            return this.URLbase+"usuarios.php";
+
           case "sendEmailCode":
               return this.URLbase+"auth/mails/mailer.php";
           

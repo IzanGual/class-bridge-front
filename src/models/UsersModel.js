@@ -319,7 +319,7 @@ static async uploadUserName(name) {
 
 
 
-static async verifyEmailCode(email, verificationCode) {
+static async verifyEmailCode(verificationCode) {
   const apiUrl = APIurl.getAPIurl("verifyCode");  // Necesitarías agregar un caso en la clase APIurl para esta operación
   const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
   const action = "verifyCode";
@@ -349,6 +349,47 @@ static async verifyEmailCode(email, verificationCode) {
               return true;
           }else{
             console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            return false;
+          
+      }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
+
+static async uploadUserMail(mail) {
+  const apiUrl = APIurl.getAPIurl("uploadUserMail");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      },
+      body: JSON.stringify({
+        mail,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion del email del usuario",data.message);
+              return "correctEmailUpdate";
+          }else{
+            console.log("Error actualizando el email de usuario ERROR:",data.error);
             return false;
           
       }
