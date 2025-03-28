@@ -246,8 +246,12 @@ export default function ProfilePage() {
                     <div className="profile-photo-section">
                         <img src={userData.img_url} alt="Foto de perfil" className="profile-photo" />
                         <div className="photo-buttons">
-                            <button className="btn" onClick={handlePhotoDeletion}>Eliminar foto</button>
-                            <button className="btn" onClick={handleChangePhotoClick}>Cambiar foto</button>
+                            <button className="btn" onClick={handlePhotoDeletion}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                            </button>
+                            <button id='btn' className="btn" onClick={handleChangePhotoClick}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                            </button>
                             <form>
                             <input
                                 name='file' 
@@ -261,40 +265,55 @@ export default function ProfilePage() {
                         </div>
                     </div>
 
+                    <div className="separator"></div>
+
                     {/* Nombre */}
                     <div className="profile-field">
-                        <label>Nombre:</label>
-                        {editingField === 'nombre' ? (
-                            <>
-                                <input 
-                                    type="text" 
-                                    value={updatedData.nombre || userData.nombre} 
-                                    onChange={(e) => handleChange('nombre', e.target.value)}
-                                />
-                                <button className="btn" onClick={handleSaveName}>Guardar</button>
-                                <button className="btn" onClick={handleCancelEdit}>Cancelar</button>
-                            </>
-                        ) : (
-                            <>
-                                <p>{userData.nombre}</p>
-                                <button className="btn" onClick={() => {
-                                    setEditingField('nombre');
-                                    setUpdatedData({ nombre: userData.nombre });
-                                }}>
-                                    Editar
-                                </button>
-                            </>
-                        )}
+                        <label>Nombre</label>
+
+                        <div id='nameFiledContainer'>
+                                {editingField === 'nombre' ? (
+                                    <>
+                                        <input 
+                                            type="text" 
+                                            value={updatedData.nombre || userData.nombre} 
+                                            onChange={(e) => handleChange('nombre', e.target.value)}
+                                        />
+                                        <button className="save-btn" onClick={handleSaveName}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        </button>
+                                        <button className="cancel-btn" onClick={handleCancelEdit}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p>{userData.nombre}</p>
+                                        <button className="edit-btn" onClick={() => {
+                                            setEditingField('nombre');
+                                            setUpdatedData({ nombre: userData.nombre });
+                                        }}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                            </button>
+                                    </>
+                                )}
+                        </div>
+
                     </div>
 
 
                     {/* Apartado protegido para correo y contraseña */}
                     <div className="protected-section">
-                        <h2>Zona protegida</h2>
                         {emailVerificationStep === "idle" && (
-                            <>
-                                <p>Para editar tu correo o contraseña, verifica tu identidad.</p>
-                                <button className="btn" onClick={handleSendVerificationCode}>Enviar código de verificación</button>
+                            <>  
+                            <label>Correo electrónico</label>
+                                <p>{userData.email}</p>
+                                <label>Contraseña</label>
+                                <p>***********</p>
+                                <p id='info'>Para editar tu correo o contraseña, verifica tu identidad.</p>
+                                <button className="send-code-btn" onClick={handleSendVerificationCode}>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1d1d1d"><path d="m720-160-56-56 63-64H560v-80h167l-63-64 56-56 160 160-160 160ZM160-280q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h520q33 0 56.5 23.5T760-760v204q-10-2-20-3t-20-1q-10 0-20 .5t-20 2.5v-147L416-520 160-703v343h323q-2 10-2.5 20t-.5 20q0 10 1 20t3 20H160Zm58-480 198 142 204-142H218Zm-58 400v-400 400Z"/></svg>
+                                </button> 
                             </>
                         )}
 
@@ -306,7 +325,9 @@ export default function ProfilePage() {
                                     value={verificationCode}
                                     onChange={(e) => setVerificationCode(e.target.value)}
                                 />
-                                <button className="btn" onClick={handleVerifyCode}>Verificar</button>
+                                <button className="verify-btn" onClick={handleVerifyCode}>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1d1d1d"><path d="M268-240 42-466l57-56 170 170 56 56-57 56Zm226 0L268-466l56-57 170 170 368-368 56 57-424 424Zm0-226-57-56 198-198 57 56-198 198Z"/></svg>
+                                </button>
                             </>
                         )}
 
@@ -314,8 +335,9 @@ export default function ProfilePage() {
                             <>
                                 {/* Correo */}
                                 <div className="profile-field">
-                                    <button onClick={handleProtectedZoneClose}>EXIT</button>
-                                    <label>Correo electrónico:</label>
+                                    <button className='cancel-btn' onClick={handleProtectedZoneClose}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>                                    </button>
+                                    <label>Correo electrónico</label>
                                     {editingField === 'email' ? (
                                         <>
                                             <input 
@@ -323,25 +345,34 @@ export default function ProfilePage() {
                                                 value={updatedData.email || userData.email} 
                                                 onChange={(e) => handleChange('email', e.target.value)}
                                             />
-                                            <button className="btn" onClick={handleSaveEmail}>Guardar</button>
-                                            <button className="btn" onClick={handleCancelEdit}>Cancelar</button>
+                                            <div className='btn-container'>
+                                                <button className="save-btn" onClick={handleSaveEmail}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                                </button>
+                                                <button className="cancel-btn" onClick={handleCancelEdit}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                                </button>
+                                            </div>
+                                            
                                         </>
                                     ) : (
                                         <>
                                             <p>{userData.email}</p>
-                                            <button className="btn" onClick={() => {
+                                            <button className="edit-btn" onClick={() => {
                                                 setEditingField('email');
                                                 setUpdatedData({ email: userData.email });
                                             }}>
-                                                Editar
+                                                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
                                             </button>
                                         </>
                                     )}
                                 </div>
 
+                                <div className='separator'></div>
+
                                 {/* Contraseña */}
                                 <div className="profile-field">
-                                    <label>Contraseña:</label>
+                                    <label>Contraseña</label>
                                     {editingField === 'password' ? (
                                         <>
                                             <input 
@@ -362,30 +393,37 @@ export default function ProfilePage() {
                                                     className="strength-bar" 
                                                     style={{ width: `${passwordStrength.score}%`, backgroundColor: getStrengthColor(passwordStrength.level) }}
                                                 ></div>
-                                                <p>{passwordStrength.level}</p>
                                             </div>
-                                            <button 
-                                                className="btn" 
-                                                onClick={() => {
-                                                    if (updatedData.password !== updatedData.confirmPassword) {
-                                                        alert("Las contraseñas no coinciden.");
-                                                        return;
-                                                    }
-                                                    handleSavePassword();
-                                                }}
-                                            >
-                                                Guardar
-                                            </button>
-                                            <button className="btn" onClick={handleCancelEdit}>Cancelar</button>
+                            
+                                            <p id='strLevel'>{passwordStrength.level}</p>
+
+                                            <div className='btn-container'>
+                                                <button 
+                                                    className="save-btn" 
+                                                    onClick={() => {
+                                                        if (updatedData.password !== updatedData.confirmPassword) {
+                                                            alert("Las contraseñas no coinciden.");
+                                                            return;
+                                                        }
+                                                        handleSavePassword();
+                                                    }}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                                </button>
+                                                <button className="cancel-btn" onClick={handleCancelEdit}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                                </button>
+                                            </div>
+                                            
                                         </>
                                     ) : (
                                         <>
                                             <p>********</p>
-                                            <button className="btn" onClick={() => {
+                                            <button className="edit-btn" onClick={() => {
                                                 setEditingField('password');
                                                 setUpdatedData({ password: '', confirmPassword: '' });
                                             }}>
-                                                Editar
+                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
                                             </button>
                                         </>
                                     )}
@@ -395,10 +433,13 @@ export default function ProfilePage() {
 
                     
                     </div>
+                   
                     <SubscriptionStatus subscriptionState={userData.estado_suscripcion}></SubscriptionStatus>
                     <div id='logout-closeAccoint-container'>
-                    <button onClick={logOut}>Log Out</button>
-                    <button onClick={handleProfileDeletion}>ELIMINAR CUENTA</button>
+                    <button className='logOut' onClick={logOut}>Cerrar sesión</button>
+                    <button className='deleteAccount' onClick={handleProfileDeletion}>Eliminar cuenta
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                    </button>
                     </div>
                     
                 </div>

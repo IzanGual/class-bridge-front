@@ -1,20 +1,33 @@
-.profile-container {
-    width: 90%;
-    margin: auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+/* General styles */
+.page-container {
+background-color: var(--background-color);
 }
 
-.profile-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
 
-.profile-photo-section {
+
+h1 {
+    font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
+    color: #222;
+}
+
+/* Profile card */
+.profile-card {
+    background: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+/* Profile photo section */
+.profile-photo-section {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
 }
 
 .profile-photo {
@@ -22,44 +35,351 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #ddd;
 }
 
 .photo-buttons {
-    margin-top: 10px;
-}
-
-.btn {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile-field {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.photo-buttons .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--mega-dark-color);
+    color: var(--text-color-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.photo-buttons #btn {
+    margin-top: auto!important;
+}
+
+.photo-buttons .btn:hover {
+    background: var(--accent-color);
+}
+
+/* Profile fields */
+.profile-field {
+    margin-bottom: 20px;
 }
 
 .profile-field label {
-    font-weight: bold;
+    display: block;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .profile-field p {
+    width: 60%; /* Puedes ajustar el ancho según lo necesites */
     margin: 0;
-    flex-grow: 1;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 1px solid var(--gray-color); /* Borde suave, como un input */
+    border-radius: 5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
 }
 
+#nameFiledContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.profile-field input {
+    width: 30%; /* Puedes ajustar el ancho según lo necesites */
+    margin: 0;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 1px solid var(--gray-color); /* Borde suave, como un input */
+    border-radius: 5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+}
+
+
+.edit-btn{
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--mega-dark-color);
+    color: var(--text-color-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.edit-btn:hover{
+    
+    background:var(--accent-color) ;
+}
+.save-btn{
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--save-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn{
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--cancel-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Protected section */
+.protected-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--gray-color)!important;
+    border-radius: 5px;
+    background-color: var(--background-color);
+}
+.protected-section label {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.protected-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.protected-section p {
+    width: 100%; /* Puedes ajustar el ancho según lo necesites */
+    margin: 0;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 1px solid var(--gray-color); /* Borde suave, como un input */
+    border-radius: 5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    text-align: center;
+    margin-bottom: 20px!important;
+}
+.protected-section input {
+    width: 100%; /* Puedes ajustar el ancho según lo necesites */
+    margin: 0;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 1px solid var(--gray-color); /* Borde suave, como un input */
+    border-radius: 5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    text-align: center;
+    margin-bottom: 20px!important;
+}
+
+#info  {
+    width: 100%; /* Puedes ajustar el ancho según lo necesites */
+    margin: 0;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 2px solid var(--accent-background-color-l); /* Borde suave, como un input */
+    border-radius:5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    text-align: center;
+    margin-bottom: 20px!important;
+}
+
+.send-code-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.verify-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+    margin-top: 15px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.verify-btn:hover{
+    background: var(--background-color);
+}
+
+.protected-section .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Password strength bar */
 .password-strength {
     margin-top: 10px;
+    width:100%;
+    height: 10px;
+}
+#strLevel{
+    border: none;
+    padding: 0;
+    margin: 0;
+    padding-top:5px ;
 }
 
 .strength-bar {
-    height: 10px;
+    height: 8px;
     border-radius: 5px;
+    background-color: #ddd;
     transition: width 0.3s ease;
+}
+
+.strength-bar[data-strength="Débil"] {
+    background-color: red;
+}
+
+.strength-bar[data-strength="Media"] {
+    background-color: orange;
+}
+
+.strength-bar[data-strength="Fuerte"] {
+    background-color: green;
+}
+
+/* Logout and delete account buttons */
+#logout-closeAccoint-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#logout-closeAccoint-container .btn {
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-closeAccoint-container .btn:first-child {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+#logout-closeAccoint-container .btn:first-child:hover {
+    background-color: #e0a800;
+}
+
+#logout-closeAccoint-container .btn:last-child {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#logout-closeAccoint-container .btn:last-child:hover {
+    background-color: #c82333;
+}
+
+.logOut {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de texto */
+    font-weight: 600; /* Texto más destacado */
+    background-color: var(--background-color);
+    border: solid 1px var(--gray-color)!important; /* Rojo suave para indicar una acción de cierre */
+    color: var(--text-color); /* Color del texto */
+    border: none; /* Eliminar el borde predeterminado */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+    outline: none; /* Elimina el borde al hacer clic */
+}
+
+.logOut:hover {
+   color: var(--accent-background-color-l);
+}
+
+.deleteAccount {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de texto */
+    font-weight: 600; /* Texto más destacado */
+    background: var(--accent-color-dark); /* Color de fondo usando tu color de acento */
+    color: var(--text-color-light); /* Texto en color claro para contraste */
+    border: none; /* Borde usando el color del texto principal */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+    outline: none; /* Elimina el borde al hacer clic */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteAccount:hover {
+    transform: scale(1.02); /* Efecto de aumento suave */
+}
+
+
+
+
+
+/* Responsive design */
+@media (min-width: 768px) {
+    .profile-card {
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .photo-buttons .btn {
+        font-size: 16px;
+    }
+
+    .profile-field input {
+        font-size: 16px;
+    }
+
+    .profile-field .btn {
+        font-size: 16px;
+    }
+
+    .protected-section h2 {
+        font-size: 20px;
+    }
 }

@@ -9,7 +9,7 @@ export default function RegisterPage() {
     const [email, setEmail] = useState('');     
     const [contraseña, setContraseña] = useState('');
     const [confirmarContraseña, setConfirmarContraseña] = useState('');
-    const [passwordStrength, setPasswordStrength] = useState({ level: "Vacía", score: 0 });
+    const [passwordStrength, setPasswordStrength] = useState({ level: "Dificultad", score: 0 });
     const [mensaje, setMensaje] = useState('');
     const navigate = useNavigate();
 
@@ -87,53 +87,58 @@ export default function RegisterPage() {
 
     return (
         <div className="registro-container">
-            <h2>Formulario de Registro</h2>
-            {mensaje && <p>{mensaje}</p>}
+            <h2>Registro</h2>
+            {mensaje && <p className='message-text'>{mensaje}</p>}
             <form onSubmit={handleSubmit}>
-                <label>Nombre:</label>
-                <input 
+                <input
+                    placeholder='Nombre'
                     type="text" 
                     value={nombre} 
                     onChange={(e) => setNombre(e.target.value)} 
                     required 
                 />
 
-                <label>Email:</label>
-                <input 
+                <input
+                placeholder='Correo electrónico'
                     type="email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                     required 
                 />
 
-                <label>Contraseña:</label>
                 <input 
+                placeholder='Contraseña'
                     type="password" 
                     value={contraseña} 
                     onChange={(e) => handlePasswordChange(e.target.value)} 
+                    required 
+                />
+
+                <input
+                    placeholder='Confirmar Contraseña' 
+                    type="password" 
+                    value={confirmarContraseña} 
+                    onChange={(e) => setConfirmarContraseña(e.target.value)} 
                     required 
                 />
                 {/* Barra de seguridad */}
                 <div className="password-strength">
                     <div 
                         className="strength-bar" 
-                        style={{ width: `${passwordStrength.score}%`, backgroundColor: getStrengthColor(passwordStrength.level) }}
+                        style={{ 
+                            width: `${passwordStrength.score}%`, 
+                            backgroundColor: getStrengthColor(passwordStrength.level) 
+                        }}
                     ></div>
-                    <p>{passwordStrength.level}</p>
                 </div>
+                <p>{passwordStrength.level}</p>
 
-                <label>Confirmar Contraseña:</label>
-                <input 
-                    type="password" 
-                    value={confirmarContraseña} 
-                    onChange={(e) => setConfirmarContraseña(e.target.value)} 
-                    required 
-                />
-
-                <button type="submit" className="btn btn-success">Registrarse</button>
+                <button type="submit" className="btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FAFAF5"><path d="m480-320 160-160-160-160-56 56 64 64H320v80h168l-64 64 56 56Zm0 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                </button>
             </form>
             <div id='login-pont-container'>
-                <p>¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a></p>
+                <p>¿Ya tienes una cuenta? <a href="/login">Entra aqui.</a></p>
             </div>
         </div>
     );

@@ -1,9 +1,7 @@
 .subscription-status {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .subscription-status p {
@@ -22,4 +20,40 @@
 
 .subscription-status .btn {
     margin-top: 10px;
+}
+label {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 16px;
+    
+}
+#estado {
+    width: 100%; /* Puedes ajustar el ancho según lo necesites */
+    margin: 0;
+    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
+    border: 1px solid var(--gray-color); /* Borde suave, como un input */
+    border-radius: 5px; /* Bordes redondeados */
+    color: var(--text-color); /* Color de texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+}
+.text{
+    margin-top:20px!important;
+    width: 100%;
+}
+.redirect-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }

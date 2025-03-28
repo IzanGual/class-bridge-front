@@ -26,7 +26,7 @@ export const validatePassword = (password) => {
 */
 
 export const getPasswordStrength = (password) => {
-    if (!password) return { level: "Vacía", score: 0 };
+    if (!password) return { level: "Dificultad", score: 0 };
 
     let score = 0;
 

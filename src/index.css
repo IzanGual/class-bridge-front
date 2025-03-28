@@ -6,15 +6,49 @@
   --accent-background-color-l:#ff7e5f;
   --text-color: #1d1d1d;
   --text-color-light: #FAFAF5;
-  --color-primario: #3498db;
-  --color-secundario: #2ecc71;
-  --fuente-principal: 'Arial', sans-serif;
-  --espaciado: 16px;
+  --primary-font: 'NormalText', serif;
+  --title-font: 'Title', serif;
+  --dark-color: rgb(112, 110, 110);
+  --mega-dark-color: black ;
+  --gray-color:rgb(206, 206, 206) ;
+  --save-color:#f78062;
+  --cancel-color:rgb(70, 67, 67);
+  --accent-color-dark: linear-gradient(135deg, #000000, #feb47b);
+
+}
+
+@font-face {
+  font-family: 'NormalText';
+  src: url('/public/assets/fonts/NormalText.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Title';
+  src: url('/public/assets/fonts/Title.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html{
+  background-color: var(--background-color);
 }
 
 body {
-  font-family: var(--fuente-principal);
-  background-color: var(--background-color)!important;
+  font-family: var(--primary-font)!important;
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+}
+
+h1, h2, h3 {
+  font-family: var(--title-font);
+}
+
+.separator {
+  width: 100%; /* Ocupa el 90% del ancho del contenedor */
+  height: 1px; /* Una línea delgada */
+  background-color: var(--gray-color); /* Color gris suave para el separador */
+  margin: 20px auto; /* Centrado con un margen arriba y abajo */
 }

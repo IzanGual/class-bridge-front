@@ -8,17 +8,8 @@ export default function ProfileIcon() {
   const logOut = useLogout(); // Llamar dentro del componente
     const navigate = useNavigate();
   return (
-    <div className="dropdown">
-      <button className="btn btn-light dropdown-toggle" onClick={() => setOpen(!open)}>
-        &#128100;
-      </button>
-      {open && (
-        <div className="dropdown-menu show">
-          <button className="dropdown-item" onClick={() => navigate('myprofile')}>Perfil</button>
-          <div className="dropdown-divider"></div>
-          <button className="dropdown-item text-danger" onClick={logOut}>Logout</button>
-        </div>
-      )}
+    <div className="profile-icon-comntainer" onClick={() => navigate('myprofile')}> 
+            <img id="text-logo" src="/assets/images/profile-icon.png" alt="" />
     </div>
   );
 }
