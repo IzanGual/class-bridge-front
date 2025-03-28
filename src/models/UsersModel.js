@@ -260,7 +260,7 @@ static async uploadUserName(name) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
               console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
-              return "correctNameUpdate";
+              return true;
           }else{
             console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
@@ -386,10 +386,48 @@ static async uploadUserMail(mail) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion del email del usuario",data.message);
-              return "correctEmailUpdate";
+              return data.message;
           }else{
-            console.log("Error actualizando el email de usuario ERROR:",data.error);
+            return data.error;
+        }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
+
+static async uploadUserPassword(pass) {
+  const apiUrl = APIurl.getAPIurl("uploadUserPass");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      },
+      body: JSON.stringify({
+        pass,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion dela pass del usuario",data.message);
+              return true;
+          }else{
+            console.log("Error actualizando la pass de usuario ERROR:",data.error);
             return false;
           
       }
@@ -401,7 +439,42 @@ static async uploadUserMail(mail) {
   }
 }
 
+
+
+static async deleteUserProfile() {
+  const apiUrl = APIurl.getAPIurl("deleteUserProfile");  // Necesitarías agregar un caso en la clase APIurl para esta operación
   
+  const token = localStorage.getItem('jwt');
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
+    },
+    
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
+              return true;
+          }else{
+              console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
+              return false;     
+          }
+    }
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
   // Método para mostrar el usuario como una representación legible
   toString() {
     return `${this.nombre} (${this.email}) - Tipo: ${this.tipo}, Suscripción: ${this.estado_suscripcion}`;

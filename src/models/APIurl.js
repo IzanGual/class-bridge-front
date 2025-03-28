@@ -23,12 +23,18 @@ export default class APIurl {
 
           case "deleteUserImage":
             return this.URLbase+"usuarios.php?action=deleteImage";
+          
+          case "deleteUserProfile":
+              return this.URLbase+"usuarios.php?action=deleteUserProfile";
             
           case "uploadUserName":
             return this.URLbase+"usuarios.php";
 
           case "uploadUserMail":
             return this.URLbase+"usuarios.php";
+          
+          case "uploadUserPass":
+              return this.URLbase+"usuarios.php";
 
           case "sendEmailCode":
               return this.URLbase+"auth/mails/mailer.php";
