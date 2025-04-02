@@ -18,6 +18,9 @@ export default class APIurl {
           case "getUser":
             return this.URLbase+"usuarios.php?id="+id;
 
+          case "getPlanById":
+              return this.URLbase+"planes.php?id="+id;
+            
           case "updateUserImage":
             return this.URLbase+"usuarios.php";
 
@@ -39,8 +42,11 @@ export default class APIurl {
           case "sendEmailCode":
               return this.URLbase+"auth/mails/mailer.php";
           
-            case "verifyCode":
+          case "verifyCode":
               return this.URLbase+"auth/mails/mailer.php";
+
+          case "setUserToTeacher":
+              return this.URLbase+"usuarios.php";
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
             console.error(`Introduce propiedades validas: products, categegories`);

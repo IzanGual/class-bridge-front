@@ -1,0 +1,10 @@
+#privacy{
+    width: 80%;
+    margin: auto;
+}
+
+#privacy h2{
+    color: var(--mega-dark-color)!important;
+    margin-bottom: 0!important;
+    margin-top: 50px;
+}

@@ -40,6 +40,54 @@ class PlansModel {
     }
   }
 
+ static async getPlanById(id) {
+     const apiUrl = APIurl.getAPIurl("getPlanById", id);  // Asegúrate de que esta URL sea correcta
+ 
+     if (!apiUrl) {
+         console.error('URL no válida');
+         return false;
+     }
+ 
+     // Suponiendo que el token JWT está almacenado en el localStorage o sessionStorage
+     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+ 
+     if (!token) {
+         console.error('Token no encontrado');
+         return false;
+     }
+ 
+     try {
+         const response = await fetch(apiUrl, {
+             method: 'GET',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
+             }
+             
+         });
+ 
+         if (response.ok) {
+             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario
+ 
+             if (data.success) {
+                 console.log("Datos del plan:", data);
+                 return data.plan;  
+             } else {
+                 console.error('Error en la respuesta de la API:', data.error);
+                 return false;
+             }
+         } else {
+             console.error('Error en la respuesta de la API:', response.status);
+             return false;
+         }
+     } catch (error) {
+         console.error('Error en la solicitud:', error);
+         return false;  // En caso de error, retornamos null
+     }
+ }
+
+  
+
   // Método para mostrar el plan como una representación legible
   toString() {
     return `${this.nombre} - ${this.precio} \n${this.descripcion} \nBeneficios: ${this.beneficios}`;

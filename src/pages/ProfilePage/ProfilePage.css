@@ -84,6 +84,9 @@ h1 {
     color: var(--text-color); /* Color de texto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
     outline: none; /* Elimina el borde de enfoque predeterminado */
+    overflow: hidden;
+    white-space: nowrap; /* Evita el salto de línea */
+    text-overflow: ellipsis; /* Agrega "..." si el texto es muy largo */
 }
 
 #nameFiledContainer{
@@ -94,7 +97,7 @@ h1 {
 
 
 .profile-field input {
-    width: 30%; /* Puedes ajustar el ancho según lo necesites */
+    width: 60%; /* Puedes ajustar el ancho según lo necesites */
     margin: 0;
     padding: 7px 14px; /* Padding para que el texto no toque los bordes */
     border: 1px solid var(--gray-color); /* Borde suave, como un input */
@@ -102,6 +105,8 @@ h1 {
     color: var(--text-color); /* Color de texto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
     outline: none; /* Elimina el borde de enfoque predeterminado */
+    overflow: hidden;
+
 }
 
 

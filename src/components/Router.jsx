@@ -4,7 +4,10 @@ import LandingPage from "../pages/LandingPage/LandingPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import PlanSelectionPage from "../pages/PlanSelectionPage/PlanSelectionPage";
+
 import ProtectedRoute from "../utils/ProtectedRoute";
+import PrivacyPage from "../pages/PrivacyPage/PrivacyPage";
 
 export default function Router() {
     const pageRoutes = ROUTE_LIST.map(({ title, path, element, isProtected }) => {
@@ -45,5 +48,8 @@ const ROUTE_LIST = [
     new RoutePage("home", "", <LandingPage/>),
     new RoutePage("register", "register", <RegisterPage/>),
     new RoutePage("login", "login", <LoginPage/>),
-    new RoutePage("myprofile", "myprofile", <ProfilePage/>, true) // ✅ Ahora es protegida
+    new RoutePage("myprofile", "myprofile", <ProfilePage/>, true), // ✅ Ahora es protegida
+    new RoutePage("planSelection", "planSelection", <PlanSelectionPage/>, true), // ✅ Ahora es protegida
+    new RoutePage("privacy", "privacy", <PrivacyPage/>) // ✅ Ahora es protegida
+
 ];

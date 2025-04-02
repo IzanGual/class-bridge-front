@@ -435,6 +435,9 @@ export default function ProfilePage() {
                     </div>
                    
                     <SubscriptionStatus subscriptionState={userData.estado_suscripcion}></SubscriptionStatus>
+
+                    <div className="separator"></div>
+
                     <div id='logout-closeAccoint-container'>
                     <button className='logOut' onClick={logOut}>Cerrar sesión</button>
                     <button className='deleteAccount' onClick={handleProfileDeletion}>Eliminar cuenta

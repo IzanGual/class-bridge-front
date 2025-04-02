@@ -475,6 +475,57 @@ static async deleteUserProfile() {
   }
 }
 
+static async setUserToTeacher(precio, classroomName) {
+  const apiUrl = APIurl.getAPIurl("setUserToTeacher");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt');
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      },
+      body: JSON.stringify({
+        precio,
+        classroomName,
+      }),
+    });
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta del upgrade a techer del usuario",data.message);
+              return "insertCorrect";
+          }else{
+
+              if(data.error === "classNameDup"){
+                  return "classNameDup"
+              }
+              else if(data.error === "teacherHasAClass"){
+                  return "teacherHasAClass"
+              }
+              else{
+                  console.log("Respuesta del instert del usuario de ERROR", data.error);
+                  return "insertError"
+              }
+          
+    }
+          }
+          
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
+
+
   // Método para mostrar el usuario como una representación legible
   toString() {
     return `${this.nombre} (${this.email}) - Tipo: ${this.tipo}, Suscripción: ${this.estado_suscripcion}`;

@@ -1,0 +1,117 @@
+.plan-selected-card {
+    background: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 50px;
+    text-align: center;
+    justify-self: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in ;
+}
+
+.plan-selected-card label {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 0px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.plan-selected-card a {
+    font-weight: 1000!important;
+    text-decoration: underline!important;
+}
+
+.plan-selected-card input:read-only {
+    
+    background-color: var(--background-color)!important;
+}
+
+.plan-details-card {
+    margin-top: 0px;
+    padding: 15px;
+    border: 1px solid var(--gray-color)!important;
+    border-radius: 5px;
+    background-color: var(--background-color);
+}
+
+#text-logo-pay{
+    width: 200px;
+    height: 200px;
+}
+
+.plan-selected-card h2{
+    margin-bottom: 5px!important;
+}
+
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos */
+.plan-title {
+    font-size: 22px;
+    color: var(--text-color)!important;
+}
+
+
+.plan-price {
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+.plan-description {
+    font-size: 16px;
+    color: var(--save-color);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+/* Términos y condiciones */
+.terms {
+    font-size: 14px;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* Botones */
+.plan-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Botón principal */
+.btn-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border: none!important;
+        color: var(--text-color-light);
+        font-weight: 600;
+        background-color: var(--mega-dark-color)!important;
+    
+}
+
+
