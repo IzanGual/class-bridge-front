@@ -1,55 +1,69 @@
 import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import PlanSelectionPage from "../pages/PlanSelectionPage/PlanSelectionPage";
-
-import ProtectedRoute from "../utils/ProtectedRoute";
 import PrivacyPage from "../pages/PrivacyPage/PrivacyPage";
+import AulasModel from "../models/AulasModel";
+import ProtectedRoute from "../utils/ProtectedRoute";
+import OrderCompleted from "../pages/OrderCompleted/OrderCompleted";
 
 export default function Router() {
-    const pageRoutes = ROUTE_LIST.map(({ title, path, element, isProtected }) => {
-        return (
-            <Route 
-                key={title} 
-                path={`/${path}`} 
-                element={isProtected ? <ProtectedRoute>{element}</ProtectedRoute> : element} 
-            />
-        );
-    });
+  const [aulas, setAulas] = useState([]);
 
-    return <Routes>{pageRoutes}</Routes>;
-}
-
-/**
- * Clase para estructurar las rutas
- */
-class RoutePage {
-    title;
-    path;
-    element;
-    isProtected; // ✅ Nuevo parámetro para saber si la ruta está protegida
-
-    constructor(title, path, element, isProtected = false) {
-        this.title = title;
-        this.path = path;
-        this.element = element;
-        this.isProtected = isProtected;
+  useEffect(() => {
+    const fetchAulas = async () => {
+      try {
+        const data = await AulasModel.getAllAulas();
+        setAulas(data);
+        console.log("AULAS:", data);
+      } catch (error) {
+        console.error("Error al obtener los aulas:", error);
+      }
     };
+
+    fetchAulas();
+  }, []);
+
+  return (
+    <Routes>
+      {ROUTE_LIST.map(({ title, path, element, isProtected }) => (
+        <Route
+          key={title}
+          path={`/${path}`}
+          element={isProtected ? <ProtectedRoute>{element}</ProtectedRoute> : element}
+        />
+      ))}
+
+      {/* Rutas dinámicas para aulas */}
+      {aulas.map((aula) => (
+        <Route key={aula.id} path={`/bridgeto/${aula.nombre}`} element={<div className="page-container">EL NOMBRE DEL AULA ES:{aula.nombre}</div>} />
+      ))}
+
+      {/* Página 404 */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
 }
 
-/**
- * Lista de rutas
- */
-const ROUTE_LIST = [
-    new RoutePage("404", "*", <NotFoundPage/> ),
-    new RoutePage("home", "", <LandingPage/>),
-    new RoutePage("register", "register", <RegisterPage/>),
-    new RoutePage("login", "login", <LoginPage/>),
-    new RoutePage("myprofile", "myprofile", <ProfilePage/>, true), // ✅ Ahora es protegida
-    new RoutePage("planSelection", "planSelection", <PlanSelectionPage/>, true), // ✅ Ahora es protegida
-    new RoutePage("privacy", "privacy", <PrivacyPage/>) // ✅ Ahora es protegida
+class RoutePage {
+  constructor(title, path, element, isProtected = false) {
+    this.title = title;
+    this.path = path;
+    this.element = element;
+    this.isProtected = isProtected;
+  }
+}
 
+const ROUTE_LIST = [
+  new RoutePage("home", "", <LandingPage />),
+  new RoutePage("register", "register", <RegisterPage />),
+  new RoutePage("login", "login", <LoginPage />),
+  new RoutePage("myprofile", "myprofile", <ProfilePage />, true),
+  new RoutePage("planSelection", "planSelection", <PlanSelectionPage />, true),
+  new RoutePage("orderCompleted", "orderCompleted", <OrderCompleted />, true),
+  new RoutePage("privacy", "privacy", <PrivacyPage />),
 ];

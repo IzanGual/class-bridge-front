@@ -29,6 +29,9 @@ export default class APIurl {
           
           case "deleteUserProfile":
               return this.URLbase+"usuarios.php?action=deleteUserProfile";
+          
+            case "cancelUserSuscription":
+              return this.URLbase+"usuarios.php?action=cancelSuscription";
             
           case "uploadUserName":
             return this.URLbase+"usuarios.php";
@@ -41,12 +44,21 @@ export default class APIurl {
 
           case "sendEmailCode":
               return this.URLbase+"auth/mails/mailer.php";
+
+          case "sendInfoMail":
+              return this.URLbase+"auth/mails/mailer.php";
+              
           
           case "verifyCode":
               return this.URLbase+"auth/mails/mailer.php";
 
           case "setUserToTeacher":
               return this.URLbase+"usuarios.php";
+
+          case "getAllAulas":
+              return this.URLbase+"aulas.php";
+
+              
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
             console.error(`Introduce propiedades validas: products, categegories`);

@@ -14,6 +14,7 @@
   --save-color:#f78062;
   --cancel-color:rgb(70, 67, 67);
   --accent-color-dark: linear-gradient(135deg, #000000, #feb47b);
+  --success-color:#8FD14F;
 
 }
 
@@ -40,6 +41,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
+}
+#root{
+  background: var(--background-color);
 }
 
 h1, h2, h3 {

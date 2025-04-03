@@ -1,8 +1,30 @@
 import './SubscriptionStatus.css';
 import { useNavigate } from 'react-router-dom';
+import UsersModel from '../../models/UsersModel';
 
 export default function SubscriptionStatus({ subscriptionState }) {
     const navigate = useNavigate();
+
+    const handleSuscriptionCancel = async () => {
+
+        if(!window.confirm("Estas realemnte seguro de que quieres cancelar tu suscripcion? Todos tus servicios se suspenderan y se perdera cualquer informacion relacionada con ellos.")){
+            alert("Cancelado");
+        }else{
+            const response = await UsersModel.cancelUserSuscription();
+                if (response) {
+                    alert("Plan cancelado con éxito");
+                    navigate('/'); 
+                }else{
+                    alert("Ocurrio u error eliminado la cueta prueba mas tarde");
+
+                }
+  
+        }
+
+        
+        
+    };
+
 
     return (
         <div className="subscription-status">
@@ -18,19 +40,19 @@ export default function SubscriptionStatus({ subscriptionState }) {
             )}
             {subscriptionState === 'activo' && (
                 <>
-                    <p>Tu suscripción está activa. ¡Disfruta de todas las ventajas!</p>
+                    <p>Tu suscripción está activa. ¡Disfruta de todas las ventajas! , recuerda que el link de tu aula esta en la bandeja de entrada de tu correo</p>
                     <ul>
                         <li>Acceso ilimitado a contenido premium</li>
                         <li>Soporte prioritario</li>
                         <li>Actualizaciones exclusivas</li>
                     </ul>
-                    <button className="btn" onClick={() => alert("Implementar cancelación de suscripción")}>Cancelar suscripción</button>
+                    <button className="degradeAccount" onClick={handleSuscriptionCancel}>Cancelar suscripción</button>
                 </>
             )}
-            {subscriptionState === 'vencido' && (
+            {subscriptionState === 'cancelado' && (
                 <>
-                    <p>Tu suscripción ha vencido. ¿Quieres renovarla?</p>
-                    <button className="btn" onClick={() => navigate('/')}>Renovar suscripción</button>
+                    <p>Has cancelado en el pasado tu suscripcion a class-bridge. ¿Te gustaria volver a confiar en nosotros?</p>
+                    <button className="renovar" onClick={() => navigate('/')}>Renovar suscripción</button>
                 </>
             )}
         </div>

@@ -512,12 +512,9 @@ static async setUserToTeacher(precio, classroomName) {
               else{
                   console.log("Respuesta del instert del usuario de ERROR", data.error);
                   return "insertError"
-              }
-          
-    }
+              } 
           }
-          
-
+      }  
   } catch (error) {
     console.error(error);
     return null;  // En caso de error, retornamos null
@@ -525,6 +522,81 @@ static async setUserToTeacher(precio, classroomName) {
 }
 
 
+static async cancelUserSuscription() {
+  const apiUrl = APIurl.getAPIurl("cancelUserSuscription");  
+  
+  const token = localStorage.getItem('jwt');
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
+    },
+    
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
+              return true;
+          }else{
+              console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
+              return false;     
+          }
+    }
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
+
+
+static async sendInfoMail(email) {
+  const apiUrl = APIurl.getAPIurl("sendInfoMail");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+  const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+  const action = "sendInfoMail";
+
+
+  if (!apiUrl) {
+    console.error('URL no válida');
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      }, 
+      body: JSON.stringify({
+        action,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+          if(data.success){
+              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              return true;
+          }else{
+            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            return false;
+          
+      }
+    }
+
+  } catch (error) {
+    console.error(error);
+    return null;  // En caso de error, retornamos null
+  }
+}
 
   // Método para mostrar el usuario como una representación legible
   toString() {

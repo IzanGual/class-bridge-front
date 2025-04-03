@@ -5,8 +5,8 @@
 }
 
 .subscription-status p {
-    margin: 0 0 10px;
     font-size: 16px;
+    margin-bottom: 20px!important;
 }
 
 .subscription-status ul {
@@ -56,4 +56,38 @@ label {
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s ease;
+}
+
+.renovar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 800;
+}
+
+.degradeAccount {
+    width: 100%;
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de texto */
+    font-weight: 600; /* Texto más destacado */
+    background: var(--accent-color-dark); /* Color de fondo usando tu color de acento */
+    color: var(--text-color-light); /* Texto en color claro para contraste */
+    border: none; /* Borde usando el color del texto principal */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+    outline: none; /* Elimina el borde al hacer clic */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
