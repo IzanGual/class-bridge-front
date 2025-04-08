@@ -6,6 +6,7 @@ import { validateName, validateEmail, getPasswordStrength } from '../../utils/va
 import { useLogout } from "../../utils/LogOut";
 import SubscriptionStatus from '../../components/SubscriptionStatus/SubscriptionStatus';
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from '../../utils/AlertProvider';
 
 export default function ProfilePage() {
     const [userData, setUserData] = useState(null);
@@ -18,7 +19,7 @@ export default function ProfilePage() {
     const userId = getUserId();
     const logOut = useLogout(); // Llamar dentro del componente
     const navigate = useNavigate();
-
+    const showAlert = useAlert();
 
 
     useEffect(() => {
@@ -88,9 +89,9 @@ export default function ProfilePage() {
             const imageUrl = await UsersModel.uploadUserImage(userId, file);
         
             if (!imageUrl) {
-                alert("Error al subir la imagen");
+                showAlert("Error al subir la imagen");
             } else {
-                alert("Imagen subida correctamente");
+                showAlert("Imagen actualizada correctamente");
                 // Forzar la actualización de la imagen agregando un parámetro único
                 setUserData((prev) => ({ 
                     ...prev, 
@@ -106,9 +107,9 @@ export default function ProfilePage() {
             }else{
                 const imageUrl = await UsersModel.deleteUserImage();
                 if (!imageUrl) {
-                    alert("Error al borrar la imagen");
+                    showAlert("Error al eliminar la imagen");
                 } else {
-                    alert("Imagen borrada correctamente");
+                    showAlert("Imagen eliminada correctamente");
                     // Forzar la actualización de la imagen agregando un parámetro único
                     setUserData((prev) => ({ 
                         ...prev, 
@@ -127,17 +128,17 @@ export default function ProfilePage() {
 
         const error = validateName(updatedData.nombre);
         if (error) {
-            alert(error);
+            showAlert(error);
         return;
         }
 
         if (updatedData.nombre) {
             const response = await UsersModel.uploadUserName(updatedData.nombre);
             if (response) {
-                alert("Nombre guardado correctamente");
+                showAlert("Nombre actualizado correctamente");
                 setUserData((prev) => ({ ...prev, nombre: updatedData.nombre }));
             } else {
-                alert("Error al guardar el nombre");
+                showAlert("Error al actualizar el nombre");
             }
         }
         setEditingField(null);
@@ -149,9 +150,9 @@ export default function ProfilePage() {
     
         const response = await UsersModel.uploadUserPassword(updatedData.password);
         if (response) {
-            alert("Contraseña actualizada correctamente.");
+            showAlert("Contraseña actualizada correctamente.");
         } else {
-            alert("Error al actualizar la contraseña.");
+            showAlert("Error al actualizar la contraseña.");
         }
         setEditingField(null);
     };
@@ -162,23 +163,23 @@ export default function ProfilePage() {
 
         const error = validateEmail(updatedData.email);
         if (error) {
-            alert(error);
+            showAlert(error);
         return;
         }
 
         const response = await UsersModel.uploadUserMail(updatedData.email);
         if (response === "mailSuccessfullyUpdated") {
-            alert("Correo actualizado correctamente.");
+            showAlert("Correo actualizado correctamente.");
             setUserData((prev) => ({ ...prev, email: updatedData.email }));
             setEditingField(null);
             //setEmailVerificationStep("idle");
         }
          if(response === "emailDup"){
-            alert("EL EMAIL YA EXISTE; PRUEBA CON OTRO");
+            showAlert("EL EMAIL YA EXISTE; PRUEBA CON OTRO");
             setEditingField(null);
          }
         if(response === "NotPosibleToUpdateEmail"){
-            alert("Error al actualizar el correo.");
+            showAlert("Error al actualizar el correo.");
             setEditingField(null);  
         }
         
@@ -189,16 +190,16 @@ export default function ProfilePage() {
     const handleProfileDeletion = async () => {
 
         if(!window.confirm("Estas realemnte seguro de que quieres eliminar tu cuenta? Todos tus servicios se suspenderan y se perdera cualquer informacion relacionada con la cuenta.")){
-            alert("Cancelado");
+            showAlert("Cancelado");
         }else{
             const response = await UsersModel.deleteUserProfile();
                 if (response) {
-                    alert("Cuenta eliminada con exito");
+                    showAlert("Cuenta eliminada con exito");
                     logOut();
                     navigate('/');
                     
                 }else{
-                    alert("Ocurrio u error eliminado la cueta prueba mas tarde");
+                    showAlert("Ocurrio un error eliminado la cueta prueba mas tarde");
 
                 }
   
@@ -217,20 +218,20 @@ export default function ProfilePage() {
         const response = await UsersModel.sendEmailVerificationCode(userData.email);
 
         if (response) {
-            alert("Código enviado a tu correo.");
+            showAlert("Código enviado a tu correo.");
             setEmailVerificationStep("code_sent");
         } else {
-            alert("Error al enviar el código.");
+            showAlert("Error al enviar el código.");
         }
     };
 
     const handleVerifyCode = async () => {
         const response = await UsersModel.verifyEmailCode(verificationCode);
         if (response) {
-            alert("Código verificado. Ahora puedes cambiar tu correo.");
+            showAlert("Código verificado. Ahora puedes cambiar tu correo.");
             setEmailVerificationStep("verified");
         } else {
-            alert("Código incorrecto.");
+            showAlert("Código incorrecto.");
         }
     };
 
@@ -335,8 +336,7 @@ export default function ProfilePage() {
                             <>
                                 {/* Correo */}
                                 <div className="profile-field">
-                                    <button className='cancel-btn' onClick={handleProtectedZoneClose}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>                                    </button>
+                                    
                                     <label>Correo electrónico</label>
                                     {editingField === 'email' ? (
                                         <>
@@ -402,7 +402,7 @@ export default function ProfilePage() {
                                                     className="save-btn" 
                                                     onClick={() => {
                                                         if (updatedData.password !== updatedData.confirmPassword) {
-                                                            alert("Las contraseñas no coinciden.");
+                                                            showAlert("Las contraseñas no coinciden.");
                                                             return;
                                                         }
                                                         handleSavePassword();
@@ -428,10 +428,14 @@ export default function ProfilePage() {
                                         </>
                                     )}
                                 </div>
+                                <button id='goback' onClick={handleProtectedZoneClose}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg>
+                                </button>
                             </>
+                            
                         )}
 
-                    
+
                     </div>
                    
                     <SubscriptionStatus subscriptionState={userData.estado_suscripcion}></SubscriptionStatus>

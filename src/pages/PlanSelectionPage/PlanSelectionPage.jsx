@@ -3,12 +3,14 @@ import "./PlanSelectionPage.css";
 import PlansModel from '../../models/PlansModel';
 import UsersModel from '../../models/UsersModel';
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from '../../utils/AlertProvider';
 
 export default function PlanSelectionPage() {
     const [plan, setPlan] = useState(null);
     const [classroomName, setClassroomName] = useState("");
     const [agreeToPrivacy, setAgreeToPrivacy] = useState(false);
     const navigate = useNavigate();
+    const showAlert = useAlert();
 
     useEffect(() => {
         const fetchPlan = async () => {
@@ -30,18 +32,18 @@ export default function PlanSelectionPage() {
     
         // Verificar si el usuario aceptó la política de privacidad
         if (!agreeToPrivacy) {
-            alert("Debes aceptar la política de privacidad para continuar.");
+            showAlert("Debes aceptar la política de privacidad para continuar.");
             return;
         }
     
         // Validación del nombre del aula
         const classroomNameRegex = /^[a-zA-Z0-9]{2,10}$/; // Solo letras y números, sin espacios, de 2 a 10 caracteres
         if (!classroomNameRegex.test(classroomName)) {
-            alert("El nombre del aula debe tener entre 2 y 10 caracteres y no debe contener espacios ni caracteres especiales.");
+            showAlert("El nombre del aula debe tener entre 2 y 10 caracteres y no debe contener espacios ni caracteres especiales.");
             return;
         }
     
-        alert("Procesando pago...");
+        //showAlert("Procesando pago...");
         handleInsertTeacherData();
     };
 
@@ -51,12 +53,12 @@ export default function PlanSelectionPage() {
             const response = await UsersModel.sendInfoMail();
 
             if(!response){
-                alert("NO SE HA ENVIADO EL CORREO");
+                showAlert("NO SE HA ENVIADO EL CORREO");
             } else{ 
-                alert("SII SE HA ENVIADO EL CORREO");
+                showAlert("SI SE HA ENVIADO EL CORREO");
             }   
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            showAlert(`Error: ${error.message}`);
         }
             
         
@@ -70,27 +72,27 @@ export default function PlanSelectionPage() {
             switch(response){
                 case "insertCorrect":
                     handleSendInfoMail();
-                    alert('Usuario upgradeado a techaer con éxitooooooooooooo');
+                    console.log('Usuario upgradeado a techaer con éxitooooooooooooo');
                     navigate("/", { replace: true }); 
                     navigate(`/orderCompleted?classroomName=${encodeURIComponent(classroomName)}`, { replace: true });
                     
                     break;
                 case "classNameDup":
-                    alert('El nombre del aula ya esta registrado');
+                    showAlert('El nombre del aula ya esta registrado');
                     break;
                 case "teacherHasAClass":
-                        alert('ya cuentas con un aula asociada a tu cuenta ');
+                    showAlert('Ya cuentas con un aula asociada a tu cuenta ');
                         break;
                 case "insertError":
-                    alert('Error al comprar el plan');
+                    showAlert('Error al comprar el plan');
                     break;
                 default:
-                    alert('Error al comprar el plan');
+                    showAlert('Error al comprar el plan');
                     break;
             }
 
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            showAlert(`Error: ${error.message}`);
         }
             
         

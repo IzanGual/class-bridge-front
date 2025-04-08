@@ -1,0 +1,26 @@
+#contact-page-container {
+    color: var(--text-color);
+    max-width: 800px;
+    text-align: center;
+    height: 80vh;
+}
+
+.contact-container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-container p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.contact-info,
+.contact-hours {
+    margin-top: 30px;
+}
+
+.contact-info p,
+.contact-hours p {
+    margin: 5px 0;
+}

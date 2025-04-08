@@ -1,21 +1,21 @@
 import './SubscriptionStatus.css';
 import { useNavigate } from 'react-router-dom';
 import UsersModel from '../../models/UsersModel';
-
+import { useAlert } from '../../utils/AlertProvider';
 export default function SubscriptionStatus({ subscriptionState }) {
     const navigate = useNavigate();
-
-    const handleSuscriptionCancel = async () => {
+    const showAlert = useAlert();    const handleSuscriptionCancel = async () => {
+        
 
         if(!window.confirm("Estas realemnte seguro de que quieres cancelar tu suscripcion? Todos tus servicios se suspenderan y se perdera cualquer informacion relacionada con ellos.")){
-            alert("Cancelado");
+            showAlert("Cancelado");
         }else{
             const response = await UsersModel.cancelUserSuscription();
                 if (response) {
-                    alert("Plan cancelado con éxito");
+                    showAlert("Plan cancelado con éxito");
                     navigate('/'); 
                 }else{
-                    alert("Ocurrio u error eliminado la cueta prueba mas tarde");
+                    showAlert("Ocurrio u error eliminado la cueta prueba mas tarde");
 
                 }
   

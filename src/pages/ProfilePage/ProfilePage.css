@@ -353,6 +353,17 @@ h1 {
     transform: scale(1.02); /* Efecto de aumento suave */
 }
 
+#goback{
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: var(--cancel-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 
 
 
