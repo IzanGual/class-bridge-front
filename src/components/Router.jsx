@@ -11,6 +11,7 @@ import AulasModel from "../models/AulasModel";
 import ProtectedRoute from "../utils/ProtectedRoute";
 import OrderCompleted from "../pages/OrderCompleted/OrderCompleted";
 import ContactPage from "../pages/ContactPage/ContactPage";
+import TutorialPage from "../pages/TutorialPage/TutorialPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -68,4 +69,5 @@ const ROUTE_LIST = [
   new RoutePage("orderCompleted", "orderCompleted", <OrderCompleted />, true),
   new RoutePage("privacy", "privacy", <PrivacyPage />),
   new RoutePage("contact", "contact", <ContactPage />),
+  new RoutePage("tutorial", "tutorial", <TutorialPage />),
 ];

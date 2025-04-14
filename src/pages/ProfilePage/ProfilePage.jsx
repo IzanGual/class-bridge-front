@@ -7,6 +7,7 @@ import { useLogout } from "../../utils/LogOut";
 import SubscriptionStatus from '../../components/SubscriptionStatus/SubscriptionStatus';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../../utils/AlertProvider';
+import { useConfirm } from '../../utils/ConfirmProvider'; // Importar el hook useConfirm
 
 export default function ProfilePage() {
     const [userData, setUserData] = useState(null);
@@ -20,6 +21,8 @@ export default function ProfilePage() {
     const logOut = useLogout(); // Llamar dentro del componente
     const navigate = useNavigate();
     const showAlert = useAlert();
+    const showConfirm = useConfirm(); // Usar el hook useConfirm
+        
 
 
     useEffect(() => {
@@ -37,7 +40,7 @@ export default function ProfilePage() {
             }
         };
         fetchData();
-    }, []);
+    }, [userId]);
 
     /* UTILS */
 
@@ -102,7 +105,11 @@ export default function ProfilePage() {
 
         
         const handlePhotoDeletion = async () => {
-            if(!window.confirm("Estas seguro que quieres eliminar la imagen de perfil?")){
+            const confirmed = await showConfirm(
+                "¿Estas seguro que quieres eliminar la imagen de perfil?"
+            );
+        
+            if(!confirmed){
                 return;
             }else{
                 const imageUrl = await UsersModel.deleteUserImage();
@@ -188,8 +195,12 @@ export default function ProfilePage() {
     /* PROFILE DELETION*/
     
     const handleProfileDeletion = async () => {
+        const confirmed = await showConfirm(
+            "¿Estas realemnte seguro de que quieres eliminar tu cuenta? Todos tus servicios se suspenderan y se perdera cualquer informacion relacionada con la cuenta.?"
+        );
 
-        if(!window.confirm("Estas realemnte seguro de que quieres eliminar tu cuenta? Todos tus servicios se suspenderan y se perdera cualquer informacion relacionada con la cuenta.")){
+
+        if(!confirmed){
             showAlert("Cancelado");
         }else{
             const response = await UsersModel.deleteUserProfile();

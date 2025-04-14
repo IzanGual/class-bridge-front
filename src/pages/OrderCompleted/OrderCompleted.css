@@ -2,6 +2,11 @@
 
 #order-completed-message{
     color: var(--success-color);
+    margin-top: 100px!important;
+}
+
+#order-completed-container{
+    margin-top: 200px!important;
 }
 
 .question{

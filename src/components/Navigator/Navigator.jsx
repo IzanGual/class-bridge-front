@@ -17,7 +17,7 @@ export default function Navigator() {
   }, [location.pathname]); // Se ejecuta cada vez que cambia la URL
 
   // Verifica si estamos en la página de registro o login
-  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login" || location.pathname === "/myprofile" || location.pathname === "/planSelection" || location.pathname === "/privacy" || location.pathname === "/orderCompleted" || location.pathname === "/contact";
+  const IsFullNavNotAvilabe = location.pathname === "/register" || location.pathname === "/login" || location.pathname === "/myprofile" || location.pathname === "/planSelection" || location.pathname === "/privacy" || location.pathname === "/orderCompleted" || location.pathname === "/contact" || location.pathname === "/tutorial";
 
   return (
     <nav className="navbar">
