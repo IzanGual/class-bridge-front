@@ -13,7 +13,7 @@ export default class APIurl {
             return this.URLbase+"auth/login.php"
 
           case "getValidateToken":
-            return this.URLbase+"auth/validate-token.php"
+            return this.URLbase+"auth/validate-token.php?accion=validateUserToken"
 
           case "getUser":
             return this.URLbase+"usuarios.php?id="+id;
@@ -62,7 +62,12 @@ export default class APIurl {
           
           case "loginToAula":
                 return this.URLbase+"auth/loginToAula.php?aulaId="+id;
-              
+          
+          case "getValidateTeacherToken":
+            return this.URLbase+"auth/validate-token.php?accion=validateTeacherToken&aulaId="+id;
+          
+          case "getValidateStudentToken":
+              return this.URLbase+"auth/validate-token.php?accion=validateStudentToken";
 
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas

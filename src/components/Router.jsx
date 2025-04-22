@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -13,6 +14,7 @@ import OrderCompleted from "../pages/OrderCompleted/OrderCompleted";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import TutorialPage from "../pages/TutorialPage/TutorialPage";
 import ClassLoginPage from "../classPages/ClassLoginPage/ClassLoginPage";
+import DashboardPage from "../classPages/DashboardPage/DashboardPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -43,8 +45,12 @@ export default function Router() {
 
       {/* Rutas dinámicas para aulas */}
       {aulas.map((aula) => (
-        <Route key={aula.id} path={`/bridgeto/${aula.nombre}`} element={<ClassLoginPage aulaID={aula.id}/>} />
-      ))}
+  <React.Fragment key={aula.id}>
+    <Route key={`${aula.id}-login`} path={`/bridgeto/${aula.nombre}`} element={<ClassLoginPage aulaID={aula.id} />} />
+    <Route key={`${aula.id}-dashboard`} path={`/bridgeto/${aula.nombre}/dashboard`} element={<DashboardPage aula={aula} />} />
+  </React.Fragment>
+))}
+
 
       {/* Página 404 */}
       <Route path="*" element={<NotFoundPage />} />
