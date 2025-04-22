@@ -12,6 +12,7 @@ import ProtectedRoute from "../utils/ProtectedRoute";
 import OrderCompleted from "../pages/OrderCompleted/OrderCompleted";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import TutorialPage from "../pages/TutorialPage/TutorialPage";
+import ClassLoginPage from "../classPages/ClassLoginPage/ClassLoginPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -42,7 +43,7 @@ export default function Router() {
 
       {/* Rutas dinámicas para aulas */}
       {aulas.map((aula) => (
-        <Route key={aula.id} path={`/bridgeto/${aula.nombre}`} element={<div className="page-container">EL NOMBRE DEL AULA ES:{aula.nombre}</div>} />
+        <Route key={aula.id} path={`/bridgeto/${aula.nombre}`} element={<ClassLoginPage aulaID={aula.id}/>} />
       ))}
 
       {/* Página 404 */}

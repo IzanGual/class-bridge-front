@@ -35,6 +35,34 @@ class AulasModel {
     }
   }
 
+  // Método estático para obtener todas las aulas
+  static async getAulaById(aulaID) {
+    const apiUrl = APIurl.getAPIurl("getAulaById", aulaID); // Obtenemos la URL para obtener todas las aulas
+    
+    if (!apiUrl) {
+      console.error('URL no válida');
+      return []; // Si la URL no es válida, retornamos un array vacío
+    }
+
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('Error al obtener las aulas');
+      }
+
+      const data = await response.json(); // Suponemos que la respuesta es un JSON con las aulas
+      if(data.success){
+        return data.aula;
+      }else{
+        return false;
+      }
+      
+    } catch (error) {
+      console.error(error);
+      return false; // Retornamos un array vacío en caso de error
+    }
+  }
+
   // Método para mostrar el aula como una representación legible
   toString() {
     return `${this.nombre} (Profesor ID: ${this.profesor_id})`;

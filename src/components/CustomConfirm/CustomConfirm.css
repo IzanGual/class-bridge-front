@@ -7,10 +7,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     z-index: 1000; /* Debe estar detrás del cuadro de confirmación */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Alinea el cuadro en la parte superior */
-    pointer-events: auto; /* Permite clics solo dentro del overlay */
 }
 
 /* Cuadro de confirmación */

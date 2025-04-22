@@ -5,18 +5,30 @@ import Router from './components/Router';
 import Footer from './components/Footer/Footer';
 import { AlertProvider } from './utils/AlertProvider';
 import { ConfirmProvider } from './utils/ConfirmProvider';
+import { useLocation } from 'react-router-dom';
 
 function App() {
   return (
     <ConfirmProvider>
-    <AlertProvider>
-      <BrowserRouter>
-          <Navigator/>
-          <Router />
-          <Footer/>
-      </BrowserRouter>
-    </AlertProvider>
+      <AlertProvider>
+        <BrowserRouter>
+          <Layout />
+        </BrowserRouter>
+      </AlertProvider>
     </ConfirmProvider>
+  );
+}
+
+function Layout() {
+  const location = useLocation(); // Ahora useLocation está dentro del contexto del BrowserRouter
+  const isBridgeToRoute = location.pathname.startsWith('/bridgeto/');
+
+  return (
+    <>
+      {!isBridgeToRoute && <Navigator />}
+      <Router />
+      {!isBridgeToRoute && <Footer />}
+    </>
   );
 }
 
