@@ -1,0 +1,105 @@
+/* Contenedor principal del menú lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Oculto inicialmente */
+    width: 250px;
+    height: 100vh;
+    background-color: var(--primary-color);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    
+  }
+  
+  /* Cuando el menú está abierto */
+  .sidebar.open {
+    left: 0; /* Muestra el menú */
+  }
+  
+  /* Botón para abrir/cerrar el menú */
+  .menu-toggle {
+    position: absolute;
+    top: 20px;
+    right: -50px;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Opciones del menú */
+  .menu-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-options li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-options li:hover {
+    background-color: var(--gray-color);
+  }
+  
+  .menu-options li svg {
+    margin-right: 10px;
+  }
+  
+  .menu-options li span {
+    font-size: 16px;
+    color: var(--text-color);
+  }
+  
+  /* Botón de cerrar sesión */
+  .menu-options li button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .menu-header{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #nav-logo{
+    width: 70px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #nav-text-header{
+    color: var(--class-text-color)!important;
+    text-align: center;
+    font-size: 35px!important;
+  }
+
+  .sidebar a {
+    display: flex; /* Convierte el enlace en un contenedor flex */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: flex-start; /* Opcional: Alinea el contenido horizontalmente a la izquierda */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    padding: 10px; /* Espaciado interno */
+    text-decoration: none; /* Elimina el subrayado */
+    color: var(--text-color); /* Color del texto */
+    transition: background-color 0.3s ease; /* Animación para hover */
+}
+
+
+
+.menu-options li {
+    display: flex; /* Convierte el <li> en un contenedor flex */
+    align-items: center; /* Centra verticalmente el contenido */
+}

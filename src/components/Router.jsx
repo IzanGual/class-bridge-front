@@ -14,7 +14,12 @@ import OrderCompleted from "../pages/OrderCompleted/OrderCompleted";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import TutorialPage from "../pages/TutorialPage/TutorialPage";
 import ClassLoginPage from "../classPages/ClassLoginPage/ClassLoginPage";
-import DashboardPage from "../classPages/DashboardPage/DashboardPage";
+import HomePage from "../classPages/HomePage/HomePage";
+import CoursePage from "../classPages/CoursePage/CoursePage";
+import UserPage from "../classPages/UserPage/UserPage";
+import DeliverPage from "../classPages/DeliverPage/DeliverPage";
+import ConfigPage from "../classPages/ConfigPage/ConfigPage";
+import ClassNavigator from "../classComponents/ClassNavigator/ClassNavigator";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -45,11 +50,34 @@ export default function Router() {
 
       {/* Rutas dinámicas para aulas */}
       {aulas.map((aula) => (
-  <React.Fragment key={aula.id}>
-    <Route key={`${aula.id}-login`} path={`/bridgeto/${aula.nombre}`} element={<ClassLoginPage aulaID={aula.id} />} />
-    <Route key={`${aula.id}-dashboard`} path={`/bridgeto/${aula.nombre}/dashboard`} element={<DashboardPage aula={aula} />} />
-  </React.Fragment>
-))}
+        <Route
+          key={aula.id}
+          path={`/bridgeto/${aula.nombre}/*`}
+          element={
+            <Routes>
+              {/* Ruta para el inicio de sesión */}
+              <Route path="" element={<ClassLoginPage aulaID={aula.id} />} />
+
+              {/* Subrutas con barra de navegación */}
+              <Route
+                path="*"
+                element={
+                  <>
+                    <ClassNavigator aula={aula} />
+                    <Routes>
+                      <Route path="dashboard/home" element={<HomePage aula={aula} />} />
+                      <Route path="dashboard/courses" element={<CoursePage aula={aula} />} />
+                      <Route path="dashboard/users" element={<UserPage aula={aula} />} />
+                      <Route path="dashboard/tasks" element={<DeliverPage aula={aula} />} />
+                      <Route path="dashboard/config" element={<ConfigPage aula={aula} />} />
+                    </Routes>
+                  </>
+                }
+              />
+            </Routes>
+          }
+        />
+      ))}
 
 
       {/* Página 404 */}

@@ -33,7 +33,7 @@ export default function ClassLoginPage({ aulaID }) {
             switch (response) {
                 case "isTeacher":
                     showAlert('Inicio de sesión como profesor');
-                    window.location.href = `/bridgeto/${aula.nombre}/dashboard`;
+                    window.location.href = `/bridgeto/${aula.nombre}/dashboard/home`;
                     break;
                 case "isStudent":
                     showAlert('Inicio de sesión como estudiante');

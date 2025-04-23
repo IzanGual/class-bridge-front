@@ -1,9 +1,9 @@
-import './DashboardPage.css';
+import './DeliverPage.css';
 import { checkTeacherAuthStatus } from '../../utils/auth.js';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function DashboardPage({ aula}) {
+export default function DeliverPage({ aula }) {
     const navigate = useNavigate(); // Hook para redirigir
 
     useEffect(() => {
@@ -21,8 +21,8 @@ export default function DashboardPage({ aula}) {
     }, [aula, navigate]);
 
     return (
-        <div className='page-container'>
-            <h1>DashboardPage</h1>
+        <div className='dashboard-option-container'>
+            DeliverPage
         </div>
     );
 }
