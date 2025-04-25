@@ -19,6 +19,7 @@ import CoursePage from "../classPages/CoursePage/CoursePage";
 import UserPage from "../classPages/UserPage/UserPage";
 import DeliverPage from "../classPages/DeliverPage/DeliverPage";
 import ConfigPage from "../classPages/ConfigPage/ConfigPage";
+import GualiPage from "../classPages/GualiPage/GualiPage";
 import ClassNavigator from "../classComponents/ClassNavigator/ClassNavigator";
 
 export default function Router() {
@@ -70,6 +71,7 @@ export default function Router() {
                       <Route path="dashboard/users" element={<UserPage aula={aula} />} />
                       <Route path="dashboard/tasks" element={<DeliverPage aula={aula} />} />
                       <Route path="dashboard/config" element={<ConfigPage aula={aula} />} />
+                      <Route path="guali" element={<GualiPage aula={aula}/>} />
                     </Routes>
                   </>
                 }

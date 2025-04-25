@@ -1,35 +1,80 @@
-/* Contenedor principal del menú lateral */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Oculto inicialmente */
-    width: 250px;
-    height: 100vh;
-    background-color: var(--primary-color);
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease;
-    z-index: 1000;
-    
-  }
-  
+  backdrop-filter: blur(18px)!important;  
+  position: fixed;
+  top: 0;
+  left: -250px; /* Oculto inicialmente */
+  width: 250px;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  transition: left 0.3s ease;
+  z-index: 1000;
+  border-right: solid 3px var(--class-border-separator-color); /* Borde derecho */
+  overflow-y: auto; /* Habilita el scroll vertical dentro del menú */
+  overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
+}
+
+
+
+/* Oculta la barra de scroll en navegadores basados en WebKit (Chrome, Edge, Safari) */
+.sidebar::-webkit-scrollbar {
+  display: none; /* Oculta la barra de scroll */
+}
+
+/* Botón para abrir/cerrar el menú */
+/* Botón para abrir/cerrar el menú */
+.menu-toggle {
+  position: fixed; /* Fija el botón para que no se desplace con el contenido */
+  top: 110px; /* Ajusta la posición vertical del botón */
+  left: 0; /* Inicialmente pegado al lado izquierdo */
+  width: 15px; /* Ancho del botón */
+  height: 40px; /* Alto del botón */
+  background-color: var(--class-border-separator-color); /* Mismo color que el menú */
+  border: none; /* Sin bordes */
+  cursor: pointer; /* Cambia el cursor al estilo de enlace */
+  display: flex; /* Centra el icono dentro del botón */
+  align-items: center;
+  justify-content: center;
+  z-index: 1100; /* Asegura que esté por encima del contenido desplazable */
+  transition: left 0.3s ease; /* Animación suave para la posición */
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Cuando el menú está abierto */
+.sidebar.open + .menu-toggle {
+  left: 250px; /* Mueve el botón al lado derecho del menú */
+}
+
+/* Cuando el menú está cerrado */
+.sidebar:not(.open) + .menu-toggle {
+  left: 0; /* Mueve el botón al borde izquierdo */
+}
   /* Cuando el menú está abierto */
   .sidebar.open {
     left: 0; /* Muestra el menú */
   }
   
-  /* Botón para abrir/cerrar el menú */
-  .menu-toggle {
-    position: absolute;
-    top: 20px;
-    right: -50px;
-    background-color: var(--primary-color);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
+
+
+/* Estilo para la opción activa */
+.menu-options .active span{
+  font-size: 16px;
+  color: var(--class-text-color);
+}
+
+.menu-options .active svg{
+  stroke: var(--class-text-color)!important;
+}
+
+.menu-options svg{
+  stroke: var(--class-text-disabled-color)!important;
+}
+
+
+.menu-options svg{
+  color: var(--class-text-disabled-color)!important;
+  transition: all 0.1s ease; /* Animación para hover */
+}
   /* Opciones del menú */
   .menu-options {
     list-style: none;
@@ -37,17 +82,26 @@
     margin: 0;
   }
   
-  .menu-options li {
+  .menu-options li{
     display: flex;
     align-items: center;
     padding: 15px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
-  
-  .menu-options li:hover {
-    background-color: var(--gray-color);
+
+  .menu-options li a{
+    text-decoration: none!important;
+    
   }
+
+
+.menu-options li:hover span {
+  color: var(--class-text-color); /* Cambia el color del texto al pasar el cursor */
+}
+
+.menu-options li:hover svg {
+  stroke: var(--class-text-color)!important; /* Cambia el color del trazo del ícono al pasar el cursor */
+}
   
   .menu-options li svg {
     margin-right: 10px;
@@ -55,18 +109,28 @@
   
   .menu-options li span {
     font-size: 16px;
-    color: var(--text-color);
+    color: var(--class-text-disabled-color);
   }
-  
-  /* Botón de cerrar sesión */
+
   .menu-options li button {
     background: none;
     border: none;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    cursor: pointer;
-  }
+    display: flex; /* Convierte el botón en un contenedor flex */
+    font-weight: bold;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: flex-start; /* Alinea el contenido horizontalmente a la izquierda */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    padding: 10px; /* Espaciado interno */
+    text-decoration: none; /* Elimina el subrayado */
+    color: var(--text-color); /* Color del texto */
+    cursor: pointer; /* Cambia el cursor al estilo de enlace */
+    transition: background-color 0.3s ease; /* Animación para hover */
+}
+
+/* Icono dentro del botón */
+.menu-options li button svg {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
 
   .menu-header{
     display: flex;
@@ -97,9 +161,89 @@
     transition: background-color 0.3s ease; /* Animación para hover */
 }
 
+.guali-click-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  background: linear-gradient(to bottom, var(--class-disabled-button-color), var(--class-background-color)); /* De gris a blanco */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 20px; /* Espacio interior opcional */
+  margin-top: 10px;
+}
+
+.guali-click-container h3{
+  color: var(--class-text-color);
+  font-size: 35px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+
+.guali-click-container h4{
+  color: var(--class-accent-color);
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
 
-.menu-options li {
-    display: flex; /* Convierte el <li> en un contenedor flex */
-    align-items: center; /* Centra verticalmente el contenido */
+.accion-btn{
+  background-color: var(--class-button-color);
+  color: var(--class-text-color-h);
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.accion-btn{
+  background-color: var(--class-button-color);
+  color: var(--class-text-color-h);
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#logout-button:hover span,
+#logout-button:hover svg {
+  color: var(--class-red-color) !important;       /* Para texto (span) o fill herencia */     /* Para SVG si usa 'fill' */
+  stroke: var(--class-red-color) !important;      /* Para SVG si usa 'stroke' */
+}
+
+/*Estilos de la fecha*/
+.fecha-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  font-size: 15px;
+  z-index: 9999;
+}
+.fecha-texto{
+  font-size: 16px;
+  color: var(--class-text-color)!important;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 750px) {
+  .fecha-container {
+    display: none;
+  }
 }

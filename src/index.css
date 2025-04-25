@@ -6,7 +6,7 @@
   --accent-background-color-l:#ff7e5f;
   --text-color: #1d1d1d;
   --text-color-light: #FAFAF5;
-  --primary-font: 'NormalText', serif;
+  --primary-font: 'NormalText', sans-serif; /* Fuente de respaldo */
   --title-font: 'Title', serif;
   --dark-color: rgb(112, 110, 110);
   --mega-dark-color: black ;
@@ -18,12 +18,14 @@
 
   /* Colores primarios para las classrooms y dashboards*/
 
-  --class-background-color: #F0F4FF;
+  --class-background-color: #ffffff;
   --class-accent-color:#f78062;
   --class-accent-color-background:#f78062a4;
-  --class-text-color:black;
+  --class-text-color:#1E1E1E;
+  --class-text-color-h:rgb(238, 238, 238);
   --class-text-disabled-color:#727272;
   --class-text-grey-color:#A8A8A8;
+  --class-border-separator-color:#d1d1d1;
   --class-button-color:#2C2C2C;
   --class-disabled-button-color:#2c2c2c23;
   --class-green-color:#8BDD6D;
@@ -35,7 +37,7 @@
 
 @font-face {
   font-family: 'NormalText';
-  src: url('/public/assets/fonts/Inter.ttf') format('truetype');
+  src: url('/public/assets/fonts/Inter.ttf') format('truetype'); /* Ruta corregida */
   font-weight: normal;
   font-style: normal;
 }
@@ -63,6 +65,13 @@ body {
 
 h1, h2, h3 {
   font-family: var(--title-font);
+}
+
+* {
+  font-family: var(--primary-font), sans-serif; /* Aplica la fuente a todos los elementos */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .separator {

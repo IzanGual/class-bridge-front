@@ -2,7 +2,7 @@
 .login-container {
     width: 90%;
     max-width: 400px;
-    margin: 50px auto;
+    margin: 60px auto;
     padding: 20px;
     background: var(--primary-color);
     border: 1px solid black; /* Borde negro */

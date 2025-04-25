@@ -61,12 +61,28 @@ export default function ClassLoginPage({ aulaID }) {
         return <p>Cargando datos del aula...</p>;
     }
 
+    const fechaObj = new Date();
+    const dia = fechaObj.getDate();
+    const mes = fechaObj.toLocaleString('es-ES', { month: 'long' });
+    const año = fechaObj.getFullYear();
+  
+    const fecha = `${dia} ${mes.charAt(0).toUpperCase() + mes.slice(1)}, ${año}`;
+
 
     return (
+        <>
+        <div className="fecha-container">
+            <span className="fecha-texto">{fecha}</span>
+            <span className="icono-calendario">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 2V6M8 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke="#1E1E1E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            </span>
+            </div>
         
         <div className="login-container">
             {/* Contenedor de las estrellas */}
-           
+            
 
             <div className="className-container">
                 <h1 id="aulaName">{aula.nombre}</h1>
@@ -97,6 +113,6 @@ export default function ClassLoginPage({ aulaID }) {
 
             <img id="text-logo-class" src="/assets/images/logos/text-logo.png" alt="class-bridge-logo" />
         </div>
-      
+      </>
     );
 }
