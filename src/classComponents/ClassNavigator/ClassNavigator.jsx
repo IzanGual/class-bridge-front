@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink , useLocation} from "react-router-dom";
 import './ClassNavigator.css';
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useLogout } from "../../utils/LogOut"; // Importa el hook useLogout
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,11 @@ export default function ClassNavigator({ aula }) {
   const [isOpen, setIsOpen] = useState(true); // Estado para abrir/cerrar el menú
   const logOut = useLogout(); // Obtén la función logOut del hook
   const navigate = useNavigate(); // Obtén la función navigate para redirigir
+  const location = useLocation(); // Hook para detectar cambios en la ubicación
+  
+  useEffect(() => {
+    setIsOpen(false); // Cierra el menú
+  }, [location]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
