@@ -13,7 +13,6 @@ export default function PrivacyPage() {
             <p><strong>CIF:</strong> B75949958</p>
             <p><strong>Dirección:</strong> España, Madrid, 28046. Paseo de la Castellana, 194, Planta Baja, Puerta B.</p>
             <p><strong>Correo electrónico:</strong> info@class-bridgeapp.com</p>
-            <p><strong>Sitio web:</strong> <a href="https://www.class-bridgeapp.com" target="_blank">www.class-bridgeapp.com</a></p>
             
             <h2>2. Datos que Recopilamos</h2>
             <ul>
@@ -35,7 +34,7 @@ export default function PrivacyPage() {
             
             <h2>5. Derechos del Usuario</h2>
             <p>Tienes derecho a acceder, rectificar, eliminar, limitar u oponerte al tratamiento de tus datos y a la portabilidad de los mismos. Puedes ejercer estos derechos enviando un email a <strong>info@class-bridgeapp.com</strong> con el asunto "Protección de Datos".</p>
-            <p>Si consideras que no hemos respetado tus derechos, puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank">Agencia Española de Protección de Datos (AEPD)</a>.</p>
+            <p>Si consideras que no hemos respetado tus derechos, puedes presentar una reclamación ante la </p>
             
             <h2>6. Seguridad de los Datos</h2>
             <p>Aplicamos medidas de seguridad técnicas y organizativas para proteger tu información.</p>

@@ -11,12 +11,12 @@ export default function Plan({ fullPlan }) {
           return loggedIn
       };
     if (!verifyAuth()) {
-      navigate('/register?loc=plan'); // Redirigir al login si no hay sesión
+      navigate('/register?loc=plan'); 
     } else {
 
       console.log(`Plan seleccionado: ${fullPlan.id}`);
       navigate(`/planSelection?planId=${fullPlan.id}`);
-      // Aquí puedes manejar la lógica para asignar el plan al usuario
+      
     }
   };
 

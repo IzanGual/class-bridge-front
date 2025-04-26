@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomePage({ aula }) {
-    const navigate = useNavigate(); // Hook para redirigir
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const verifyAuth = async () => {
@@ -12,7 +12,7 @@ export default function HomePage({ aula }) {
             console.log("islogged", loggedIn);
 
             if (!loggedIn) {
-                // Redirige a la URL base de la clase si no está autenticado
+                
                 navigate(`/bridgeto/${aula.nombre}`);
             }
         };

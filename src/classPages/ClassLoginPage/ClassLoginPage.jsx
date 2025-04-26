@@ -2,13 +2,13 @@ import './ClassLoginPage.css';
 import AulasModel from '../../models/AulasModel';
 import UsersModel from '../../models/UsersModel';
 import { useState, useEffect } from 'react';
-import { useAlert } from '../../utils/AlertProvider'; // Importa el hook useAlert
+import { useAlert } from '../../utils/AlertProvider'; 
 
 export default function ClassLoginPage({ aulaID }) {
     const [aula, setAula] = useState(null);
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
-    const showAlert = useAlert(); // Obtén la función showAlert del AlertProvider
+    const showAlert = useAlert(); 
 
     useEffect(() => {
         const fetchAula = async () => {
@@ -81,9 +81,7 @@ export default function ClassLoginPage({ aulaID }) {
             </div>
         
         <div className="login-container">
-            {/* Contenedor de las estrellas */}
             
-
             <div className="className-container">
                 <h1 id="aulaName">{aula.nombre}</h1>
             </div>

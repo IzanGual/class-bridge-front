@@ -15,7 +15,7 @@ export default function ClassNavigator({ aula }) {
   };
 
   const goToGuali = (aula) => {
-    navigate(`/bridgeto/${aula.nombre}/guali`); // Redirige a la página de inicio del aula
+    navigate(`/bridgeto/${aula.nombre}/guali`);
   }
 
   const fechaObj = new Date();
@@ -37,10 +37,6 @@ export default function ClassNavigator({ aula }) {
       </span>
     </div>
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
-
-    
-
-    
 
       {/* Opciones del menú */}
         <div className="menu-header">
@@ -140,8 +136,6 @@ export default function ClassNavigator({ aula }) {
             </clipPath>
             </defs>
           </svg>
-
-          
 
             <span>¿Cómo funciona?</span>
           </NavLink>
