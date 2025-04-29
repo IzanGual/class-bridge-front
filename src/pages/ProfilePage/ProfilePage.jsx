@@ -18,10 +18,10 @@ export default function ProfilePage() {
     const [passwordStrength, setPasswordStrength] = useState({ level: "Vacía", score: 0 });
     const fileInputRef = useRef(null); 
     const userId = getUserId();
-    const logOut = useLogout(); // Llamar dentro del componente
+    const logOut = useLogout(); 
     const navigate = useNavigate();
     const showAlert = useAlert();
-    const showConfirm = useConfirm(); // Usar el hook useConfirm
+    const showConfirm = useConfirm(); 
         
 
 
