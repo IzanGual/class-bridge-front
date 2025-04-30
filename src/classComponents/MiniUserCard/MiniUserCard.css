@@ -1,0 +1,80 @@
+.mini-user-card{
+    max-width: 100%!important;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px!important;
+    border: 1px solid var(--class-border-separator-color);
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+
+.mini-user-card h3 {
+    font-size: 22px;
+    white-space: nowrap;    
+    overflow: hidden;       
+    text-overflow: ellipsis; 
+    margin: 0;
+}
+
+.mini-user-card-text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.mini-user-image{
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    background-color: var(--class-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.mini-user-card-svg-container {
+    background-color: var(--class-accent-color-background)!important;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-user-card-svg-container svg{
+    stroke: var(--class-accent-color);
+    fill: none;
+}
+.mini-user-card-svg-container-one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 568px) {
+    .mini-user-card {
+        width: 100%!important;
+        justify-content: space-between;
+      
+    }
+
+    .mini-user-card-svg-container {
+        width: 25px;
+        height: 25px;
+        
+    }
+    
+    .mini-user-card-svg-container svg{
+        stroke: var(--class-accent-color);
+        fill: none;
+        width: 15px;
+        height: 15px;
+    }
+
+  }

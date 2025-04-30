@@ -23,6 +23,11 @@ export default function ClassNavigator({ aula }) {
     navigate(`/bridgeto/${aula.nombre}/guali`);
   }
 
+  const goToClassBridge = () => {
+    navigate(`/`);
+  }
+  
+
   const fechaObj = new Date();
   const dia = fechaObj.getDate();
   const mes = fechaObj.toLocaleString('es-ES', { month: 'long' });
@@ -44,10 +49,10 @@ export default function ClassNavigator({ aula }) {
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
 
       {/* Opciones del menú */}
-        <div className="menu-header">
+        <div onClick={goToClassBridge} className="menu-header">
             <img id='nav-logo' src="/assets/images/logos/logo.png" alt="Logo" />
             <h2 id="nav-text-header">class-bridge</h2>
-            </div>
+        </div>
       <ul className="menu-options">
         <li>
           <NavLink to={`/bridgeto/${aula.nombre}/dashboard/home`}

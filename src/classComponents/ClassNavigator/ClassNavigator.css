@@ -1,5 +1,5 @@
 .sidebar {
-  backdrop-filter: blur(18px)!important;  
+  backdrop-filter: blur(35px)!important;  
   position: fixed;
   top: 0;
   left: -250px; 
@@ -124,6 +124,7 @@
   .menu-header{
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
 
   #nav-logo{

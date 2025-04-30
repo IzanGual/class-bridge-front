@@ -1,4 +1,5 @@
 .class-undone-task {
+    max-width: 100%!important;
     border-radius: 8px;
     background-color: var(--class-background-color);
     display:flex;
@@ -32,3 +33,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media (max-width: 568px) {
+    .class-undone-task {
+        width: 100%;
+      
+    }
+  }

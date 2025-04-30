@@ -14,7 +14,6 @@ class TasksModel {
     this.archivo_url = archivo_url;
   }
 
-  // Ejemplo: obtener todas las entregas (a completar según tu backend)
   static async getUnDoneTasks() {
     const apiUrl = APIurl.getAPIurl("getUnDoneTasks");
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible

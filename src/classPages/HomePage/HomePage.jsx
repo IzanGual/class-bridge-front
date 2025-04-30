@@ -4,13 +4,17 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TasksModel from "../../classModels/TasksModel";
 import UsersModel from "../../models/UsersModel"; 
+import CoursesModel from "../../classModels/CoursesModel";
 import ClassUnDoneTask from '../../classComponents/ClassUnDoneTask/ClassUnDoneTask'; // Importa el componente
+import MiniUserCard from '../../classComponents/MiniUserCard/MiniUserCard.jsx';
+import CourseCard from '../../classComponents/CourseCard/CourseCard.jsx';
 
 
 export default function HomePage({ aula }) {
     const navigate = useNavigate(); 
         const [tasks, setTasks] = useState([]); 
         const [users, setUsers] = useState([]);
+        const [courses, setCourses] = useState([]);
     
         useEffect(() => {
             const verifyAuth = async () => {
@@ -46,7 +50,6 @@ export default function HomePage({ aula }) {
                     if (data) {
                         setUsers(data); 
                         console.log("Users:", data);
-                        //console.log("Tasks sin corregir de TASKS:", tasks);
                     }else{
                         console.log("Huvo un error cosiguiendo los usuarios:", data.error);
                     }
@@ -55,11 +58,27 @@ export default function HomePage({ aula }) {
                     console.error("Error al obtener los usuarios:", error);
                   }
             };
+
+            const fecthOwnCourses = async () => {
+                try {
+                    const data = await CoursesModel.getOwnCourses(aula.id); 
+                    if (data) {
+                        setCourses(data); 
+                        console.log("Courses:", data);
+                    }else{
+                        console.log("Huvo un error cosiguiendo los cursos:", data.error);
+                    }
+                    
+                  } catch (error) {
+                    console.error("Error al obtener los curspos:", error);
+                  }
+            };
             
             verifyAuth();
 
             fecthUnDoneTasks();
             fecthOwnUsers();
+            fecthOwnCourses();
             
         }, [aula, navigate]);
 
@@ -83,14 +102,18 @@ export default function HomePage({ aula }) {
             <div className='section-container'>
                 <h2 className='section-header'>Tus usuarios</h2>
                 <div className='stuff-container'>
-                    will be stuff here
+                    {users.slice(0, 6).map((user) => (
+                        <MiniUserCard key={user.id} user={user} aula={aula} />
+                    ))}
                 </div>
             </div>
             <div className='section-container'>
                 <h2 className='section-header'>Tus Cursos</h2>
             </div>
             <div className='stuff-container'>
-                    will be stuff here
+                    {courses.slice(0, 6).map((course) => (
+                        <CourseCard key={course.id} course={course} aula={aula} />
+                    ))}
             </div>
         </div>
     );

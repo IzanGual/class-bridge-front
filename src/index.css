@@ -19,8 +19,9 @@
   /* Colores primarios para las classrooms y dashboards*/
 
   --class-background-color: #ffffff;
-  --class-accent-color:#f78062;
-  --class-accent-color-background:#f78062a4;
+  --class-accent-color-rgb: 247, 128, 98; 
+  --class-accent-color: rgb(var(--class-accent-color-rgb)); /* para uso normal */
+  --class-accent-color-background: rgba(var(--class-accent-color-rgb), 0.5); /* con opacidad */
   --class-text-color:#1E1E1E;
   --class-text-color-h:rgb(238, 238, 238);
   --class-text-disabled-color:#727272;
@@ -50,14 +51,17 @@
 }
 
 html{
-  background-color: var(--background-color);
+  background-color: var(--background-color)!important;
+  background: var(--background-color)!important;
 }
 
 body {
   font-family: var(--primary-font)!important;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--background-color)!important;
+  background: var(--background-color)!important;
+
 }
 #root{
   background: var(--background-color);
