@@ -170,7 +170,7 @@ class UsersModel {
             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario
 
             if (data.success) {
-                console.log("Datos de los usuarios:", data);
+                
                 return data.users;  
             } else {
                 console.error('Error en la respuesta de la API:', data.error);

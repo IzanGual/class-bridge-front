@@ -65,7 +65,10 @@ export default class APIurl {
               
           case "getOwnCourses":
               return this.URLbase+"courses.php?aula_id="+id;
-          
+              
+          case "getUsersByCourse_id":
+              return this.URLbase+"courses.php?getUsersByCourse_id="+id;
+              
           case "loginToAula":
                 return this.URLbase+"auth/loginToAula.php?aulaId="+id;
           

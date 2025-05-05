@@ -1,0 +1,110 @@
+.course-dropdown {
+    width: auto;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid var(--class-border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: var(--class-background-color);
+    color: var(--class-text-color);
+    outline: none;
+    cursor: pointer;
+    padding-right: 40px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url('/public/assets/svg/Dropdown.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+    background-size: 23px; 
+}
+
+.course-dropdown::-ms-expand {
+    display: none; 
+}
+
+.course-dropdown {
+    font-weight: bold;
+}
+
+.options-container-edit-course{
+    display: flex;
+    flex-direction: column;
+}
+
+.editCourse-h3{
+    margin-top: 20px;
+}
+
+.editOptions-container{
+    display: flex;
+    width: 48%;
+    flex-direction: column;
+    
+}
+
+.classPreview-container{
+    display: flex;
+    width: 48%;
+    background-color: green;
+    min-height: 300px;
+}
+.vertical-separator {
+    width: 2px;/* Ocupa el 90% del ancho del contenedor */
+    height: 500px; /* Una línea delgada */
+    background: var(--class-border-separator-color); /* Color gris suave para el separador */
+    margin: 0px auto; /* Centrado con un margen arriba y abajo */
+}
+
+.courseEdit-wrapper{
+width: 100%;
+height: auto;
+display: flex;
+min-height: 500px;
+}
+
+.tab-button {
+    max-width: 20%;
+    height: 40px;
+    background-color: var(--class-disabled-button-color); /* Cambia el fondo al color del texto */
+    color: var(--class-button-color); /* Cambia el texto al color del fondo */
+   
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-button:hover {
+    background-color: var(--class-button-color-hover);
+}
+
+.tab-button.active {
+    background-color: var(--class-button-color);
+    color: var(--class-text-color-h);
+}
+.tab-button.active svg{
+    stroke: var(--class-text-color-h);
+}
+
+.tab-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tab-container svg{
+    stroke: var(--class-text-color);
+}

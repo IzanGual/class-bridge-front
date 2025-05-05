@@ -8,7 +8,7 @@ export default function CourseCard({ course, aula }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/bridgeto/${aula.nombre}/dashboard/courses?id=${course.id}`);
+        navigate(`/bridgeto/${aula.nombre}/dashboard/courses/edit?id=${course.id}`);
     };
 
     return (

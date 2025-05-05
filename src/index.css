@@ -23,16 +23,18 @@
   --class-accent-color: rgb(var(--class-accent-color-rgb)); /* para uso normal */
   --class-accent-color-background: rgba(var(--class-accent-color-rgb), 0.5); /* con opacidad */
   --class-text-color:#1E1E1E;
-  --class-text-color-h:rgb(238, 238, 238);
+  --class-text-color-h:#D9D9D9;
   --class-text-disabled-color:#727272;
   --class-text-grey-color:#A8A8A8;
   --class-border-separator-color:#d1d1d1;
+  --class-border-color:#adacac;
   --class-button-color:#2C2C2C;
-  --class-disabled-button-color:#2c2c2c23;
+  --class-button-color-hover:#d3d3d3;
+  --class-disabled-button-color:#2c2c2c1c;
   --class-green-color:#8BDD6D;
-  --class-green-color-background:#8bdd6d7a;
+  --class-green-color-background:#8bdd6d5d;
   --class-red-color:#D32124;
-  --class-green-color-background:#ff000050;
+  --class-red-color-background:#ff000050;
 
 }
 
@@ -81,7 +83,7 @@ h1, h2, h3 {
 .separator {
   width: 100%; /* Ocupa el 90% del ancho del contenedor */
   height: 1px; /* Una línea delgada */
-  background-color: var(--gray-color); /* Color gris suave para el separador */
+  background-color: var(--separator-color); /* Color gris suave para el separador */
   margin: 20px auto; /* Centrado con un margen arriba y abajo */
 }
 

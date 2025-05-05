@@ -92,7 +92,7 @@ export default function HomePage({ aula }) {
             <div className='class-horizontal-mini-separator'></div>
             <div className='section-container'>
                 <div className='stuff-container'>
-                    {tasks.slice(0, 6).map((task) => (
+                    {tasks.slice(0, 4).map((task) => (
                         <ClassUnDoneTask key={task.id} task={task} aula={aula} />
                     ))}
                 </div>
@@ -102,7 +102,7 @@ export default function HomePage({ aula }) {
             <div className='section-container'>
                 <h2 className='section-header'>Tus usuarios</h2>
                 <div className='stuff-container'>
-                    {users.slice(0, 6).map((user) => (
+                    {users.slice(0, 5).map((user) => (
                         <MiniUserCard key={user.id} user={user} aula={aula} />
                     ))}
                 </div>
@@ -111,7 +111,7 @@ export default function HomePage({ aula }) {
                 <h2 className='section-header'>Tus Cursos</h2>
             </div>
             <div className='stuff-container'>
-                    {courses.slice(0, 6).map((course) => (
+                    {courses.slice(0, 4).map((course) => (
                         <CourseCard key={course.id} course={course} aula={aula} />
                     ))}
             </div>

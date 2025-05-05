@@ -1,0 +1,45 @@
+.tab-info-container{
+    margin-top: 30px;
+    background-color: rgba(255, 0, 0, 0.308);
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-input{
+    
+        width: 30%;
+        padding: 8px;
+        font-size: 16px;
+        border: 2px solid var(--class-border-color);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background-color: var(--class-background-color);
+        color: var(--class-text-color);
+        outline: none;
+    
+}
+
+.edit-input:focus{
+    outline: none;          /* evita el borde azul predeterminado en algunos navegadores */
+    border-color: #242424!important; /* color al hacer clic o enfocar */
+}
+
+.edit-input-label{
+    font-family: var(--title-font)!important;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.portada-container {
+    width: 250px;
+    height: 125px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.portada-img-edit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
