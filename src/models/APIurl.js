@@ -89,11 +89,19 @@ export default class APIurl {
 
           case "deleteCourse":
               return this.URLbase + "courses.php?id=" + id + "&accion=deleteCourse";
+            
+          case "getApartadosByCourseId":
+              return this.URLbase + "apartados.php?course_id=" + id;
+          
+          case "uploadApartado":
+              return this.URLbase + "apartados.php";
+          
+          case "deleteApartado":
+              return this.URLbase + "apartados.php?id=" + id + "&accion=deleteApartado";
+          
+          case "createApartado":
+              return this.URLbase + "apartados.php";
               
-
-
-              
-
               
               
           default:

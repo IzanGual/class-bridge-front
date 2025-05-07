@@ -7,7 +7,7 @@
 
 .edit-input{
     
-        width: 30%;
+        width: 40%;
         padding: 8px;
         font-size: 16px;
         border: 2px solid var(--class-border-color);
@@ -276,4 +276,18 @@
     opacity: 0.6; /* un poco transparente */
     pointer-events: none; /* evita cualquier interacción */
     transition: background-color 0.3s ease;
+}
+
+.inputPlusBtn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.save-container span{
+    font-family: var(--title-font) !important;
+    font-size: 20px;
+    margin-bottom: 0;
+    color: var(--class-text-disabled-color) !important;
 }

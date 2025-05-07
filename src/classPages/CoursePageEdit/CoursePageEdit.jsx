@@ -150,7 +150,7 @@ export default function CoursePageEdit({ aula }) {
                     </div>
 
                         {activeTab === 'general' && <GeneralTab course={selectedCourse} aula={aula}  onCourseUpdated={(id) => updateCourseUpdatedData(id)}/>}
-                        {activeTab === 'apartados' && <ApartadosTab/>}
+                        {activeTab === 'apartados' && <ApartadosTab course={selectedCourse} aula={aula}/>}
                         {activeTab === 'categorias' && <CategoriasTab/>}
                         {activeTab === 'docs' && <DocsTab/>}
                     

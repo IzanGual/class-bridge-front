@@ -182,6 +182,7 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
                 placeholder='Nombre del curso'
                 value={nombreCurso}
                 onChange={(e) => setNombreCurso(e.target.value)}
+                disabled={!course}
             />
 
             <label className='edit-input-label' htmlFor="course-img-edit">Portada del curso:</label>
@@ -204,6 +205,7 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
                     className='file-input-hidden'
                     onChange={handleFileChange}
                     accept="image/*"
+                    disabled={!course}
                 />
                 {/* Botón personalizado */}
                 <button
