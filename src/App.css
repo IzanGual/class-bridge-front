@@ -5,6 +5,7 @@
     padding: 40px;
     display: flex; /* Opcional: para alinear contenido interno */
     flex-direction: column;
+    margin-bottom: 100px!important;
 }
 
 .class-header-container{
@@ -52,6 +53,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 0!important;
+   
 
 }
 
@@ -70,7 +72,6 @@
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 20px!important;
-
 }
 
 @media (max-width: 568px) {

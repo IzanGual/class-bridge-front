@@ -92,9 +92,13 @@ export default function HomePage({ aula }) {
             <div className='class-horizontal-mini-separator'></div>
             <div className='section-container'>
                 <div className='stuff-container'>
-                    {tasks.slice(0, 4).map((task) => (
-                        <ClassUnDoneTask key={task.id} task={task} aula={aula} />
-                    ))}
+                    {tasks.length > 0 ? (
+                        tasks.slice(0, 4).map((task) => (
+                            <ClassUnDoneTask key={task.id} task={task} aula={aula} />
+                        ))
+                    ) : (
+                        <p id='noTasks'>Sin tareas para corregir !!</p>
+                    )}
                 </div>
             </div>
             <div id='less-margin' className='class-horizontal-mini-separator'></div>

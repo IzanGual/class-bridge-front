@@ -31,10 +31,12 @@
   --class-button-color:#2C2C2C;
   --class-button-color-hover:#d3d3d3;
   --class-disabled-button-color:#2c2c2c1c;
-  --class-green-color:#8BDD6D;
+  --class-green-color:#56D02A;
   --class-green-color-background:#8bdd6d5d;
+  --class-green-color-background-hover:#8bdd6d8f;
   --class-red-color:#D32124;
   --class-red-color-background:#ff000050;
+  --class-red-color-background-hover:#ff00006c;
 
 }
 
@@ -53,20 +55,20 @@
 }
 
 html{
-  background-color: var(--background-color)!important;
-  background: var(--background-color)!important;
+  background-color: var(--class-background-color)!important;
+  background: var(--class-background-color)!important;
 }
 
 body {
   font-family: var(--primary-font)!important;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color)!important;
-  background: var(--background-color)!important;
+  background-color: var(--class-background-color)!important;
+  background: var(--class-background-color)!important;
 
 }
 #root{
-  background: var(--background-color);
+  background: var(--class-background-color);
 }
 
 h1, h2, h3 {

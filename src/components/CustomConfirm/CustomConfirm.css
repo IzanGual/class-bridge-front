@@ -38,10 +38,11 @@
 
 /* Texto de la pregunta */
 .confirm-box p {
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 20px;
     color: var(--text-color-light);
     text-align: center;
+    font-family: var(--title-font);
 }
 
 /* Botones de acción */
@@ -54,21 +55,25 @@
 }
 
 .btn-confirm {
-    background-color: var(--accent-color);
-    color: var(--text-color-light);
+    font-family: var(--title-font);
+    background-color: var( --class-background-color);
+    color: var(--class-text-color);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     flex: 1;
+    
+    
 }
 
 .btn-confirm:hover {
-    background-color: var(--accent-color-dark);
+    background-color: var(--class-border-color);
 }
 
 .btn-cancel {
+    font-family: var(--title-font);
     background-color: var(--text-color);
     color: var(--text-color-light);
     border: none;
@@ -80,7 +85,8 @@
 }
 
 .btn-cancel:hover {
-    background-color: var(--mega-dark-color-dark);
+    background-color: var(--class-button-color);
+    
 }
 
 /* Animación de entrada */

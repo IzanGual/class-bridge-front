@@ -28,6 +28,7 @@
 
 .course-card-image{
     width: 100%;
+    height: 150px;
     
     border-radius: 5px;
     background-color: var(--class-background-color);

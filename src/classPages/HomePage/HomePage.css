@@ -2,3 +2,9 @@
     margin-top: 0;
     max-height: 2px!important;
 }
+
+#noTasks{
+    font-family: var(--title-font);
+    font-size: 23px;
+    color: var(--class-accent-color);
+}

@@ -64,6 +64,32 @@ export default function CoursePageEdit({ aula }) {
         console.log("Curso seleccionado:", course);
     };
 
+    const updateCourseUpdatedData = async (preserveSelectedId = null) => {
+        try {
+            const data = await CoursesModel.getOwnCourses(aula.id); 
+            if (data) {
+                setCourses(data); 
+    
+                // Si preserveSelectedId es -1, no seleccionamos ningún curso
+                const courseId = preserveSelectedId === -1 ? null : preserveSelectedId || searchParams.get('id');
+                if (courseId) {
+                    const course = data.find((c) => c.id === parseInt(courseId, 10));
+                    if (course) {
+                        setSelectedCourse(course);
+                    }
+                } else {
+                    // Si no hay courseId (cuando preserveSelectedId es -1 o no hay id en la URL), deseleccionamos cualquier curso seleccionado
+                    setSelectedCourse(null);
+                }
+            } else {
+                console.log("Hubo un error consiguiendo los cursos:", data.error);
+            }
+        } catch (error) {
+            console.error("Error al obtener los cursos:", error);
+        }
+    };
+    
+
     return (
         <div className='dashboard-option-container'>
             <div className='class-header-container'>
@@ -123,7 +149,7 @@ export default function CoursePageEdit({ aula }) {
                        
                     </div>
 
-                        {activeTab === 'general' && <GeneralTab course={selectedCourse} aula={aula}/>}
+                        {activeTab === 'general' && <GeneralTab course={selectedCourse} aula={aula}  onCourseUpdated={(id) => updateCourseUpdatedData(id)}/>}
                         {activeTab === 'apartados' && <ApartadosTab/>}
                         {activeTab === 'categorias' && <CategoriasTab/>}
                         {activeTab === 'docs' && <DocsTab/>}

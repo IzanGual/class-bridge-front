@@ -53,7 +53,7 @@
 }
 .vertical-separator {
     width: 2px;/* Ocupa el 90% del ancho del contenedor */
-    height: 500px; /* Una línea delgada */
+    height: auto; /* Una línea delgada */
     background: var(--class-border-separator-color); /* Color gris suave para el separador */
     margin: 0px auto; /* Centrado con un margen arriba y abajo */
 }

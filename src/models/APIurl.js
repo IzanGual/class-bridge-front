@@ -80,6 +80,21 @@ export default class APIurl {
 
           case "getUnDoneTasks":
               return this.URLbase+"tasks.php?accion=getUnDoneTasks";
+      
+          case "updateCourse":
+              return this.URLbase+"courses.php";
+
+          case "deleteCourseBanner":
+              return this.URLbase + "courses.php?id=" + id + "&accion=deleteCourseBanner";
+
+          case "deleteCourse":
+              return this.URLbase + "courses.php?id=" + id + "&accion=deleteCourse";
+              
+
+
+              
+
+              
               
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
