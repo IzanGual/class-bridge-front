@@ -101,7 +101,18 @@ export default class APIurl {
           
           case "createApartado":
               return this.URLbase + "apartados.php";
+
+          case "getCategoriasByApartadoId":
+              return this.URLbase + "categorias.php?apartado_id=" + id;
+            
+          case "uploadCategoria":
+              return this.URLbase + "categorias.php";
               
+          case "deleteCategoria":
+              return this.URLbase + "categorias.php?id=" + id + "&accion=deleteCategoria";
+          
+          case "createCategoria":
+                return this.URLbase + "categorias.php";
               
               
           default:
