@@ -141,7 +141,7 @@ export default function DocsTab({ course }) {
                                             className={`tab-button ${activeTab === 'crearEntr' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('crearEntr')}
                                         >
-                                            crearEntr
+                                            crearTarea
                                         </button>
                                         <button
                                             className={`tab-button ${activeTab === 'editDoc' ? 'active' : ''}`}
@@ -153,7 +153,7 @@ export default function DocsTab({ course }) {
                                             className={`tab-button ${activeTab === 'editEntr' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('editEntr')}
                                         >
-                                            editEntr
+                                            editTarea
                                         </button>
                                    
                                 </div>
@@ -168,7 +168,7 @@ export default function DocsTab({ course }) {
 
                                     {activeTab === 'crearEntr' && (
                                         selectedCategoria ? (
-                                            <CrearEntrTab categoria={selectedCategoria}/>
+                                            <CrearEntrTab apartado={selectedApartado} course={course} categoria={selectedCategoria}/>
                                         ) : (
                                             <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para crear una entrega</div>
                                         )

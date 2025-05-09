@@ -73,7 +73,7 @@ export default class APIurl {
                 return this.URLbase+"auth/loginToAula.php?aulaId="+id;
           
           case "getValidateTeacherToken":
-            return this.URLbase+"auth/validate-token.php?accion=validateTeacherToken&aulaId="+id;
+                return this.URLbase+"auth/validate-token.php?accion=validateTeacherToken&aulaId="+id;
           
           case "getValidateStudentToken":
               return this.URLbase+"auth/validate-token.php?accion=validateStudentToken";
@@ -125,6 +125,18 @@ export default class APIurl {
 
           case "deleteDocumento":
                 return this.URLbase + "documentos.php?id=" + id + "&accion=deleteDocumento";
+
+          case "createTarea":
+              return this.URLbase+"tasks.php";
+
+          case "getTasksByCategoriaId":
+              return this.URLbase + "tasks.php?categoria_id=" + id + "&accion=getTasksByCategoriaId";
+        
+          case "updateTarea":
+              return this.URLbase + "tasks.php";
+              
+          case "deleteTask":
+              return this.URLbase + "tasks.php?id=" + id + "&accion=deleteTask";
               
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas
