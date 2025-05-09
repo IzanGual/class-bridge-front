@@ -113,7 +113,18 @@ export default class APIurl {
           
           case "createCategoria":
                 return this.URLbase + "categorias.php";
-              
+        
+          case "createDocumento":
+                return this.URLbase + "documentos.php";
+                
+          case "updateDocumento":
+                return this.URLbase + "documentos.php";
+
+          case "getDocumentosByCategoriaId":
+                return this.URLbase + "documentos.php?categoria_id=" + id;
+
+          case "deleteDocumento":
+                return this.URLbase + "documentos.php?id=" + id + "&accion=deleteDocumento";
               
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas

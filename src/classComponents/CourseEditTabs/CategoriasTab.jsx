@@ -228,12 +228,12 @@ export default function CategoriasTab({ course }) {
                 placeholder='Nombre del la categoria'
                 value={nombreNuevaCategoria}
                 onChange={(e) => setNombreNuevaCategoria(e.target.value)}
-                disabled={!course}
+                disabled={!course || !selectedApartado}
             />
                 <div className='save-container'>
 
                 <span>Crear ---</span>
-                <button className='save-btnn' onClick={handleCreate} disabled={!course}>
+                <button className='save-btnn' onClick={handleCreate} disabled={!course || !selectedApartado}>
                 <svg width="27" height="27" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 10.6667V21.3334M10.6667 16.0001H21.3333M29.3333 16.0001C29.3333 23.3639 23.3638 29.3334 16 29.3334C8.63621 29.3334 2.66667 23.3639 2.66667 16.0001C2.66667 8.63628 8.63621 2.66675 16 2.66675C23.3638 2.66675 29.3333 8.63628 29.3333 16.0001Z" stroke="#8BDD6D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

@@ -307,3 +307,19 @@
     margin-bottom: 0;
     color: var(--class-text-disabled-color) !important;
 }
+
+.dropdownDoc-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-docs-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.margin-top{
+    margin-top: 20px;
+}

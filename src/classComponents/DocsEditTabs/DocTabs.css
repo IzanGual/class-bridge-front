@@ -1,0 +1,25 @@
+.input-file-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between!important;
+    align-items: center;
+    width: 80%;
+    padding: 4px;
+    font-size: 16px;
+    border: 2px solid var(--class-border-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: var(--class-background-color);
+    color: var(--class-text-color);
+    outline: none;
+    gap: 5px;
+}
+
+.input-file-container *{
+   margin: 0;
+   padding: 0;
+}
+
+.doclik:disabled{
+    color: var(--class-text-disabled-color);
+}

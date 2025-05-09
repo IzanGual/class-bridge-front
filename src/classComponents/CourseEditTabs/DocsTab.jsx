@@ -1,11 +1,200 @@
 import './Tabs.css';
+import { useEffect, useState } from 'react';
+import ApartadosModel from '../../classModels/ApartadosModel';
+import CategoriasModel from '../../classModels/CategoriasModel'; // Importa el modelo de categorías
+import SubirDocTab from '../DocsEditTabs/SubirDocTab';
+import CrearEntrTab from '../DocsEditTabs/CrearEntrTab';
+import EditDocTab from '../DocsEditTabs/EditDocTab';
+import EditEntrTab from '../DocsEditTabs/EditEntrTab';
 
-export default function DocsTab() {
+export default function DocsTab({ course }) {
+    const [apartados, setApartados] = useState([]); // Lista de apartados
+    const [selectedApartado, setSelectedApartado] = useState(null); // Apartado seleccionado
+    const [categorias, setCategorias] = useState([]); // Lista de categorías
+    const [selectedCategoria, setSelectedCategoria] = useState(null); // Categoría seleccionada
+
+    const [activeTab, setActiveTab] = useState('subirDoc'); // Estado para la pestaña activa
+
+
+    const handleTabChange = (tab) => {
+            setActiveTab(tab); // Cambia la pestaña activa
+    };
+
+    // Obtener categorías por apartado
+    const fetchCategoriasByApartadoId = async (apartadoId) => {
+        if (!apartadoId) return;
+        try {
+            const data = await CategoriasModel.getCategoriasByApartadoId(apartadoId);
+            if (data) {
+                setCategorias(data);
+                console.log("Categorías del apartado:", data);
+            } else {
+                console.log("Este apartado aún no tiene categorías:");
+                setCategorias([]);
+            }
+        } catch (error) {
+            console.error("Error al obtener las categorías del apartado:", error);
+        }
+    };
+
+    useEffect(() => {
+        const fetchApartadosByCourseId = async () => {
+            if (!course?.id) return;
+            try {
+                const data = await ApartadosModel.getApartadosByCourseId(course.id);
+                if (data) {
+                    setApartados(data);
+                    console.log("Apartados del curso:", data);
+                } else {
+                    console.log("Este curso aún no tiene apartados:");
+                    setApartados([]);
+                }
+            } catch (error) {
+                console.error("Error al obtener los apartados del curso:", error);
+            }
+        };
+        
+        fetchApartadosByCourseId();
+    }, [course]);
+
+    
+    const handleApartadoChange = (event) => {
+        const apartadoId = parseInt(event.target.value, 10); 
+        const apartado = apartados.find((a) => a.id === apartadoId); 
+        setSelectedApartado(apartado);
+        setCategorias([]); 
+        setSelectedCategoria(null); 
+       
+        if (apartado) {
+            fetchCategoriasByApartadoId(apartado.id); 
+        }
+    };
+
+
+    const handleCategoriaChange = (event) => {
+        const categoriaId = parseInt(event.target.value, 10); 
+        const categoria = categorias.find((c) => c.id === categoriaId); 
+        setSelectedCategoria(categoria);
+    };
+
+
+
 
     return (
-        <div>
-            DocsTab
-    
+        <div className='tab-info-container' id='container-doc'>
+            <div className='drop-docs-container'>
+                        <div className='dropdownDoc-container'>
+                            <label className='edit-input-label' htmlFor="apartado-select">Selecciona el apartado:</label>
+                            <div className='options-container'>
+                                <select
+                                    disabled={!course}
+                                    id="apartado-select"
+                                    onChange={handleApartadoChange}
+                                    className="course-dropdown"
+                                    value={selectedApartado ? selectedApartado.id : ""}
+                                >
+                                    <option value="">Apartados</option>
+                                    {apartados.map((apartado) => (
+                                        <option key={apartado.id} value={apartado.id}>
+                                            {apartado.nombre}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                        
+
+                        <div className='dropdownDoc-container'>
+                                <label className='edit-input-label' htmlFor="categoria-select">Selecciona la categoría:</label>
+                                <div className='options-container'>
+                                    <select
+                                        id="categoria-select"
+                                        onChange={handleCategoriaChange}
+                                        className="course-dropdown"
+                                        value={selectedCategoria ? selectedCategoria.id : ""}
+                                        disabled={!selectedApartado || !course}
+
+                                    >
+                                        <option value="">Categorías</option>
+                                        {categorias.map((categoria) => (
+                                            <option key={categoria.id} value={categoria.id}>
+                                                {categoria.nombre}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                        </div>
+
+            </div>
+
+            <div className="class-horizontal-separator"></div>
+            
+            <div className='editOptions-container-dos'>
+                                <div className='tab-container'>
+                                <button
+                                            className={`tab-button ${activeTab === 'subirDoc' ? 'active' : ''}`}
+                                            onClick={() => handleTabChange('subirDoc')}
+                                        >
+                                            subirDoc
+                                        </button>
+                                        <button
+                                            className={`tab-button ${activeTab === 'crearEntr' ? 'active' : ''}`}
+                                            onClick={() => handleTabChange('crearEntr')}
+                                        >
+                                            crearEntr
+                                        </button>
+                                        <button
+                                            className={`tab-button ${activeTab === 'editDoc' ? 'active' : ''}`}
+                                            onClick={() => handleTabChange('editDoc')}
+                                        >
+                                            editDoc
+                                        </button>
+                                        <button
+                                            className={`tab-button ${activeTab === 'editEntr' ? 'active' : ''}`}
+                                            onClick={() => handleTabChange('editEntr')}
+                                        >
+                                            editEntr
+                                        </button>
+                                   
+                                </div>
+            
+                                   {activeTab === 'subirDoc' && (
+                                        selectedCategoria ? (
+                                            <SubirDocTab apartado={selectedApartado} course={course} categoria={selectedCategoria}/> 
+                                        ) : (
+                                            <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para subir un documento</div>
+                                        )
+                                    )}
+
+                                    {activeTab === 'crearEntr' && (
+                                        selectedCategoria ? (
+                                            <CrearEntrTab categoria={selectedCategoria}/>
+                                        ) : (
+                                            <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para crear una entrega</div>
+                                        )
+                                    )}
+
+                                    {activeTab === 'editDoc' && (
+                                        selectedCategoria ? (
+                                            <EditDocTab apartado={selectedApartado} course={course} categoria={selectedCategoria}/>
+                                        ) : (
+                                            <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para editar un documento</div>
+                                        )
+                                    )}
+
+                                    {activeTab === 'editEntr' && (
+                                        selectedCategoria ? (
+                                            <EditEntrTab categoria={selectedCategoria}/>
+                                        ) : (
+                                            <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para editar una entrega</div>
+                                        )
+                                    )}
+                                
+                                
+                            </div>
+
+            
+            
         </div>
     );
 }
