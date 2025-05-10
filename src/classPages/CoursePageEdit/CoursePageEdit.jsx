@@ -7,6 +7,7 @@ import GeneralTab from '../../classComponents/CourseEditTabs/GeneralTab.jsx';
 import ApartadosTab from '../../classComponents/CourseEditTabs/ApartadosTab.jsx';
 import CategoriasTab from '../../classComponents/CourseEditTabs/CategoriasTab.jsx';
 import DocsTab from '../../classComponents/CourseEditTabs/DocsTab.jsx';
+import ClassPreview from '../../classComponents/ClassPreview/ClassPreview.jsx';
 
 export default function CoursePageEdit({ aula }) {
     const navigate = useNavigate(); 
@@ -14,11 +15,59 @@ export default function CoursePageEdit({ aula }) {
     const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState(null); // Estado para el curso seleccionado
     const [activeTab, setActiveTab] = useState('general'); // Estado para la pestaña activa
+    const [spinning, setSpinning] = useState(false);
+    const [courseInfo, setCourseInfo] = useState(null);
+
+    const handleRefresh = () => {
+    setSpinning(true);
+    setTimeout(() => setSpinning(false), 1000); 
+    // Aquí puedes llamar tu función de refrescar datos, etc. falta implementar
+
+
+    const fetchCourseFullInfo = async () => {
+        try {
+            const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
+            if (data) {
+                
+                console.log("Info del curso para la preview:", data);
+                setCourseInfo(data);
+
+            } else {
+                console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+            }
+        } catch (error) {
+            console.error("Error al obtener el curso:", error);
+        }
+    };
+
+    fetchCourseFullInfo();
+
+  };
+
 
 
     const handleTabChange = (tab) => {
         setActiveTab(tab); // Cambia la pestaña activa
     };
+
+    useEffect(() => {
+         const fetchCourseFullInfo = async () => {
+        try {
+            const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
+            if (data) {
+                
+                console.log("Info del curso para la preview:", data);
+                setCourseInfo(data);
+
+            } else {
+                console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+            }
+        } catch (error) {
+            console.error("Error al obtener el curso:", error);
+        }
+    };
+        fetchCourseFullInfo();
+    }, [selectedCourse]);
 
     useEffect(() => {
         const verifyAuth = async () => {
@@ -160,8 +209,28 @@ export default function CoursePageEdit({ aula }) {
                 <div className='vertical-separator'></div>
 
                 <div className='classPreview-container'>
+                    <div className='preview-header-container'>
+                        <h2 className='section-header'>Vista previa del curso</h2>
+                        <button className='refresh-btn' onClick={handleRefresh} disabled={!selectedCourse}>
+                            <svg className={spinning ? "spin" : ""}
+                                width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clipPath="url(#clip0_29_1528)">
+                                    <path d="M23 4.00008V10.0001M23 10.0001H17M23 10.0001L18.36 5.64008C17.2853 4.56479 15.9556 3.77928 14.4952 3.35685C13.0348 2.93442 11.4911 2.88883 10.0083 3.22433C8.52547 3.55984 7.1518 4.26551 6.01547 5.27549C4.87913 6.28548 4.01717 7.56686 3.51 9.00008M1 20.0001V14.0001M1 14.0001H7M1 14.0001L5.64 18.3601C6.71475 19.4354 8.04437 20.2209 9.50481 20.6433C10.9652 21.0657 12.5089 21.1113 13.9917 20.7758C15.4745 20.4403 16.8482 19.7346 17.9845 18.7247C19.1209 17.7147 19.9828 16.4333 20.49 15.0001" stroke="#1E1E1E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_29_1528">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
 
+                    {<ClassPreview curso={courseInfo} />}
+                    
+                        
                 </div>
+                
         </div>
 
                 

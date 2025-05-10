@@ -108,7 +108,7 @@ export default function SubirDocTab({ course, categoria, apartado }) {
                
             
 
-            <span className='info'>El archivo puede pesar un máximo de 10MB. Solo podras subir documentos tipo: (.pdf,.doc,.docx,.odt,.txt,.rtf,.xls,.xlsx,.ods,.ppt,.pptx,.odp,.jpg,.jpeg,.png,.gif,.zip,.rar,.7z). El documento se subirá en la categoria seleccionada.</span>
+            <span className='info'>El archivo puede pesar un máximo de 10MB. Solo podras subir documentos tipo: (.pdf,.doc,.docx,.odt,.txt,.rtf,.xls,.xlsx, .ods,.ppt,.pptx,.odp,.jpg,.jpeg,.png,.gif, .zip,.rar,.7z). El documento se subirá en la categoria seleccionada.</span>
         </div>
     );
 }

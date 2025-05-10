@@ -96,8 +96,8 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreCurso.length > 20) {
-            showAlert("El nombre del curso no puede tener más de 20 caracteres.");
+        if (nombreCurso.length > 100) {
+            showAlert("El nombre del curso no puede tener más de 100 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
         const dataToSave = {

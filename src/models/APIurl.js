@@ -137,6 +137,10 @@ export default class APIurl {
               
           case "deleteTask":
               return this.URLbase + "tasks.php?id=" + id + "&accion=deleteTask";
+
+          case "getFullCourseInfo":
+              return this.URLbase+"courses.php?getFullCourseInfo_id="+id;
+              
               
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas

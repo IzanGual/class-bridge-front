@@ -1,6 +1,6 @@
 
-#footer-container {
-    background-color: var(--background-color);
+.footer-container {
+    background-color: var(--class-background-color);
     color: #ccc;
     padding: 40px 20px;
     text-align: center;

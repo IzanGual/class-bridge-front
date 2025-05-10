@@ -1,12 +1,12 @@
-import './Footer.css';
+import './ClassFooter.css';
 
-export default function Footer() {
+export default function ClassFooter() {
     return (
         <footer className="footer-container">
             <div className="footer-content">
                 <div className="footer-links">
-                    <a href="/">Inicio</a>
-                    <a href="/#planes">Planes</a>
+                    <a href="/">class-bridge</a>
+                    
                     <a href="/contact">Contacto</a>
                     <a href="/privacy">Privacidad</a>
                 </div>

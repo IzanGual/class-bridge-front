@@ -135,25 +135,25 @@ export default function DocsTab({ course }) {
                                             className={`tab-button ${activeTab === 'subirDoc' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('subirDoc')}
                                         >
-                                            subirDoc
+                                            Subir Doc
                                         </button>
                                         <button
                                             className={`tab-button ${activeTab === 'crearEntr' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('crearEntr')}
                                         >
-                                            crearTarea
+                                            Crear Tarea
                                         </button>
                                         <button
                                             className={`tab-button ${activeTab === 'editDoc' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('editDoc')}
                                         >
-                                            editDoc
+                                            Ediar Doc
                                         </button>
                                         <button
                                             className={`tab-button ${activeTab === 'editEntr' ? 'active' : ''}`}
                                             onClick={() => handleTabChange('editEntr')}
                                         >
-                                            editTarea
+                                            EditarTarea
                                         </button>
                                    
                                 </div>

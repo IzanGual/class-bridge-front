@@ -71,8 +71,8 @@ export default function ApartadosTab({ course }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreNuevoApartado.length > 20) {
-            showAlert("El nombre del apartado no puede tener más de 20 caracteres.");
+        if (nombreNuevoApartado.length > 100) {
+            showAlert("El nombre del apartado no puede tener más de 100 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
 
@@ -96,8 +96,8 @@ export default function ApartadosTab({ course }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreApartado.length > 20) {
-            showAlert("El nombre del apartado no puede tener más de 20 caracteres.");
+        if (nombreApartado.length > 100) {
+            showAlert("El nombre del apartado no puede tener más de 100 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
 

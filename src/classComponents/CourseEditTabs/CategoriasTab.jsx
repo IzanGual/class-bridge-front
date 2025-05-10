@@ -81,8 +81,8 @@ export default function CategoriasTab({ course }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreCategoria.length > 20) {
-            showAlert("El nombre de la categoria no puede tener más de 20 caracteres.");
+        if (nombreCategoria.length > 100) {
+            showAlert("El nombre de la categoria no puede tener más de 100 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
 
@@ -126,8 +126,8 @@ export default function CategoriasTab({ course }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreNuevaCategoria.length > 20) {
-            showAlert("El nombre de la categoria no puede tener más de 20 caracteres.");
+        if (nombreNuevaCategoria.length > 100) {
+            showAlert("El nombre de la categoria no puede tener más de 100 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
 

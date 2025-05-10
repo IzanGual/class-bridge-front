@@ -8,6 +8,7 @@ import CoursesModel from "../../classModels/CoursesModel";
 import ClassUnDoneTask from '../../classComponents/ClassUnDoneTask/ClassUnDoneTask'; // Importa el componente
 import MiniUserCard from '../../classComponents/MiniUserCard/MiniUserCard.jsx';
 import CourseCard from '../../classComponents/CourseCard/CourseCard.jsx';
+import ClassFooter from '../../classComponents/ClassFooter/ClassFooter.jsx';
 
 
 export default function HomePage({ aula }) {
@@ -119,6 +120,8 @@ export default function HomePage({ aula }) {
                         <CourseCard key={course.id} course={course} aula={aula} />
                     ))}
             </div>
+
+            <ClassFooter></ClassFooter>
         </div>
     );
 }

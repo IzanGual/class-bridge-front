@@ -2,6 +2,7 @@ import './UserPage.css';
 import { checkTeacherAuthStatus } from '../../utils/auth.js';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ClassFooter from '../../classComponents/ClassFooter/ClassFooter.jsx';
 
 export default function UserPage({ aula }) {
     const navigate = useNavigate(); 
@@ -39,6 +40,7 @@ export default function UserPage({ aula }) {
             <div className='stuff-container'>
                     will be stuff here
             </div>
+            <ClassFooter></ClassFooter>
         </div>
     );
 }
