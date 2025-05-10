@@ -23,6 +23,7 @@ import DeliverPage from "../classPages/DeliverPage/DeliverPage";
 import ConfigPage from "../classPages/ConfigPage/ConfigPage";
 import GualiPage from "../classPages/GualiPage/GualiPage";
 import ClassNavigator from "../classComponents/ClassNavigator/ClassNavigator";
+import CoursePageCreate from "../classPages/CoursePageCreate/CoursePageCreate";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -71,6 +72,7 @@ export default function Router() {
                       <Route path="dashboard/home" element={<HomePage aula={aula} />} />
                       <Route path="dashboard/courses" element={<CoursePage aula={aula} />} />
                       <Route path="dashboard/courses/edit" element={<CoursePageEdit aula={aula} />} />
+                      <Route path="dashboard/courses/create" element={<CoursePageCreate aula={aula}/>} />
                       <Route path="dashboard/users" element={<UserPage aula={aula} />} />
                       <Route path="dashboard/tasks" element={<DeliverPage aula={aula} />} />
                       <Route path="dashboard/config" element={<ConfigPage aula={aula} />} />

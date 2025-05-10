@@ -169,6 +169,65 @@ static async getFullCourseInfo(course_id) {
           
     }
 
+
+
+
+    
+    static async createCourse(data) {
+      const apiUrl = APIurl.getAPIurl("createCourse"); // Asegúrate de definir esta ruta en `APIurl.js`
+      
+      if (!apiUrl) {
+          console.error('URL no válida');
+          return false;
+      }
+    
+      const token = localStorage.getItem('jwt'); 
+      if (!token) {
+          console.error('Token no encontrado');
+          return false;
+      }
+      
+      const formData = new FormData();
+      formData.append('imagen', data.img);
+      formData.append('courseName', data.name);
+      formData.append('courseUsers', data.users);
+      formData.append('aulaId', data.aulaId);
+      formData.append('accion', "createCourse");
+    
+    
+      try {
+          const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                  'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
+              },
+              body: formData
+          });
+    
+          if (response.ok) {
+              const data = await response.json();
+              if (data.success) {
+                  console.log("respuesta de la creación del curso:",data.message);
+                  return data.id; 
+              } else {
+                  console.error("Error en la API:", data.error);
+                  return false;
+              }
+          } else {
+              console.error("Error en la respuesta del servidor:", response.status);
+              return false;
+          }
+      } catch (error) {
+          console.error("Error al crear un nuevo  curso:", error);
+          return false;
+      }
+          
+    }
+
+
+
+
+
     static async deleteCourseBanner(course_id) {
       const apiUrl = APIurl.getAPIurl("deleteCourseBanner", course_id);
       const token = localStorage.getItem('jwt'); 

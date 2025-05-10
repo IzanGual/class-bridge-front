@@ -1,0 +1,26 @@
+.crud-Courseimg-container-create{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 250px;
+    align-items: center;
+    text-align: center!important;
+}
+
+#noMargin{
+    margin: 0!important;
+}
+
+.edit-input-label-h{
+    font-family: var(--title-font) !important;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+
+#bigger{
+    width: 45%!important;
+    max-width: none;
+}

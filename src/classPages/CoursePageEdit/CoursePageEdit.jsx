@@ -51,23 +51,23 @@ export default function CoursePageEdit({ aula }) {
     };
 
     useEffect(() => {
-         const fetchCourseFullInfo = async () => {
-        try {
-            const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
-            if (data) {
-                
-                console.log("Info del curso para la preview:", data);
-                setCourseInfo(data);
-
-            } else {
-                console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+    if (selectedCourse !== null) { 
+        const fetchCourseFullInfo = async () => {
+            try {
+                const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
+                if (data) {
+                    console.log("Info del curso para la preview:", data);
+                    setCourseInfo(data);
+                } else {
+                    console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+                }
+            } catch (error) {
+                console.log("Error al obtener el curso:");
             }
-        } catch (error) {
-            console.error("Error al obtener el curso:", error);
-        }
-    };
+        };
         fetchCourseFullInfo();
-    }, [selectedCourse]);
+    }
+}, [selectedCourse]);
 
     useEffect(() => {
         const verifyAuth = async () => {
@@ -129,6 +129,7 @@ export default function CoursePageEdit({ aula }) {
                 } else {
                     // Si no hay courseId (cuando preserveSelectedId es -1 o no hay id en la URL), deseleccionamos cualquier curso seleccionado
                     setSelectedCourse(null);
+                    setCourseInfo(null);
                 }
             } else {
                 console.log("Hubo un error consiguiendo los cursos:", data.error);
