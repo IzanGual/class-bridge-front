@@ -1,0 +1,20 @@
+.tab-info-container-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Asegura que el label esté encima del input */
+    flex: 1; /* Permite que los inputs crezcan uniformemente */
+    min-width: 200px; /* Ancho mínimo para cada input */
+}
+
+.input-group input{
+   border-radius: 10px!important;
+   width: 100%;
+}

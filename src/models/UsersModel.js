@@ -55,6 +55,59 @@ class UsersModel {
     }
   }
 
+static async registerStudent(nombre, email, contraseña, cursos, aula_id) {
+    const apiUrl = APIurl.getAPIurl("registerStudent");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+
+    if (!apiUrl) {
+      console.error('URL no válida');
+      return null;
+    }
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre,
+          email,
+          contraseña,
+          cursos,
+          aula_id,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+            if(data.success){
+                console.log("Respuesta del instert del usuario",data.message);
+                console.log("Respuesta del instert del usuario de DATA",data);
+                return "insertCorrect";
+            }else{
+
+                if(data.error === "emailDup"){
+                    return "emailDup"
+                }else{
+                    console.log("Respuesta del instert del usuario de ERROR", data.error);
+                    return "insertError"
+                }
+            
+      }
+            }
+
+    } catch (error) {
+      console.error(error);
+      return null;  // En caso de error, retornamos null
+    }
+  }
+
+
+
+
+
+
+
+
   static async loginUser(email, contraseña) {
     const apiUrl = APIurl.getAPIurl("loginUser");  // Necesitarías agregar un caso en la clase APIurl para esta operación
 

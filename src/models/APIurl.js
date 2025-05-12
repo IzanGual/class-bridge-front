@@ -141,8 +141,12 @@ export default class APIurl {
           case "getFullCourseInfo":
               return this.URLbase+"courses.php?getFullCourseInfo_id="+id;
 
-            case "createCourse":
+          case "createCourse":
               return this.URLbase+"courses.php";
+
+          case "registerStudent":
+            return this.URLbase+"usuarios.php"
+            
               
               
               

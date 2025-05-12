@@ -1,14 +1,14 @@
-.course-card{
-    max-width: 100%!important;
-    width: 300px;
+/* Tarjetas individuales */
+.course-card {
+    flex: 1 1 300px; /* Permite que las tarjetas crezcan o se reduzcan según el espacio disponible */
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 15px!important;
+    padding: 15px !important;
     border: 1px solid var(--class-border-separator-color);
     border-radius: 10px;
     cursor: pointer;
-    
+    justify-content: space-between;
 }
 
 .mini-user-card h3 {

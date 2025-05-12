@@ -76,7 +76,7 @@ export default function CoursePage({ aula }) {
                         
                     </div>
                 </div>
-                <div className='stuff-container'>
+                <div className='course-card-container'>
                     {courses.map((course) => (
                         <CourseCard key={course.id} course={course} aula={aula} />
                     ))}

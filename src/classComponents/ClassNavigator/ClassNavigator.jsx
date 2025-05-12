@@ -26,6 +26,17 @@ export default function ClassNavigator({ aula }) {
   const goToClassBridge = () => {
     navigate(`/`);
   }
+
+
+    const handleGoToCreateUsers = () => {
+        navigate(`/bridgeto/${aula.nombre}/dashboard/users/create`);
+
+    }
+
+    const handleGoToCreateCourses = () => {
+        navigate(`/bridgeto/${aula.nombre}/dashboard/courses/create`);
+
+    }
   
 
   const fechaObj = new Date();
@@ -77,6 +88,9 @@ export default function ClassNavigator({ aula }) {
 
             <span>Cursos</span>
           </NavLink>
+          <svg onClick={handleGoToCreateCourses} width="25" height="25" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 10.6667V21.3334M10.6667 16.0001H21.3333M29.3333 16.0001C29.3333 23.3639 23.3638 29.3334 16 29.3334C8.63621 29.3334 2.66667 23.3639 2.66667 16.0001C2.66667 8.63628 8.63621 2.66675 16 2.66675C23.3638 2.66675 29.3333 8.63628 29.3333 16.0001Z" stroke="#2C2C2C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </li>
         <li>
           <NavLink to={`/bridgeto/${aula.nombre}/dashboard/users`}
@@ -95,6 +109,9 @@ export default function ClassNavigator({ aula }) {
 
             <span>Usuarios</span>
           </NavLink>
+          <svg onClick={handleGoToCreateUsers} width="25" height="25" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 10.6667V21.3334M10.6667 16.0001H21.3333M29.3333 16.0001C29.3333 23.3639 23.3638 29.3334 16 29.3334C8.63621 29.3334 2.66667 23.3639 2.66667 16.0001C2.66667 8.63628 8.63621 2.66675 16 2.66675C23.3638 2.66675 29.3333 8.63628 29.3333 16.0001Z" stroke="#2C2C2C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </li>
         <li>
           <NavLink to={`/bridgeto/${aula.nombre}/dashboard/tasks`}
