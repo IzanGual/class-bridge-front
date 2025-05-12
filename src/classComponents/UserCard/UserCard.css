@@ -9,6 +9,7 @@
     border: 1px solid var(--class-border-separator-color);
     border-radius: 10px;
     cursor: pointer;
+    position: relative;
 }
 
 
@@ -53,8 +54,9 @@
 }
 
 .edit-btn-top-t{
-    position: relative!important;
-    right: 1px;
+    position: absolute!important;
+    right: 6px;
+    top: 6px;
     width: 20px;
     height: 20px;
 }

@@ -32,6 +32,9 @@ export default class APIurl {
           
           case "deleteUserProfile":
               return this.URLbase+"usuarios.php?action=deleteUserProfile";
+
+          case "deleteStudentProfile":
+              return this.URLbase+"usuarios.php?action=deleteStudentProfile&student_id="+id;
           
           case "cancelUserSuscription":
               return this.URLbase+"usuarios.php?action=cancelSuscription";
@@ -68,6 +71,10 @@ export default class APIurl {
               
           case "getUsersByCourse_id":
               return this.URLbase+"courses.php?getUsersByCourse_id="+id;
+
+          case "getCoursesByUserId_id":
+              return this.URLbase+"courses.php?getCoursesByUserId_id="+id;
+              
               
           case "loginToAula":
                 return this.URLbase+"auth/loginToAula.php?aulaId="+id;
@@ -145,7 +152,10 @@ export default class APIurl {
               return this.URLbase+"courses.php";
 
           case "registerStudent":
-            return this.URLbase+"usuarios.php"
+              return this.URLbase+"usuarios.php"
+            
+          case "uploadStudent":
+              return this.URLbase+"usuarios.php";
             
               
               
