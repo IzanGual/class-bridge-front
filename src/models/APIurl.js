@@ -75,7 +75,6 @@ export default class APIurl {
           case "getCoursesByUserId_id":
               return this.URLbase+"courses.php?getCoursesByUserId_id="+id;
               
-              
           case "loginToAula":
                 return this.URLbase+"auth/loginToAula.php?aulaId="+id;
           
@@ -91,7 +90,6 @@ export default class APIurl {
           case "getTasks":
               return this.URLbase+"tasks.php?accion=getTasks";
               
-      
           case "updateCourse":
               return this.URLbase+"courses.php";
 
@@ -142,7 +140,10 @@ export default class APIurl {
 
           case "getTasksByCategoriaId":
               return this.URLbase + "tasks.php?categoria_id=" + id + "&accion=getTasksByCategoriaId";
-        
+
+          case "getEntregaById":
+                return this.URLbase + "entregas.php?id=" + id + "&accion=getEntregaById";
+                  
           case "updateTarea":
               return this.URLbase + "tasks.php";
               
@@ -164,8 +165,9 @@ export default class APIurl {
           case "getEntregas":
               return this.URLbase+"entregas.php?usuario_id="+id+"&tarea_id="+id2+"&accion=getEntregas";
             
-              
-              
+          case "correctEntrega":
+              return this.URLbase+"entregas.php";
+            
               
           default:
             // Caso cuando no coincide con ninguna de las tablas soportadas

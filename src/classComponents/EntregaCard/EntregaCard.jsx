@@ -9,12 +9,14 @@ export default function EntregaCard({ entrega, aula }) {
     };
 
     // Calcular la diferencia de días entre la fecha de entrega y la fecha límite
-    const fechaEntrega = new Date(entrega.fecha_entrega);
+    const fechaEntrega = entrega.fecha_entrega ? new Date(entrega.fecha_entrega) : null;
     const fechaLimite = new Date(entrega.fecha_limite_tarea);
-    const diferenciaDias = Math.ceil((fechaEntrega - fechaLimite) / (1000 * 60 * 60 * 24)); // Diferencia en días
+    const diferenciaDias = fechaEntrega
+        ? Math.ceil((fechaEntrega - fechaLimite) / (1000 * 60 * 60 * 24)) // Diferencia en días
+        : null;
 
     // Determinar el color del SVG según si se entregó antes o después de la fecha límite
-    const fechaSvgColor = diferenciaDias <= 0 ? '#56D02A' : '#FF0000'; // Verde si antes o el día límite, rojo si después
+    const fechaSvgColor = diferenciaDias !== null && diferenciaDias <= 0 ? '#56D02A' : '#FF0000'; // Verde si antes o el día límite, rojo si después
     const estadoSvgColor = entrega.estado_correccion === 'corregida' ? '#56D02A' : '#FF0000'; // Verde si corregida, rojo si no corregida
 
     return (
@@ -28,7 +30,9 @@ export default function EntregaCard({ entrega, aula }) {
                 </svg>
 
                     <p className="entrega-fecha">
-                        {diferenciaDias === 0
+                        {fechaEntrega === null
+                            ? 'No entregada'
+                            : diferenciaDias === 0
                             ? 'Entregada el día límite'
                             : diferenciaDias > 0
                             ? `Entregada ${diferenciaDias} días después`
@@ -38,7 +42,7 @@ export default function EntregaCard({ entrega, aula }) {
                        
                 <div className="entrega-fecha-container">  
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_8_46)">
+                <g clipPath="url(#clip0_8_46)">
                 <path d="M18.3333 1.66663L9.16666 10.8333M18.3333 1.66663L12.5 18.3333L9.16666 10.8333M18.3333 1.66663L1.66666 7.49996L9.16666 10.8333" stroke={estadoSvgColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </g>
                 <defs>

@@ -26,6 +26,7 @@ import ClassNavigator from "../classComponents/ClassNavigator/ClassNavigator";
 import CoursePageCreate from "../classPages/CoursePageCreate/CoursePageCreate";
 import UserPageCreate from "../classPages/UserPageCreate/UserPageCreate";
 import UserPageEdit from "../classPages/UserPageEdit/UserPageEdit";
+import DeliverPageCorrect from "../classPages/DeliverPageCorrect/DeliverPageCorrect";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -79,6 +80,7 @@ export default function Router() {
                       <Route path="dashboard/users/create" element={<UserPageCreate aula={aula}/>} />
                       <Route path="dashboard/users/edit" element={<UserPageEdit aula={aula}/>} />
                       <Route path="dashboard/tasks" element={<DeliverPage aula={aula} />} />
+                      <Route path="dashboard/tasks/correct" element={<DeliverPageCorrect aula={aula}/>} />
                       <Route path="dashboard/config" element={<ConfigPage aula={aula} />} />
                       <Route path="guali" element={<GualiPage aula={aula}/>} />
                       <Route path="*" element={<NotFoundPage />} />

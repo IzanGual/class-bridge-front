@@ -1,0 +1,44 @@
+.download-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--class-accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #45a049; /* Un verde más oscuro */
+}
+
+.save-btnn:disabled {
+    background-color: var(--class-disabled-button-color)!important;
+    color: var(--class-disabled-text-color);
+    border: 1px solid var(--class-border-color);
+    cursor: not-allowed;    
+    opacity: 0.6;
+  }
+
+  #max-h{
+    width: 40%;
+  
+  }
+
+  .infut-text-cotainer{
+    display: flex;
+    width: auto;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+#no-marg{
+    margin-top: 10px!important;
+}
+
+#comentario-entrega{
+    border-radius: 10px;
+}

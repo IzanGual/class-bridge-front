@@ -110,7 +110,7 @@ export default function DeliverPage({ aula }) {
             <div className='class-horizontal-separator'></div>
             <div className='section-container'>
                 <h2 className='section-header' id='marg-bt'>Todas las entregas</h2>
-                <p class="class-subtitle-header">Selecciona para filtrar por:</p>
+                <p className="class-subtitle-header">Selecciona para filtrar por:</p>
                 <div className='options-container'>
                     {/* Dropdown para seleccionar un usuario */}
                     <select
