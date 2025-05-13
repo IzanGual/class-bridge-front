@@ -3,7 +3,7 @@ import AulasModel from '../../models/AulasModel';
 import UsersModel from '../../models/UsersModel';
 import { useState, useEffect } from 'react';
 import { useAlert } from '../../utils/AlertProvider'; 
-import ClassFooter from '../../classComponents/ClassFooter/ClassFooter';
+
 
 export default function ClassLoginPage({ aulaID }) {
     const [aula, setAula] = useState(null);
@@ -112,7 +112,7 @@ export default function ClassLoginPage({ aulaID }) {
 
             <img id="text-logo-class" src="/assets/images/logos/text-logo.png" alt="class-bridge-logo" />
         </div>
-        <ClassFooter></ClassFooter>
+        
       </>
     );
 }

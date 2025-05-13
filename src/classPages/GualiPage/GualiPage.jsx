@@ -2,7 +2,6 @@ import './GualiPage.css';
 import { checkTeacherAuthStatus } from '../../utils/auth.js';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ClassFooter from '../../classComponents/ClassFooter/ClassFooter.jsx';
 
 export default function GualiPage({ aula }) {
     const navigate = useNavigate(); 
@@ -40,7 +39,7 @@ export default function GualiPage({ aula }) {
             <div className='stuff-container'>
                     will be stuff here
             </div>
-            <ClassFooter></ClassFooter>
+            
         </div>
     );
 }

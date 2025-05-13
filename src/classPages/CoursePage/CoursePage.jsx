@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CoursesModel from "../../classModels/CoursesModel";
 import CourseCard from '../../classComponents/CourseCard/CourseCard.jsx';
-import ClassFooter from '../../classComponents/ClassFooter/ClassFooter.jsx';
 
 export default function CoursePage({ aula }) {
     const navigate = useNavigate(); 
@@ -82,7 +81,7 @@ export default function CoursePage({ aula }) {
                     ))}
                 </div>
             </div>
-            <ClassFooter></ClassFooter>
+            
         </div>
     );
 }

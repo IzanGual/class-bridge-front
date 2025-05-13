@@ -3,7 +3,6 @@ import { checkTeacherAuthStatus } from '../../utils/auth.js';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsersModel from '../../models/UsersModel.js';
-import ClassFooter from '../../classComponents/ClassFooter/ClassFooter.jsx';
 import UserCard from '../../classComponents/UserCard/UserCard.jsx';
 
 export default function UserPage({ aula }) {
@@ -82,7 +81,7 @@ export default function UserPage({ aula }) {
                     ))}
                 </div>
             </div>
-            <ClassFooter></ClassFooter>
+            
         </div>
     );
 }

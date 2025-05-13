@@ -1,11 +1,11 @@
 .dashboard-option-container {
     background-color: var(--class-background-color); /* Fondo consistente */
     width: 100%; /* Ocupa el 100% del ancho de la ventana */
-    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    min-height: 100dvh!important; /* Ocupa el 100% de la altura de la ventana */
     padding: 40px;
     display: flex; /* Opcional: para alinear contenido interno */
     flex-direction: column;
-    margin-bottom: 100px!important;
+   
 }
 
 .class-header-container{

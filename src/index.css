@@ -71,8 +71,12 @@ body {
   background: var(--class-background-color);
 }
 
+#root *{
+  font-family: var(--primary-font);
+}
+
 h1, h2, h3 {
-  font-family: var(--title-font);
+  font-family: var(--title-font)!important;
 }
 
 * {

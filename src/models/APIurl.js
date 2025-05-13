@@ -1,7 +1,7 @@
 export default class APIurl {
     static URLbase = "http://localhost/classbridgeapi/";
 
-    static  getAPIurl(aim, id) {
+    static  getAPIurl(aim, id, id2) {
         switch (aim) {
           case "getAllPlans":
             return this.URLbase+"planes.php"
@@ -87,6 +87,10 @@ export default class APIurl {
 
           case "getUnDoneTasks":
               return this.URLbase+"tasks.php?accion=getUnDoneTasks";
+
+          case "getTasks":
+              return this.URLbase+"tasks.php?accion=getTasks";
+              
       
           case "updateCourse":
               return this.URLbase+"courses.php";
@@ -156,6 +160,9 @@ export default class APIurl {
             
           case "uploadStudent":
               return this.URLbase+"usuarios.php";
+        
+          case "getEntregas":
+              return this.URLbase+"entregas.php?usuario_id="+id+"&tarea_id="+id2+"&accion=getEntregas";
             
               
               
