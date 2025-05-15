@@ -249,20 +249,25 @@ export default function ProfilePage() {
     
 
     return (
-        <div className="page-container">
-            <h1>Tu perfil</h1>
+        <div className="profile-container">
+            <h2>Perfil</h2>
 
             {userData ? (
                 <div className="profile-card">
+
+                    <div className='photo-name-container'>
                     {/* Foto de perfil */}
                     <div className="profile-photo-section">
                         <img src={userData.img_url} alt="Foto de perfil" className="profile-photo" />
                         <div className="photo-buttons">
-                            <button className="btn" onClick={handlePhotoDeletion}>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                            </button>
-                            <button id='btn' className="btn" onClick={handleChangePhotoClick}>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                            <button className="delete-btn" onClick={handlePhotoDeletion}>
+                            <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.5 5.00008H4.16667M4.16667 5.00008H17.5M4.16667 5.00008L4.16667 16.6667C4.16667 17.1088 4.34226 17.5327 4.65482 17.8453C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8453C15.6577 17.5327 15.8333 17.1088 15.8333 16.6667V5.00008M6.66667 5.00008V3.33341C6.66667 2.89139 6.84226 2.46746 7.15482 2.1549C7.46738 1.84234 7.89131 1.66675 8.33333 1.66675H11.6667C12.1087 1.66675 12.5326 1.84234 12.8452 2.1549C13.1577 2.46746 13.3333 2.89139 13.3333 3.33341V5.00008M8.33333 9.16675V14.1667M11.6667 9.16675V14.1667" stroke="#D32124" strokeOpacity="0.86" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>                            </button>
+                            <button id='btn' className="file-upload-btn" onClick={handleChangePhotoClick}>
+                                <svg width="27" height="27" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.6667 3.99996C23.0169 3.64976 23.4326 3.37198 23.8902 3.18245C24.3477 2.99293 24.8381 2.89539 25.3333 2.89539C25.8286 2.89539 26.319 2.99293 26.7765 3.18245C27.2341 3.37198 27.6498 3.64976 28 3.99996C28.3502 4.35015 28.628 4.76588 28.8175 5.22343C29.007 5.68098 29.1046 6.17138 29.1046 6.66662C29.1046 7.16187 29.007 7.65226 28.8175 8.10981C28.628 8.56736 28.3502 8.9831 28 9.33329L10 27.3333L2.66667 29.3333L4.66667 22L22.6667 3.99996Z"  strokeOpacity="0.75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>                            
                             </button>
                             <form>
                             <input
@@ -277,13 +282,13 @@ export default function ProfilePage() {
                         </div>
                     </div>
 
-                    <div className="separator"></div>
+                    <div className="mini-vertical-separator"></div>
 
                     {/* Nombre */}
                     <div className="profile-field">
                         <label>Nombre</label>
 
-                        <div id='nameFiledContainer'>
+                        <div className='FiledContainer'>
                                 {editingField === 'nombre' ? (
                                     <>
                                         <input 
@@ -291,47 +296,82 @@ export default function ProfilePage() {
                                             value={updatedData.nombre || userData.nombre} 
                                             onChange={(e) => handleChange('nombre', e.target.value)}
                                         />
-                                        <button className="save-btn" onClick={handleSaveName}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <div className='crud-Courseimg-container-text-profile'>
+                                        <button className="file-upload-btn" onClick={handleSaveName}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#56d02a"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                         </button>
-                                        <button className="cancel-btn" onClick={handleCancelEdit}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <button className="delete-btn" onClick={handleCancelEdit}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(211, 33, 36)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
                                         </button>
+                                        </div>
+                                        
                                     </>
                                 ) : (
                                     <>
                                         <p>{userData.nombre}</p>
-                                        <button className="edit-btn" onClick={() => {
+                                        <button className="file-upload-btn" onClick={() => {
                                             setEditingField('nombre');
                                             setUpdatedData({ nombre: userData.nombre });
                                         }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-                            </button>
+                                            <svg width="27" height="27" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22.6667 3.99996C23.0169 3.64976 23.4326 3.37198 23.8902 3.18245C24.3477 2.99293 24.8381 2.89539 25.3333 2.89539C25.8286 2.89539 26.319 2.99293 26.7765 3.18245C27.2341 3.37198 27.6498 3.64976 28 3.99996C28.3502 4.35015 28.628 4.76588 28.8175 5.22343C29.007 5.68098 29.1046 6.17138 29.1046 6.66662C29.1046 7.16187 29.007 7.65226 28.8175 8.10981C28.628 8.56736 28.3502 8.9831 28 9.33329L10 27.3333L2.66667 29.3333L4.66667 22L22.6667 3.99996Z"  strokeOpacity="0.75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>                                          </button>
                                     </>
                                 )}
                         </div>
 
                     </div>
 
+                    </div>
+
+                    <div className='class-horizontal-separator'></div>
+                    
+
 
                     {/* Apartado protegido para correo y contraseña */}
                     <div className="protected-section">
                         {emailVerificationStep === "idle" && (
                             <>  
-                            <label>Correo electrónico</label>
-                                <p>{userData.email}</p>
+                            
+
+                                <div className='FiledContainer'>
+                                    <label>Correo electrónico</label>
+                                    <p>{userData.email}</p>
+                                    <div className='crud-Courseimg-container-text-profile' >
+                                        <button className="file-upload-btn" disabled>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#56d02a"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        </button>
+                                        <button className="delete-btn" disabled>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(211, 33, 36)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className='FiledContainer'>
                                 <label>Contraseña</label>
                                 <p>***********</p>
-                                <p id='info'>Para editar tu correo o contraseña, verifica tu identidad.</p>
+                                <div className='crud-Courseimg-container-text-profile' >
+                                        <button className="file-upload-btn" disabled>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#56d02a"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        </button>
+                                        <button className="delete-btn" disabled>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(211, 33, 36)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        </button>
+                                    </div>
+                                    </div>
+                                    <div className='FiledContainer' id='mail-sender'>
+                                    <p id='info'>Para editar tu correo o contraseña, verifica tu identidad.</p>
                                 <button className="send-code-btn" onClick={handleSendVerificationCode}>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1d1d1d"><path d="m720-160-56-56 63-64H560v-80h167l-63-64 56-56 160 160-160 160ZM160-280q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h520q33 0 56.5 23.5T760-760v204q-10-2-20-3t-20-1q-10 0-20 .5t-20 2.5v-147L416-520 160-703v343h323q-2 10-2.5 20t-.5 20q0 10 1 20t3 20H160Zm58-480 198 142 204-142H218Zm-58 400v-400 400Z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" ><path d="m720-160-56-56 63-64H560v-80h167l-63-64 56-56 160 160-160 160ZM160-280q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h520q33 0 56.5 23.5T760-760v204q-10-2-20-3t-20-1q-10 0-20 .5t-20 2.5v-147L416-520 160-703v343h323q-2 10-2.5 20t-.5 20q0 10 1 20t3 20H160Zm58-480 198 142 204-142H218Zm-58 400v-400 400Z"/></svg>
                                 </button> 
+                                    </div>
+                                
                             </>
                         )}
 
                         {emailVerificationStep === "code_sent" && (
-                            <>
+                            <div className='profile-photo-section'>
                                 <input 
+                                    className="verification-code-input"
                                     type="text" 
                                     placeholder="Introduce el código" 
                                     value={verificationCode}
@@ -340,7 +380,7 @@ export default function ProfilePage() {
                                 <button className="verify-btn" onClick={handleVerifyCode}>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1d1d1d"><path d="M268-240 42-466l57-56 170 170 56 56-57 56Zm226 0L268-466l56-57 170 170 368-368 56 57-424 424Zm0-226-57-56 198-198 57 56-198 198Z"/></svg>
                                 </button>
-                            </>
+                            </div>
                         )}
 
                         {emailVerificationStep === "verified" && (
@@ -356,30 +396,31 @@ export default function ProfilePage() {
                                                 value={updatedData.email || userData.email} 
                                                 onChange={(e) => handleChange('email', e.target.value)}
                                             />
-                                            <div className='btn-container'>
-                                                <button className="save-btn" onClick={handleSaveEmail}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
-                                                </button>
-                                                <button className="cancel-btn" onClick={handleCancelEdit}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-                                                </button>
-                                            </div>
+                                            <div className='crud-Courseimg-container-text-profile'>
+                                        <button className="file-upload-btn" onClick={handleSaveEmail}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#56d02a"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        </button>
+                                        <button className="delete-btn" onClick={handleCancelEdit}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(211, 33, 36)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        </button>
+                                        </div>
+                                            
                                             
                                         </>
                                     ) : (
                                         <>
                                             <p>{userData.email}</p>
-                                            <button className="edit-btn" onClick={() => {
+                                            <button className="file-upload-btn" onClick={() => {
                                                 setEditingField('email');
                                                 setUpdatedData({ email: userData.email });
                                             }}>
-                                                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-                                            </button>
+                                            <svg width="27" height="27" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22.6667 3.99996C23.0169 3.64976 23.4326 3.37198 23.8902 3.18245C24.3477 2.99293 24.8381 2.89539 25.3333 2.89539C25.8286 2.89539 26.319 2.99293 26.7765 3.18245C27.2341 3.37198 27.6498 3.64976 28 3.99996C28.3502 4.35015 28.628 4.76588 28.8175 5.22343C29.007 5.68098 29.1046 6.17138 29.1046 6.66662C29.1046 7.16187 29.007 7.65226 28.8175 8.10981C28.628 8.56736 28.3502 8.9831 28 9.33329L10 27.3333L2.66667 29.3333L4.66667 22L22.6667 3.99996Z"  strokeOpacity="0.75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>                                             </button>
                                         </>
                                     )}
                                 </div>
 
-                                <div className='separator'></div>
 
                                 {/* Contraseña */}
                                 <div className="profile-field">
@@ -387,12 +428,14 @@ export default function ProfilePage() {
                                     {editingField === 'password' ? (
                                         <>
                                             <input 
+                                                id='marg-bt'
                                                 type="password" 
                                                 placeholder="Nueva contraseña" 
                                                 value={updatedData.password || ''} 
                                                 onChange={(e) => handlePasswordChange(e.target.value)}
                                             />
-                                            <input 
+                                            <input
+                                                
                                                 type="password" 
                                                 placeholder="Confirma la nueva contraseña" 
                                                 value={updatedData.confirmPassword || ''} 
@@ -410,7 +453,7 @@ export default function ProfilePage() {
 
                                             <div className='btn-container'>
                                                 <button 
-                                                    className="save-btn" 
+                                                    className="file-upload-btn" 
                                                     onClick={() => {
                                                         if (updatedData.password !== updatedData.confirmPassword) {
                                                             showAlert("Las contraseñas no coinciden.");
@@ -419,10 +462,10 @@ export default function ProfilePage() {
                                                         handleSavePassword();
                                                     }}
                                                 >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#56d02a"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                                 </button>
-                                                <button className="cancel-btn" onClick={handleCancelEdit}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                                <button className="delete-btn" onClick={handleCancelEdit}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(211, 33, 36)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
                                                 </button>
                                             </div>
                                             
@@ -430,12 +473,13 @@ export default function ProfilePage() {
                                     ) : (
                                         <>
                                             <p>********</p>
-                                            <button className="edit-btn" onClick={() => {
+                                            <button className="file-upload-btn" onClick={() => {
                                                 setEditingField('password');
                                                 setUpdatedData({ password: '', confirmPassword: '' });
                                             }}>
-                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-                                            </button>
+                                            <svg width="27" height="27" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22.6667 3.99996C23.0169 3.64976 23.4326 3.37198 23.8902 3.18245C24.3477 2.99293 24.8381 2.89539 25.3333 2.89539C25.8286 2.89539 26.319 2.99293 26.7765 3.18245C27.2341 3.37198 27.6498 3.64976 28 3.99996C28.3502 4.35015 28.628 4.76588 28.8175 5.22343C29.007 5.68098 29.1046 6.17138 29.1046 6.66662C29.1046 7.16187 29.007 7.65226 28.8175 8.10981C28.628 8.56736 28.3502 8.9831 28 9.33329L10 27.3333L2.66667 29.3333L4.66667 22L22.6667 3.99996Z"  strokeOpacity="0.75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>                                             </button>
                                         </>
                                     )}
                                 </div>
@@ -448,17 +492,37 @@ export default function ProfilePage() {
 
 
                     </div>
-                   
+
+                    <div className='class-horizontal-separator'></div>
+                        
+                    <div className='sub-info'>
                     <SubscriptionStatus subscriptionState={userData.estado_suscripcion}></SubscriptionStatus>
 
-                    <div className="separator"></div>
+                    <div className='mini-vertical-separator-dos'></div>
 
                     <div id='logout-closeAccoint-container'>
-                    <button className='logOut' onClick={logOut}>Cerrar sesión</button>
-                    <button className='deleteAccount' onClick={handleProfileDeletion}>Eliminar cuenta
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                    
+                    <div className='fake-group'>
+                        <label> Cerrar sesión</label>
+                    <button className="delete-btn" onClick={logOut}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D32124"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>                         
+                    </button>
+                    </div>  
+                    
+                <div className='fake-group'>
+                    <label> Eliminar cuenta</label>
+                    <button className="delete-btn" onClick={handleProfileDeletion}>
+                            <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.5 5.00008H4.16667M4.16667 5.00008H17.5M4.16667 5.00008L4.16667 16.6667C4.16667 17.1088 4.34226 17.5327 4.65482 17.8453C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8453C15.6577 17.5327 15.8333 17.1088 15.8333 16.6667V5.00008M6.66667 5.00008V3.33341C6.66667 2.89139 6.84226 2.46746 7.15482 2.1549C7.46738 1.84234 7.89131 1.66675 8.33333 1.66675H11.6667C12.1087 1.66675 12.5326 1.84234 12.8452 2.1549C13.1577 2.46746 13.3333 2.89139 13.3333 3.33341V5.00008M8.33333 9.16675V14.1667M11.6667 9.16675V14.1667" stroke="#D32124" strokeOpacity="0.86" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>                            
                     </button>
                     </div>
+                    </div>
+
+                    </div>
+                    
+
+                    
                     
                 </div>
             ) : (

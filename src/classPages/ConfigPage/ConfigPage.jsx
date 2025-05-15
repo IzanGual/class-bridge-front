@@ -1,10 +1,12 @@
 import './ConfigPage.css';
 import { checkTeacherAuthStatus } from '../../utils/auth.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ProfilePage from '../../pages/ProfilePage/ProfilePage.jsx';
 
 export default function ConfigPage({ aula }) {
     const navigate = useNavigate(); 
+    const [activeTab, setActiveTab] = useState('perfil'); // Estado para la pestaña activa
 
     useEffect(() => {
         const verifyAuth = async () => {
@@ -20,25 +22,40 @@ export default function ConfigPage({ aula }) {
         verifyAuth();
     }, [aula, navigate]);
 
+    const handleTabChange = (tab) => {
+        setActiveTab(tab); // Cambia la pestaña activa
+    };
+
     return (
         <div className='dashboard-option-container'>
             <div className='class-header-container'>
-                <h1 className='class-title-header'>Bienvenido a configPage</h1>
-                <p className='class-subtitle-header'>Aquí puedes gestionar tu aula y acceder a todas las funcionalidades.</p>
+                <h1 className='class-title-header'>Configuración</h1>
             </div>
+            
+                    <div className='tab-container-config'>
+                    <button
+                                className={`tab-button tab-config-btn ${activeTab === 'perfil' ? 'active' : ''}`}
+                                onClick={() => handleTabChange('perfil')}
+                            >
+                                Perfil
+                            </button>
+                            <button
+                                className={`tab-button tab-config-btn ${activeTab === 'aula' ? 'active' : ''}`}
+                                onClick={() => handleTabChange('aula')}
+                            >
+                                Aula
+                            </button>
+                       
+                    </div>
+
             <div className='class-horizontal-separator'></div>
-            <div className='section-container'>
-                <h2 className='section-header'>Tus usuarios</h2>
-                <div className='stuff-container'>
-                    will be stuff here
-                </div>
-            </div>
-            <div className='section-container'>
-                <h2 className='section-header'>Tus Cursos</h2>
-            </div>
-            <div className='stuff-container'>
-                    will be stuff here
-            </div>
+                    <div>
+                        {activeTab === 'perfil' && <ProfilePage/>}
+                        {activeTab === 'aula' && <div>Aula</div>}
+                    
+                    
+                    </div>
+           
             
         </div>
     );

@@ -1,0 +1,16 @@
+.tab-container-config{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.tab-config-btn{
+    max-width: 100%!important;
+    width: 40%;
+}
+
+.verification-code-input{
+    width: 70%!important;
+}

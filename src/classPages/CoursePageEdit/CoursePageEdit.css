@@ -173,8 +173,20 @@ min-height: 500px;
 
 
 @media screen and (max-width: 1015px) {
+
+    .protected-section{
+    flex-direction: column;
+}
+
+
+.protected-section p{
+width: 100%;}
  .courseEdit-wrapper {
     flex-direction: column;
+}
+
+.separator{
+    display: none;
 }
 .vertical-separator{
     display: none;
@@ -258,6 +270,46 @@ width: 100%!important;
  
 }
 
+.photo-name-container{
+    flex-direction: column;
+    gap: 20px!important;
+    align-items: flex-start;
+
+}
+
+.profile-photo-section{
+    width: 100%!important;
+   
+}
+
+.FiledContainer{
+    width: 100%!important;
+  
+}
+
+.profile-field {
+    width: 100%!important;
+}
+
+.profile-field p{
+    width: 100%!important;
+}
+
+.profile-field input {
+    width: 100%!important;
+}
+
+
+
+
+.crud-Courseimg-container-text-profile {
+width: 100%;
+}
+
+.mini-vertical-separator{
+    display: none;
+}
+
 .options-container{
   margin-top: 30px;
     gap: 0px;
@@ -268,6 +320,21 @@ width: 100%!important;
     width: 100%!important;
 }
 
+.tab-container-config{
+        max-width: none!important;
+
+    width: 100%!important;
+    display: flex;
+    flex-direction: column!important;
+    gap: 10px;
+}
+
+.tab-config-btn{
+    width: 100%!important;
+    max-width: none!important;
+
+
+}
 
 
 

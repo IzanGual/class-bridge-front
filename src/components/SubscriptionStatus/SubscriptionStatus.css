@@ -1,7 +1,23 @@
 .subscription-status {
     margin-top: 30px;
     margin-bottom: 30px;
-    text-align: center;
+    width: 45%;
+ 
+}
+
+.estado-suscripcion-container{
+    width: 100%!important;
+    display: flex;
+    justify-content: space-between!important;
+    align-items: center;
+  
+}
+
+.mini-vertical-separator-dos {
+    width: 2px;
+    height: 100px;
+    background-color: var(--class-border-separator-color);
+    margin: 0 40px;
 }
 
 .subscription-status p {
@@ -21,22 +37,27 @@
 .subscription-status .btn {
     margin-top: 10px;
 }
-label {
-    display: block;
-    font-weight: 800;
-    margin-bottom: 20px;
-    font-size: 16px;
-    
-}
+
 #estado {
-    width: 100%; /* Puedes ajustar el ancho según lo necesites */
-    margin: 0;
+    width: 30%; /* Puedes ajustar el ancho según lo necesites */
     padding: 7px 14px; /* Padding para que el texto no toque los bordes */
     border: 1px solid var(--gray-color); /* Borde suave, como un input */
     border-radius: 5px; /* Bordes redondeados */
     color: var(--text-color); /* Color de texto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
     outline: none; /* Elimina el borde de enfoque predeterminado */
+    text-align: left;
+        margin: 0!important;
+
+}
+
+.lbl{
+    display: block;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    align-items: center;
 }
 .text{
     margin-top:20px!important;
@@ -75,19 +96,22 @@ label {
 }
 
 .degradeAccount {
-    width: 100%;
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de texto */
-    font-weight: 600; /* Texto más destacado */
-    background: var(--accent-color-dark); /* Color de fondo usando tu color de acento */
-    color: var(--text-color-light); /* Texto en color claro para contraste */
-    border: none; /* Borde usando el color del texto principal */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
-    outline: none; /* Elimina el borde al hacer clic */
+    width: 40px;
+    height: 40px;
+    background-color: var(--class-red-color-background);
+    border-radius: 50%;
+    border: none !important;
+    transition: background-color 0.3s ease;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     
+}
+
+.estado-suscripcion-container{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

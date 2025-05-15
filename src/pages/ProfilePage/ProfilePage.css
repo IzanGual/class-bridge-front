@@ -3,39 +3,59 @@
 background-color: var(--background-color);
 }
 
+.profile-container{
+    min-width: 100%!important;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-container h2{
+    color: var(--class-text-color)!important;
+}
 
 
-h1 {
-    font-size: 24px;
-    text-align: center;
+
+.photo-name-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
     margin-bottom: 20px;
-    color: #222;
 }
 
 /* Profile card */
 .profile-card {
-    background: var(--primary-color);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 0 auto;
-    width: 90%;
-    margin-bottom: 50px;
+max-width: none!important;
 }
 
 /* Profile photo section */
 .profile-photo-section {
+    width: 200px;
     display: flex;
-    margin-bottom: 20px;
     justify-content: space-between;
 }
 
+.mini-vertical-separator {
+    width: 2px;
+    height: 120px;
+    background-color: var(--class-border-separator-color);
+    margin: 0 40px;
+}
+
 .profile-photo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+        height: 120px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #ddd;
+}
+
+.sub-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .photo-buttons {
@@ -64,20 +84,22 @@ h1 {
 
 /* Profile fields */
 .profile-field {
-    margin-bottom: 20px;
+    width: 200px;
+
 }
 
 .profile-field label {
     display: block;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
 }
 
 .profile-field p {
-    width: 60%; /* Puedes ajustar el ancho según lo necesites */
+    width: 220px; /* Puedes ajustar el ancho según lo necesites */
     margin: 0;
+    margin-bottom: 9px!important;
     padding: 7px 14px; /* Padding para que el texto no toque los bordes */
     border: 1px solid var(--gray-color); /* Borde suave, como un input */
     border-radius: 5px; /* Bordes redondeados */
@@ -89,15 +111,25 @@ h1 {
     text-overflow: ellipsis; /* Agrega "..." si el texto es muy largo */
 }
 
-#nameFiledContainer{
+.nameFiledContainer{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+
+.crud-Courseimg-container-text-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+    margin-top: 9px;
 }
 
 
-
 .profile-field input {
-    width: 60%; /* Puedes ajustar el ancho según lo necesites */
+    width: 220px; /* Puedes ajustar el ancho según lo necesites */
     margin: 0;
     padding: 7px 14px; /* Padding para que el texto no toque los bordes */
     border: 1px solid var(--gray-color); /* Borde suave, como un input */
@@ -146,18 +178,18 @@ h1 {
 
 /* Protected section */
 .protected-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
     margin-top: 20px;
-    padding: 15px;
-    border: 1px solid var(--gray-color)!important;
-    border-radius: 5px;
-    background-color: var(--background-color);
 }
 .protected-section label {
     display: block;
     font-weight: 800;
     margin-bottom: 10px;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
 }
 
 .protected-section h2 {
@@ -167,17 +199,32 @@ h1 {
 }
 
 .protected-section p {
-    width: 100%; /* Puedes ajustar el ancho según lo necesites */
+    width: 220px;
     margin: 0;
-    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
-    border: 1px solid var(--gray-color); /* Borde suave, como un input */
-    border-radius: 5px; /* Bordes redondeados */
-    color: var(--text-color); /* Color de texto */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
-    outline: none; /* Elimina el borde de enfoque predeterminado */
-    text-align: center;
-    margin-bottom: 20px!important;
+    margin-bottom: 9px !important;
+    padding: 7px 14px;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
 }
+
+.crud-Courseimg-container-text-profile button:disabled {
+    background-color: #ccc;
+    color: #666;
+    border: 1px solid #aaa;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+
 .protected-section input {
     width: 100%; /* Puedes ajustar el ancho según lo necesites */
     margin: 0;
@@ -187,52 +234,59 @@ h1 {
     color: var(--text-color); /* Color de texto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
     outline: none; /* Elimina el borde de enfoque predeterminado */
-    text-align: center;
-    margin-bottom: 20px!important;
+    text-align: left;
 }
 
 #info  {
-    width: 100%; /* Puedes ajustar el ancho según lo necesites */
-    margin: 0;
-    padding: 7px 14px; /* Padding para que el texto no toque los bordes */
-    border: 2px solid var(--accent-background-color-l); /* Borde suave, como un input */
-    border-radius:5px; /* Bordes redondeados */
+    padding: 0;
+    width: auto;
+    border: none;
     color: var(--text-color); /* Color de texto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
     outline: none; /* Elimina el borde de enfoque predeterminado */
-    text-align: center;
-    margin-bottom: 20px!important;
+    text-align: left;
+    white-space: normal;     /* Permite que el texto salte de línea */
+    word-wrap: break-word;   /* Rompe palabras largas si es necesario */
+}
+
+#mail-sender{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .send-code-btn {
+     background-color: var(--class-accent-color-background) !important;
+    width: 100%;
+    height: 30px;
+    border-radius: 50px;
     display: flex;
+    border: none;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    font-size: 14px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    background: var(--accent-color);
-    color: var(--text-color);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+}
+
+.send-code-btn svg{
+    fill: var(--class-accent-color);
 }
 
 .verify-btn{
-    display: flex;
+        width: 40px;
+    height: 40px;
+    background-color: var(--class-green-color-background);
+    border-radius: 50%;
+    border: none !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0;
+    display: flex
+;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    font-size: 14px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    background: var(--accent-color);
-    color: var(--text-color);
-    cursor: pointer;
-    transition: background-color 0.6s ease;
-    margin-top: 15px;
+}
+
+.verify-btn svg{
+fill: var(--class-green-color);
 }
 
 .btn-container{
@@ -240,13 +294,8 @@ h1 {
     justify-content: space-between;
 }
 
-.verify-btn:hover{
-    background: var(--background-color);
-}
 
-.protected-section .btn:hover {
-    background-color: #0056b3;
-}
+
 
 /* Password strength bar */
 .password-strength {
@@ -282,10 +331,18 @@ h1 {
 
 /* Logout and delete account buttons */
 #logout-closeAccoint-container {
-    margin-top: 20px;
+    width: 45%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
+}
+
+.fake-group{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
 }
 
 #logout-closeAccoint-container .btn {
@@ -354,14 +411,17 @@ h1 {
 }
 
 #goback{
-    width: 100%;
+    width: 30%;
     font-size: 14px;
     padding: 8px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
+    opacity: 0.8;
     background: var(--cancel-color);
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -378,10 +438,7 @@ h1 {
         font-size: 28px;
     }
 
-    .profile-photo {
-        width: 120px;
-        height: 120px;
-    }
+    
 
     .photo-buttons .btn {
         font-size: 16px;
@@ -398,4 +455,39 @@ h1 {
     .protected-section h2 {
         font-size: 20px;
     }
+}
+
+@media (max-width: 850px) {
+  .mini-vertical-separator-dos {
+    display: none;
+}
+
+.sub-info {
+
+    flex-direction: column;
+align-items: flex-start; 
+}
+
+.subscription-status {
+width: 100%!important;
+}
+
+#logout-closeAccoint-container {
+width: 100%;
+justify-content: space-between;
+flex-direction: column;
+gap: 30px;
+}
+.fake-group {
+    width: 100%;
+    justify-content: space-between;
+
+   
+}
+
+.lbl{
+    width: 40%;
+}
+
+
 }
