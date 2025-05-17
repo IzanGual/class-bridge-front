@@ -1,0 +1,98 @@
+.aula-lbl {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 19px;
+    text-align: left;
+}
+
+.color-picker {
+  width: 220px;
+  height: 220px;
+  border: 4px solid var(--class-text-color)!important;
+  border-radius: 10px;
+  padding: 0;
+  -webkit-appearance: none; /* Safari / Chrome */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Eliminar el estilo interno del color picker (especialmente en Chrome) */
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 10px;
+}
+.color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 10px;
+}
+.color-picker::-moz-color-swatch {
+  border: none;
+  border-radius: 10px;
+}
+
+#no-margin{
+    margin: 0!important;
+}
+
+
+.aula-url {
+  color: var(--class-accent-color) !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.qr-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.qr-container canvas{
+    width: 150px!important;
+    height: 150px!important;
+}
+
+.link-container {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid var(--class-border-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: var(--class-background-color);
+    color: var(--class-text-color);
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.copy-button {
+  padding: 8px 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: var( --class-text-color);
+  
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-button:hover {
+  background-color: var(--class-button-color);
+}
+.aula-info-conbtainer{
+  width: 100%;
+  margin-top: 40px;
+}

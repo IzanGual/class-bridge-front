@@ -266,7 +266,7 @@
 
 
 .save-btnn{
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     background-color: var(--class-green-color-background);
     border-radius: 50%;
@@ -285,9 +285,7 @@
 }
 
 .tab-info-container button:disabled {
-    background-color: #ccc; /* color de fondo gris claro */
-    color: #666; /* texto gris oscuro */
-    border: 1px solid #aaa;
+    background-color: var(--class-disabled-button-color); /* color de fondo gris claro */
     cursor: not-allowed!important;
     opacity: 0.6; /* un poco transparente */
     pointer-events: none; /* evita cualquier interacción */

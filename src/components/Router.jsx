@@ -17,7 +17,6 @@ import ClassLoginPage from "../classPages/ClassLoginPage/ClassLoginPage";
 import HomePage from "../classPages/HomePage/HomePage";
 import CoursePage from "../classPages/CoursePage/CoursePage";
 import CoursePageEdit from "../classPages/CoursePageEdit/CoursePageEdit";
-
 import UserPage from "../classPages/UserPage/UserPage";
 import DeliverPage from "../classPages/DeliverPage/DeliverPage";
 import ConfigPage from "../classPages/ConfigPage/ConfigPage";
@@ -27,6 +26,7 @@ import CoursePageCreate from "../classPages/CoursePageCreate/CoursePageCreate";
 import UserPageCreate from "../classPages/UserPageCreate/UserPageCreate";
 import UserPageEdit from "../classPages/UserPageEdit/UserPageEdit";
 import DeliverPageCorrect from "../classPages/DeliverPageCorrect/DeliverPageCorrect";
+import AulaColorProvider from "../utils/AulaColorProvider";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -70,6 +70,7 @@ export default function Router() {
                 path="*"
                 element={
                   <>
+                    <AulaColorProvider color={aula.color} /> {/* ← Aplica el color */}
                     <ClassNavigator aula={aula} />
                     <Routes>
                       <Route path="dashboard/home" element={<HomePage aula={aula} />} />

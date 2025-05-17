@@ -3,6 +3,7 @@ import { checkTeacherAuthStatus } from '../../utils/auth.js';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage.jsx';
+import AulaEdit from '../../classComponents/AulaEdit/AulaEdit.jsx';
 
 export default function ConfigPage({ aula }) {
     const navigate = useNavigate(); 
@@ -51,7 +52,7 @@ export default function ConfigPage({ aula }) {
             <div className='class-horizontal-separator'></div>
                     <div>
                         {activeTab === 'perfil' && <ProfilePage/>}
-                        {activeTab === 'aula' && <div>Aula</div>}
+                        {activeTab === 'aula' && <AulaEdit aula={aula}/>}
                     
                     
                     </div>

@@ -217,6 +217,21 @@ margin-right: 0!important;
     gap: 10px;
 }
 
+.entrega-card{
+    width: 100%;
+}
+
+.save-container{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cancel-container{
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
 .tab-button{
     width: 100%;
     max-width: none;
