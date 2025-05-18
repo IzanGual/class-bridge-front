@@ -67,6 +67,90 @@ class AulasModel {
   toString() {
     return `${this.nombre} (Profesor ID: ${this.profesor_id})`;
   }
+
+
+  static async updateColor(aula_id, color) {
+    const apiUrl = APIurl.getAPIurl("updateAula");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+  
+  
+    if (!apiUrl) {
+      console.error('URL no válida');
+      return null;
+    }
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token 
+        },
+        body: JSON.stringify({
+          aula_id,
+          color,
+        }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+            if(data.success){
+                return true;
+            }else{
+              return false;
+          }
+      }
+  
+    } catch (error) {
+      console.error(error);
+      return null;  // En caso de error, retornamos null
+    }
+  }
+
+  static async updateAulaName(aula_id, aula_name) {
+    const apiUrl = APIurl.getAPIurl("updateAula");  // Necesitarías agregar un caso en la clase APIurl para esta operación
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+  
+  
+    if (!apiUrl) {
+      console.error('URL no válida');
+      return null;
+    }
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token 
+        },
+        body: JSON.stringify({
+          aula_id,
+          aula_name,
+        }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+            if(data.success){
+                return data.message;
+            }else{
+              return data.error;
+          }
+      }
+  
+    } catch (error) {
+      console.error(error);
+      return null;  // En caso de error, retornamos null
+    }
+  }
+
+
+
+
+
 }
+
+
 
 export default AulasModel;

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { QRCodeCanvas } from "qrcode.react";
 import { useAlert } from '../../utils/AlertProvider';
+import AulasModel from '../../models/AulasModel.js';
 
 
 
@@ -49,7 +50,7 @@ export default function AulaEdit({ aula }) {
         const r = parseInt(value.substring(0, 2), 16);
         const g = parseInt(value.substring(2, 4), 16);
         const b = parseInt(value.substring(4, 6), 16);
-        return `rgb(${r}, ${g}, ${b})`;
+        return `${r}, ${g}, ${b}`;
     };
 
     const [selectedColor, setSelectedColor] = useState(rgbToHex(aula.color));
@@ -58,8 +59,39 @@ export default function AulaEdit({ aula }) {
         setSelectedColor(e.target.value);
     };
 
-    const handleColorSave = () => {
-        console.log("Nuevo color seleccionado:", hexToRgb(selectedColor));
+  
+    const handleColorSave = async () => {
+         console.log("Nuevo color seleccionado:", hexToRgb(selectedColor));
+
+        let color = hexToRgb(selectedColor);
+
+        const response = await AulasModel.updateColor(aula.id, color);
+            if (response) {
+                showAlert("Color actualizado correctamente, para ver reflejados los cambios porfabor recarga la pagina.");
+                
+            } else {
+                showAlert("Error al actualizar el apartado");
+            }
+    };
+
+    const handleAulaNameSave = async () => {
+        console.log("Nuevo nombre de aula:", aulaName);
+
+        const response = await AulasModel.updateAulaName(aula.id, aulaName);
+            if (response === "nameDup") {
+                showAlert("Este nombre de aula ya esta en uso, porfabor elija otro.");
+                setAulaName(aula.nombre);
+            }
+             if (response === "aula_nameSuccessfullyUpdated") {
+                showAlert("Nombre de aula actualizado correctamente, porfabor recarga la pagina e inicia sesión nuevamente en tu aula. Recuerda que la URL depende el nombre de la misma");
+            }
+
+            if (response === "nameNotUpdated") {
+                showAlert("Huvo un error al actualizar el nombre de tu aula, porfabor intenta nuevamente.");
+            }
+            
+
+
     };
 
 
@@ -84,9 +116,7 @@ export default function AulaEdit({ aula }) {
     const handleAulaNameChange = (e) => {
         setAulaName(e.target.value);
     };
-    const handleAulaNameSave = () => {
-        console.log("Nuevo nombre de aula:", aulaName);
-    };
+    
 
 
 

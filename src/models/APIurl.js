@@ -167,6 +167,10 @@ export default class APIurl {
             
           case "correctEntrega":
               return this.URLbase+"entregas.php";
+
+          case "updateAula":
+              return this.URLbase+"aulas.php";
+              
             
               
           default:
