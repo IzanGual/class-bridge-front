@@ -20,6 +20,7 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
 
         if (isLoggedIn) {
         const role = getUserRole();
+        console.log("Rol del usuario:", role);
         if (role === "teacher") {
             console.log("El usuario es profesor");
             window.location.href = `/bridgeto/${aulaInfo.nombre}/dashboard/home`;
@@ -36,7 +37,7 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
 
         };
         verifyAuth();
-    }, [aulaInfo]); 
+    }, [aulaInfo.nombre]); 
 
    
 
