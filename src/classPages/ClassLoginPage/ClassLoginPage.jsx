@@ -3,13 +3,42 @@ import AulasModel from '../../models/AulasModel';
 import UsersModel from '../../models/UsersModel';
 import { useState, useEffect } from 'react';
 import { useAlert } from '../../utils/AlertProvider'; 
+import { checkAuthStatus, getUserRole } from "../../utils/auth.js"; 
 
 
-export default function ClassLoginPage({ aulaID }) {
+
+export default function ClassLoginPage({ aulaInfo, aulaID }) {
     const [aula, setAula] = useState(null);
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
     const showAlert = useAlert(); 
+
+    useEffect(() => {
+        const verifyAuth = async () => {
+        const isLoggedIn = await checkAuthStatus();
+        console.log("Esta loggueado?",isLoggedIn);
+
+        if (isLoggedIn) {
+        const role = getUserRole();
+        if (role === "teacher") {
+            console.log("El usuario es profesor");
+            window.location.href = `/bridgeto/${aulaInfo.nombre}/dashboard/home`;
+
+        } else if (role === "student") {
+            console.log("El usuario es alumno");
+            window.location.href = `/bridgeto/${aulaInfo.nombre}/class/home`;
+        } else {
+            console.log("Rol no reconocido o no definido");
+        }
+        }
+
+
+
+        };
+        verifyAuth();
+    }, [aulaInfo]); 
+
+   
 
     useEffect(() => {
         const fetchAula = async () => {

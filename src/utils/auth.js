@@ -1,4 +1,5 @@
 import APIurl from "../models/APIurl";
+import { jwtDecode } from "jwt-decode";
 
 export const checkAuthStatus = async () => {
     const token = localStorage.getItem("jwt");
@@ -76,3 +77,17 @@ export const checkTeacherAuthStatus = async (aulaID) => {
         return false;
     }
 };
+
+export function getUserRole() {
+  const token = localStorage.getItem("jwt");
+
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.role || null;
+  } catch (error) {
+    console.error("Error al decodificar el JWT:", error);
+    return null;
+  }
+}

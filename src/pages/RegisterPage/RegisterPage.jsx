@@ -3,6 +3,7 @@ import "./RegisterPage.css";
 import UsersModel from '../../models/UsersModel'; 
 import { useNavigate } from "react-router-dom";
 import { getPasswordStrength } from '../../utils/validationUtils'; // Importar la función de fortaleza de contraseña
+import { checkAuthStatus } from "../../utils/auth.js"; // Importar la función de verificación de autenticación
 
 export default function RegisterPage() {
     const [nombre, setNombre] = useState('');
@@ -12,6 +13,23 @@ export default function RegisterPage() {
     const [passwordStrength, setPasswordStrength] = useState({ level: "Dificultad", score: 0 });
     const [mensaje, setMensaje] = useState('');
     const navigate = useNavigate();
+
+
+     useEffect(() => {
+                const verifyAuth = async () => {
+                const isLoggedIn = await checkAuthStatus();
+                console.log("Esta loggueado?",isLoggedIn);
+        
+                if (isLoggedIn) {
+                window.location.href = `/`;
+    
+                }else {
+                console.log("No está logueado");
+                }
+                };
+
+                verifyAuth();
+            }, []); 
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);

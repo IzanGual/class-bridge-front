@@ -63,7 +63,7 @@ export default function Router() {
           element={
             <Routes>
               {/* Ruta para el inicio de sesión */}
-              <Route path="" element={<ClassLoginPage aulaID={aula.id} />} />
+              <Route path="" element={<ClassLoginPage aulaInfo ={aula} aulaID={aula.id} />} />
 
               {/* Subrutas con barra de navegación */}
               <Route

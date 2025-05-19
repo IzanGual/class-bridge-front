@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "./LoginPage.css";
 import UsersModel from '../../models/UsersModel';
 import { useNavigate } from "react-router-dom";
+import { checkAuthStatus } from "../../utils/auth.js";
 
 
 export default function LoginPage() {
@@ -9,6 +10,24 @@ export default function LoginPage() {
     const [contraseña, setContraseña] = useState('');
     const [mensaje, setMensaje] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+            const verifyAuth = async () => {
+            const isLoggedIn = await checkAuthStatus();
+            console.log("Esta loggueado?",isLoggedIn);
+    
+            if (isLoggedIn) {
+            window.location.href = `/`;
+
+            }else {
+            console.log("No está logueado");
+            }
+            };
+    
+    
+    
+            verifyAuth();
+        }, []); 
 
 
 
