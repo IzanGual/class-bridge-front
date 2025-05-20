@@ -22,8 +22,8 @@ export default function EditDocTab({ course, categoria, apartado }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        if (nombreDocumento.length > 30) {
-            showAlert("El nombre del documento no puede tener más de 30 caracteres.");
+        if (nombreDocumento.length > 200) {
+            showAlert("El nombre del documento no puede tener más de 200 caracteres.");
             return; // Detener la ejecución si la validación falla
         }
 

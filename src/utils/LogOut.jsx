@@ -4,8 +4,8 @@ export function useLogout() {
   const navigate = useNavigate();
 
   const logOut = (aula) => {
-    localStorage.removeItem("jwt"); // Eliminar el token de autenticación
-
+    localStorage.removeItem("jwt"); // Eliminar el token de autenticación 
+    localStorage.removeItem("userName"); 
     if (aula && aula.nombre) {
       // Redirigir a la URL base del aula si se pasa la propiedad aula
       navigate(`/bridgeto/${aula.nombre}`);

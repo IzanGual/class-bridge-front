@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import './Guali.css';
 import { useNavigate } from "react-router-dom";
 
-function Guali() {
+function GualiFace() {
   const [input, setInput] = useState("");
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
   const chatBoxRef = useRef(null);
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -18,33 +18,34 @@ const navigate = useNavigate();
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://api.ai21.com/studio/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_AI21_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            model: "jamba-mini",
-            messages: [
-                { role: "system", content: "Eres un asistente educativo." },
-                ...chat,
-                { role: "user", content: input }
-            ],
-            max_tokens: 500, 
+      const history = [...chat, userMessage];
+      const prompt = history
+        .map((msg) => `${msg.role === "user" ? "Usuario" : "Asistente"}: ${msg.content}`)
+        .join("\n") + "\nAsistente:";
+
+      const response = await fetch("https://api-inference.huggingface.co/models/google/gemma-2b-it", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_FACE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inputs: prompt,
+          parameters: {
+            max_new_tokens: 150,
             temperature: 0.7,
-            top_p: 1.0
-            }),
-        }
-      );
+            return_full_text: false
+          }
+        }),
+      });
 
       const data = await response.json();
-      console.log("Respuesta de la api de la IA:",data);
-      const aiReply = data.choices?.[0]?.message?.content || "No hay respuesta";
+      console.log("Respuesta del modelo de Hugging Face:", data);
+
+      const aiReply = data?.[0]?.generated_text?.replace(prompt, "").trim() || "No hay respuesta.";
       setChat((prev) => [...prev, { role: "assistant", content: aiReply }]);
     } catch (error) {
+      console.error("Error al conectar con Hugging Face:", error);
       setChat((prev) => [
         ...prev,
         { role: "assistant", content: "Error al conectar con el modelo." },
@@ -54,17 +55,15 @@ const navigate = useNavigate();
     }
   };
 
-  // Scroll automático al final del chat
   useEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [chat, loading]);
 
-   const goToClassBridge = () => {
+  const goToClassBridge = () => {
     navigate(`/`);
-  }
-
+  };
 
   return (
     <div className="guali-container">
@@ -72,9 +71,9 @@ const navigate = useNavigate();
         {chat.length === 0 ? (
           <div className="guali-logo-placeholder">
             <div onClick={goToClassBridge} className="menu-header">
-            <img id='nav-logo' src="/assets/images/logos/logo.png" alt="Logo" />
-            <h2 id="nav-text-header">class-bridge</h2>
-        </div>
+              <img id='nav-logo' src="/assets/images/logos/logo.png" alt="Logo" />
+              <h2 id="nav-text-header">class-bridge</h2>
+            </div>
           </div>
         ) : (
           <>
@@ -113,4 +112,4 @@ const navigate = useNavigate();
   );
 }
 
-export default Guali;
+export default GualiFace;

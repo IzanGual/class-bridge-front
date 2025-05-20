@@ -34,7 +34,6 @@ export default function GualiPage({ aula }) {
             </div>
             <div className='class-horizontal-separator'></div>
             <div className='section-container'>
-                <h2 className='section-header'>Tus usuarios</h2>
                 <div className='stuff-container'>
                     <Guali/>
                 </div>

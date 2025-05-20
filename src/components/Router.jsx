@@ -27,6 +27,8 @@ import UserPageCreate from "../classPages/UserPageCreate/UserPageCreate";
 import UserPageEdit from "../classPages/UserPageEdit/UserPageEdit";
 import DeliverPageCorrect from "../classPages/DeliverPageCorrect/DeliverPageCorrect";
 import AulaColorProvider from "../utils/AulaColorProvider";
+import HomeStPage from "../classPages/HomeStPage/HomeStPage";
+import ClassStNavigator from "../classComponents/ClassStNavigator/ClassStNavigator";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -83,12 +85,32 @@ export default function Router() {
                       <Route path="dashboard/tasks" element={<DeliverPage aula={aula} />} />
                       <Route path="dashboard/tasks/correct" element={<DeliverPageCorrect aula={aula}/>} />
                       <Route path="dashboard/config" element={<ConfigPage aula={aula} />} />
-                      <Route path="guali" element={<GualiPage aula={aula}/>} />
+                      <Route path="dashboard/guali" element={<GualiPage aula={aula}/>} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </>
                 }
               />
+              {/* Rutas de alumno (class) */}
+              <Route
+                path="class/*"
+                element={
+                  <>
+                    <ClassStNavigator aula={aula} />
+                    <Routes>
+                      <Route path="home" element={<HomeStPage aula={aula}/>} />
+
+                      {/* Página 404 */}
+                    <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                  </>
+                }
+              />
+
+
+
+
+
             </Routes>
           }
         />

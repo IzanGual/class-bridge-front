@@ -43,6 +43,41 @@ class CoursesModel {
       }
   }
 
+
+static async getStudentCourses(aula_id, alumno_id) {
+    const apiUrl = APIurl.getAPIurl("getStudentCourses", aula_id, alumno_id);
+    const token = localStorage.getItem('jwt'); 
+
+    if (!apiUrl) {
+        console.error('URL no válida');
+        return false; 
+      }
+  
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token 
+          }
+          
+      });
+        if (!response.ok) {
+          throw new Error('Error al obtener los cursos');
+        }
+  
+        const data = await response.json(); 
+        if(data.success){
+          return data.courses;
+        }else{
+          return false;
+        }
+        
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+  }
 static async getFullCourseInfo(course_id) {
     const apiUrl = APIurl.getAPIurl("getFullCourseInfo", course_id);
     const token = localStorage.getItem('jwt'); 

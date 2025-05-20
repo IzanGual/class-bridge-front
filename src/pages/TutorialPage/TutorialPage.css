@@ -1,0 +1,40 @@
+#tutorial{
+    margin-top: 70px;
+}
+
+.tutorial-text-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tutorial-text-container h2 {
+color: var(--class-text-color)!important;
+margin-bottom: 0!important;
+margin-top: 30px;
+}
+
+
+.tutorial-text-container h3 {
+margin: 0!important;
+}
+
+
+.tutorial-img-container {
+    border: none!important;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+}
+
+.tutorial-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* la imagen se recorta para llenar sin deformarse */
+  border-radius: 10px;
+}

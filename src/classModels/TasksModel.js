@@ -51,8 +51,8 @@ class TasksModel {
       }
   }
 
-  static async getTasks() {
-    const apiUrl = APIurl.getAPIurl("getTasks");
+  static async getTasks(aula_id) {
+    const apiUrl = APIurl.getAPIurl("getTasks", aula_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
 
     if (!apiUrl) {
@@ -87,8 +87,43 @@ class TasksModel {
   }
 
 
-  static async getUnDoneTasks() {
-    const apiUrl = APIurl.getAPIurl("getUnDoneTasks");
+  static async getUnDeliveredTasks(aula_id, alumno_id) {
+    const apiUrl = APIurl.getAPIurl("getUnDeliveredTasks", aula_id, alumno_id);
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+
+    if (!apiUrl) {
+        console.error('URL no válida');
+        return false; 
+      }
+  
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token 
+          }
+          
+      });
+        if (!response.ok) {
+          throw new Error('Error al obtener las tareas sin corregir');
+        }
+  
+        const data = await response.json(); // Suponemos que la respuesta es un JSON con las aulas
+        if(data.success){
+          return data.tasks;
+        }else{
+          return false;
+        }
+        
+      } catch (error) {
+        console.error(error);
+        return false; // Retornamos un array vacío en caso de error
+      }
+  }
+
+  static async getUnDoneTasks(aula_id) {
+    const apiUrl = APIurl.getAPIurl("getUnDoneTasks", aula_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
 
     if (!apiUrl) {

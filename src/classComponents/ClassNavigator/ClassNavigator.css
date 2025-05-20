@@ -135,11 +135,16 @@
     margin-bottom: 20px;
   }
 
-  #nav-text-header{
-    color: var(--class-text-color)!important;
-    text-align: center;
-    font-size: 35px!important;
-  }
+ #nav-text-header {
+  color: var(--class-text-color) !important;
+  text-align: center;
+  font-size: 35px !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
   .sidebar a {
     display: flex; 

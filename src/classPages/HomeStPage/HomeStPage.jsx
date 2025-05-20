@@ -1,24 +1,24 @@
-import './HomePage.css';
-import { checkTeacherAuthStatus } from '../../utils/auth.js';
+import './HomeStPage.css';
+import { checkStudentAuthStatus } from '../../utils/auth.js';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TasksModel from "../../classModels/TasksModel";
-import UsersModel from "../../models/UsersModel"; 
 import CoursesModel from "../../classModels/CoursesModel";
-import ClassUnDoneTask from '../../classComponents/ClassUnDoneTask/ClassUnDoneTask'; // Importa el componente
-import MiniUserCard from '../../classComponents/MiniUserCard/MiniUserCard.jsx';
+import ClassUnDeliveredTask from '../../classComponents/ClassUnDeliveredTask/ClassUnDeliveredTask'; // Importa el componente
 import CourseCard from '../../classComponents/CourseCard/CourseCard.jsx';
+import { getUserId } from '../../utils/GetUserId';
 
 
-export default function HomePage({ aula }) {
+
+export default function HomeStPage({ aula }) {
     const navigate = useNavigate(); 
         const [tasks, setTasks] = useState([]); 
-        const [users, setUsers] = useState([]);
         const [courses, setCourses] = useState([]);
+        const alumno_id = getUserId(); // Obtener el ID del alumno desde el localStorage
     
         useEffect(() => {
             const verifyAuth = async () => {
-                const loggedIn = await checkTeacherAuthStatus(aula.id);
+                const loggedIn = await checkStudentAuthStatus(aula.id);
                 console.log("islogged", loggedIn);
     
                 if (!loggedIn) {
@@ -29,7 +29,7 @@ export default function HomePage({ aula }) {
     
             const fecthUnDoneTasks = async () => {
                 try {
-                    const data = await TasksModel.getUnDoneTasks(aula.id); 
+                    const data = await TasksModel.getUnDeliveredTasks(aula.id, alumno_id); 
                     if (data) {
                         setTasks(data); 
                         console.log("Tasks sin corregir:", data);
@@ -44,24 +44,11 @@ export default function HomePage({ aula }) {
                   }
             };
 
-            const fecthOwnUsers = async () => {
-                try {
-                    const data = await UsersModel.getOwnUsers(aula.id); 
-                    if (data) {
-                        setUsers(data); 
-                        console.log("Users:", data);
-                    }else{
-                        console.log("Huvo un error cosiguiendo los usuarios:", data.error);
-                    }
-                    
-                  } catch (error) {
-                    console.error("Error al obtener los usuarios:", error);
-                  }
-            };
+
 
             const fecthOwnCourses = async () => {
                 try {
-                    const data = await CoursesModel.getOwnCourses(aula.id); 
+                    const data = await CoursesModel.getStudentCourses(aula.id, alumno_id); 
                     if (data) {
                         setCourses(data); 
                         console.log("Courses:", data);
@@ -77,47 +64,49 @@ export default function HomePage({ aula }) {
             verifyAuth();
 
             fecthUnDoneTasks();
-            fecthOwnUsers();
             fecthOwnCourses();
             
-        }, [aula, navigate]);
+        }, [aula, navigate, alumno_id]);
+
+        const userName = localStorage.getItem('userName');
+                        
+
 
     return (
         <div className='dashboard-option-container'>
             <div className='class-header-container'>
-                <h1 className='class-title-header'>Bienvenido a tu aula: {aula.nombre} !!</h1>
-                <p className='class-subtitle-header'>Aquí puedes gestionar tu aula y acceder a todas las funcionalidades.</p>
+                <h1 className='class-title-header'>Holaaa {userName}!!</h1>
+                <p className='class-subtitle-header'>Bienvenido a {aula.nombre}, etregale las tareas a tu profe antes de que se enfade !</p>
             </div>
-
+            
+            <h2 id='mar-top' className='section-header'>Tareas por entregar</h2>
             <div className='class-horizontal-mini-separator'></div>
             <div className='section-container'>
+                
                 <div className='stuff-container'>
                     {tasks.length > 0 ? (
-                        tasks.slice(0, 4).map((task) => (
-                            <ClassUnDoneTask key={task.id} task={task} aula={aula} />
+                        tasks.map((task) => (
+                            <ClassUnDeliveredTask key={task.id} task={task} aula={aula} />
                         ))
                     ) : (
-                        <p id='noTasks'>Sin tareas para corregir !!</p>
+                        <p className='noTAny'
+                        >Sin tareas por entregar !!</p>
                     )}
                 </div>
             </div>
             <div id='less-margin' className='class-horizontal-mini-separator'></div>
 
             <div className='section-container'>
-                <h2 className='section-header'>Tus usuarios</h2>
-                <div className='stuff-container'>
-                    {users.slice(0, 5).map((user) => (
-                        <MiniUserCard key={user.id} user={user} aula={aula} />
-                    ))}
-                </div>
-            </div>
-            <div className='section-container'>
                 <h2 className='section-header'>Tus Cursos</h2>
             </div>
             <div className='course-card-container'>
-                    {courses.slice(0, 4).map((course) => (
-                        <CourseCard key={course.id} course={course} aula={aula} />
-                    ))}
+                    {courses.length > 0 ? (
+                        courses.map((course) => (
+                            <CourseCard key={course.id} course={course} aula={aula} />
+                        ))
+                    ) : (
+                        <p className='noTAny'>Tu profe no te ha asignado ningu curso :(</p>
+                    )}
             </div>
 
             

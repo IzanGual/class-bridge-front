@@ -122,6 +122,7 @@ export default function UserPageEdit({ aula }) {
                     setUserCourses(data); // Cursos del usuario
                     setSelectedCourses(data); // Selecciona automáticamente los cursos
                     console.log("Cursos del usuario:", data);
+                    console.log("Cursos del usuario:", userCourses);
                 } else {
                     console.log("Error al obtener los cursos del usuario:", data.error);
                 }

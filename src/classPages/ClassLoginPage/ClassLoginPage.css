@@ -12,9 +12,14 @@
     position: relative; /* Necesario para posicionar el badge */
 }
 
-.login-container h1{
-font-size: 100px;
+.login-container h1 {
+  font-size: clamp(55px, 10vw, 100px);
+  text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
+
 .login-container form {
     display: flex;
     flex-direction: column;

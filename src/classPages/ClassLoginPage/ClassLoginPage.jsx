@@ -68,7 +68,7 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
                     break;
                 case "isStudent":
                     showAlert('Inicio de sesión como estudiante');
-                    //window.location.href = `/bridgeto/${aula.nombre}/classroom`;
+                    window.location.href = `/bridgeto/${aula.nombre}/class/home`;
                     break;
                 case "notAula":
                     showAlert('Esta no es tu aula');

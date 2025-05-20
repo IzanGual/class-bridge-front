@@ -217,6 +217,8 @@ static async uploadStudent(data) {
                 console.log("Respuesta del instert del usuario",data.message);
                 console.log("Respuesta del instert del usuario de DATA",data);
                 localStorage.setItem('jwt', data.token);
+                localStorage.setItem('userName', data.userName);
+               
                 return data.message;
             }else{
                 return data.error;

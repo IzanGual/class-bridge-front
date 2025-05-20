@@ -38,9 +38,10 @@ export default function DeliverPage({ aula }) {
 
         const fecthTareas = async () => {
             try {
-                const data = await TasksModel.getTasks();
+                const data = await TasksModel.getTasks(aula.id);
                 if (data) {
                     setTareas(data);
+                    console.log("Tareas:", data);
                 } else {
                     console.log("Hubo un error consiguiendo las tareas:", data.error);
                 }

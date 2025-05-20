@@ -82,13 +82,20 @@ export default class APIurl {
                 return this.URLbase+"auth/validate-token.php?accion=validateTeacherToken&aulaId="+id;
           
           case "getValidateStudentToken":
-              return this.URLbase+"auth/validate-token.php?accion=validateStudentToken";
+              return this.URLbase+"auth/validate-token.php?accion=validateStudentToken&aulaId="+id;
 
           case "getUnDoneTasks":
-              return this.URLbase+"tasks.php?accion=getUnDoneTasks";
+              return this.URLbase+"tasks.php?accion=getUnDoneTasks&aula_id="+id;
 
+          case "getUnDeliveredTasks":
+              return this.URLbase+"tasks.php?accion=getUnDeliveredTasks&aula_id="+id+"&user_id="+id2;
+
+          case "getStudentCourses":
+              return this.URLbase+"courses.php?studentAula_id="+id+"&studentUser_id="+id2;
+
+              
           case "getTasks":
-              return this.URLbase+"tasks.php?accion=getTasks";
+              return this.URLbase+"tasks.php?accion=getTasks&aula_id="+id;
               
           case "updateCourse":
               return this.URLbase+"courses.php";
