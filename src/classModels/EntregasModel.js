@@ -87,6 +87,44 @@ class EntregasModel {
       }
   }
 
+
+  
+ static async getOwnEntregaByTareaId(tarea_id) {
+  
+    const apiUrl = APIurl.getAPIurl("getOwnEntregaByTareaId", tarea_id);
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+    console.log("LLamada a la URL:", apiUrl);
+    if (!apiUrl) {
+        console.error('URL no válida');
+        return false; 
+      }
+  
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token 
+          }
+          
+      });
+        if (!response.ok) {
+          throw new Error('Error al obtener las entrega ');
+        }
+  
+        const data = await response.json(); // Suponemos que la respuesta es un JSON con las aulas
+        if(data.success){
+          return data.entrega;
+        }else{
+          console.log(data.error)
+          return false;
+        }
+        
+      } catch (error) {
+        console.error(error);
+        return false; // Retornamos un array vacío en caso de error
+      }
+  }
   
 static async correctEntrega(data) {
   const apiUrl = APIurl.getAPIurl("correctEntrega");  // Necesitarías agregar un caso en la clase APIurl para esta operación
@@ -128,6 +166,104 @@ static async correctEntrega(data) {
   }
 }
 
+
+static async deleteEntrega(entrega_id) {
+      const apiUrl = APIurl.getAPIurl("deleteEntrega", entrega_id);
+      const token = localStorage.getItem('jwt'); 
+  
+      if (!apiUrl) {
+          console.error('URL no válida');
+          return false; 
+        }
+    
+        try {
+          const response = await fetch(apiUrl, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token 
+            }
+            
+        });
+          if (!response.ok) {
+            throw new Error('Error al eliminar la etrega');
+          }
+          //const errorText = await response.text();
+          //console.error('Cuerpo de la respuesta de error:', errorText);
+          const data = await response.json(); 
+          if(data.success){
+            return true;
+          }else{
+            console.log(data.error);
+            return false;
+            
+          }
+          
+        } catch (error) {
+          console.error(error);
+          return false;
+        }
+    }
+
+
+
+static async entregarEntrega(entrega_id, fechaActualEntrega, file) {
+            const apiUrl = APIurl.getAPIurl("entregarEntrega"); // Asegúrate de definir esta ruta en `APIurl.js`
+            
+            if (!apiUrl) {
+                console.error('URL no válida');
+                return false;
+            }
+          
+            const token = localStorage.getItem('jwt'); 
+            if (!token) {
+                console.error('Token no encontrado');
+                return false;
+            }
+            
+            const formData = new FormData();
+            formData.append('entregaId', entrega_id);
+            formData.append('fecha', fechaActualEntrega);
+            formData.append('file', file);
+            formData.append('accion', "entregarEntrega");
+        
+          
+            console.log("entregaID", formData.get('entregaId'));
+            console.log("fecha", formData.get('fecha'));
+            console.log("file", formData.get('file'));
+            console.log("accion", formData.get('accion'));
+         
+          
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
+                    },
+                    body: formData
+                });
+          
+                if (response.ok) {
+                    //const errorText = await response.text();
+                    //console.error('Cuerpo de la respuesta de error:', errorText);
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log("ulr publica del archivo:", data.url)
+                        return true; 
+                    } else {
+                        console.error("Error en la API:", data.error);
+                        return false;
+                    }
+                } else {
+                    console.error("Error en la respuesta del servidor:", response.status);
+                    return false;
+                }
+            } catch (error) {
+                console.error("Error al cambiar la info del curso:", error);
+                return false;
+            }
+                
+          }
 
 
 }

@@ -1,0 +1,9 @@
+.hoverable li{
+cursor: pointer;
+
+}
+
+.hoverable li:hover{
+cursor: pointer;
+font-weight: bold;
+}

@@ -179,6 +179,7 @@ min-height: 500px;
 }
 
 
+
 .protected-section p{
 width: 100%;}
  .courseEdit-wrapper {
@@ -261,6 +262,12 @@ padding: 20px;
 font-size: 26px!important;
 margin-bottom: 20px;
 }
+
+.portadaCurso-container {
+    width: 100%!important;
+    margin-top: 10px;
+}
+
 
 .curso-container .portadaCurso-container{
     margin-top: 20px;

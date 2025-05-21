@@ -93,6 +93,8 @@ export default class APIurl {
           case "getStudentCourses":
               return this.URLbase+"courses.php?studentAula_id="+id+"&studentUser_id="+id2;
 
+          case "getOwnEntregaByTareaId":
+              return this.URLbase+"entregas.php?accion=getOwnEntregaByTareaId&tarea_id="+id;
               
           case "getTasks":
               return this.URLbase+"tasks.php?accion=getTasks&aula_id="+id;
@@ -118,6 +120,9 @@ export default class APIurl {
           case "createApartado":
               return this.URLbase + "apartados.php";
 
+          case "entregarEntrega":
+              return this.URLbase + "entregas.php";
+              
           case "getCategoriasByApartadoId":
               return this.URLbase + "categorias.php?apartado_id=" + id;
             
@@ -142,6 +147,9 @@ export default class APIurl {
           case "deleteDocumento":
                 return this.URLbase + "documentos.php?id=" + id + "&accion=deleteDocumento";
 
+          case "deleteEntrega":
+                return this.URLbase + "entregas.php?id=" + id + "&accion=deleteEntrega";
+                
           case "createTarea":
               return this.URLbase+"tasks.php";
 

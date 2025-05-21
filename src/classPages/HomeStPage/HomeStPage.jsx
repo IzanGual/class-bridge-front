@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import TasksModel from "../../classModels/TasksModel";
 import CoursesModel from "../../classModels/CoursesModel";
 import ClassUnDeliveredTask from '../../classComponents/ClassUnDeliveredTask/ClassUnDeliveredTask'; // Importa el componente
-import CourseCard from '../../classComponents/CourseCard/CourseCard.jsx';
 import { getUserId } from '../../utils/GetUserId';
+import CourseStCard from '../../classComponents/CourseStCard/CourseStCard.jsx';
 
 
 
@@ -102,7 +102,7 @@ export default function HomeStPage({ aula }) {
             <div className='course-card-container'>
                     {courses.length > 0 ? (
                         courses.map((course) => (
-                            <CourseCard key={course.id} course={course} aula={aula} />
+                            <CourseStCard key={course.id} course={course} aula={aula}/>
                         ))
                     ) : (
                         <p className='noTAny'>Tu profe no te ha asignado ningu curso :(</p>

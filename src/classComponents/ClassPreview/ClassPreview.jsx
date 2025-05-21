@@ -1,4 +1,3 @@
-import React from 'react';
 import './ClassPreview.css';
 
 const ClassPreview = ({ curso }) => {

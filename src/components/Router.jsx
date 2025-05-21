@@ -29,6 +29,8 @@ import DeliverPageCorrect from "../classPages/DeliverPageCorrect/DeliverPageCorr
 import AulaColorProvider from "../utils/AulaColorProvider";
 import HomeStPage from "../classPages/HomeStPage/HomeStPage";
 import ClassStNavigator from "../classComponents/ClassStNavigator/ClassStNavigator";
+import ClassRoomPage from "../classPages/ClassroomPage/ClassroomPage";
+import EntregaPage from "../classPages/EntregaPage/EntregaPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -99,6 +101,8 @@ export default function Router() {
                     <ClassStNavigator aula={aula} />
                     <Routes>
                       <Route path="home" element={<HomeStPage aula={aula}/>} />
+                      <Route path="course" element={<ClassRoomPage aula={aula}/>} />
+                      <Route path="submit" element={<EntregaPage aula={aula}/>} />
 
                       {/* Página 404 */}
                     <Route path="*" element={<NotFoundPage />} />
