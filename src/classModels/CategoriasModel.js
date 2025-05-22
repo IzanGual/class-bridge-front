@@ -1,4 +1,5 @@
 import APIurl from '../models/APIurl';
+import customFetch from '../utils/customFetch';
 
 class CategoriasModel {
   constructor(id, entrega_id, nombre, curso_id, apartado_id) {
@@ -19,7 +20,7 @@ class CategoriasModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ static async uploadCategoria(id, nombreCategoria) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +96,7 @@ static async deleteCategoria(categoria_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -135,7 +136,7 @@ static async deleteCategoria(categoria_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

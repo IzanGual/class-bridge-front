@@ -1,4 +1,5 @@
 import APIurl from '../models/APIurl';
+import customFetch from '../utils/customFetch';
 
 class CoursesModel {
   constructor(id, nombre, aula_id, img_url) {
@@ -18,7 +19,7 @@ class CoursesModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -54,7 +55,7 @@ static async getStudentCourses(aula_id, alumno_id) {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ static async getFullCourseInfo(course_id) {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ static async getFullCourseInfo(course_id) {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -158,7 +159,7 @@ static async getCoursesByUserId(user_id) {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -210,7 +211,7 @@ static async getCoursesByUserId(user_id) {
       console.log("courseUsers", formData.get('courseUsers'));
     
       try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
               method: 'POST',
               headers: {
                   'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
@@ -265,7 +266,7 @@ static async getCoursesByUserId(user_id) {
     
     
       try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
               method: 'POST',
               headers: {
                   'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
@@ -307,7 +308,7 @@ static async getCoursesByUserId(user_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -343,7 +344,7 @@ static async getCoursesByUserId(user_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

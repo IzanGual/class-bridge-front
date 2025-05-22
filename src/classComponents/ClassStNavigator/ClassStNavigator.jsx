@@ -20,7 +20,7 @@ export default function ClassStNavigator({ aula }) {
   };
 
   const goToGuali = (aula) => {
-    navigate(`/bridgeto/${aula.nombre}/dashboard/guali`);
+    navigate(`/bridgeto/${aula.nombre}/class/guali`);
   }
 
 
@@ -47,7 +47,7 @@ export default function ClassStNavigator({ aula }) {
         </li>
 
         <li>
-          <NavLink to={`/bridgeto/${aula.nombre}/class/profile`}
+          <NavLink to={`/bridgeto/${aula.nombre}/class/myprofile`}
           className={({ isActive }) => (isActive ? "active" : "")}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

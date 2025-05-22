@@ -1,5 +1,5 @@
 import APIurl from './APIurl';  
-
+import customFetch from '../utils/customFetch';
 class PlansModel {
   constructor(id, nombre, descripcion, beneficios, precio) {
     this.id = id;
@@ -19,7 +19,7 @@ class PlansModel {
     }
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await customFetch(apiUrl);
       if (!response.ok) {
         throw new Error('Error al obtener los planes');
       }
@@ -57,7 +57,7 @@ class PlansModel {
      }
  
      try {
-         const response = await fetch(apiUrl, {
+         const response = await customFetch(apiUrl, {
              method: 'GET',
              headers: {
                  'Content-Type': 'application/json',

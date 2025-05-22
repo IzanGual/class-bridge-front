@@ -50,12 +50,13 @@ export default function PlanSelectionPage() {
 
     const handleSendInfoMail = async () => {
         try {
-            const response = await UsersModel.sendInfoMail();
+
+            const response = await UsersModel.sendInfoMail(classroomName);
 
             if(!response){
                 showAlert("NO SE HA ENVIADO EL CORREO");
             } else{ 
-                showAlert("SI SE HA ENVIADO EL CORREO");
+                showAlert("Se ha enviado un correo a su mail con información relevante sobre su compra, revise la carpeta de spam :)");
             }   
         } catch (error) {
             showAlert(`Error: ${error.message}`);

@@ -23,7 +23,7 @@ function GualiFace() {
         .map((msg) => `${msg.role === "user" ? "Usuario" : "Asistente"}: ${msg.content}`)
         .join("\n") + "\nAsistente:";
 
-      const response = await fetch("https://api-inference.huggingface.co/models/google/gemma-2b-it", {
+      const response = await customFetch("https://api-inference.huggingface.co/models/google/gemma-2b-it", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_FACE_API_KEY}`,

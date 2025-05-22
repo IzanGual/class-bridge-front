@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './ProfilePage.css';
 import { getUserId } from '../../utils/GetUserId';
 import UsersModel from '../../models/UsersModel';
@@ -8,6 +8,8 @@ import SubscriptionStatus from '../../components/SubscriptionStatus/Subscription
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../../utils/AlertProvider';
 import { useConfirm } from '../../utils/ConfirmProvider'; // Importar el hook useConfirm
+import { getUserRole } from '../../utils/auth'; // Asegúrate de tener esta función
+
 
 export default function ProfilePage() {
     const [userData, setUserData] = useState(null);
@@ -22,7 +24,8 @@ export default function ProfilePage() {
     const navigate = useNavigate();
     const showAlert = useAlert();
     const showConfirm = useConfirm(); 
-        
+    const role = getUserRole(); // Obtén el rol del usuario
+
 
 
     useEffect(() => {
@@ -249,7 +252,7 @@ export default function ProfilePage() {
     
 
     return (
-        <div className="profile-container">
+        <div className="dashboard-option-container">
             <h2>Perfil</h2>
 
             {userData ? (
@@ -495,30 +498,43 @@ export default function ProfilePage() {
 
                     <div className='class-horizontal-separator'></div>
                         
+
+
                     <div className='sub-info'>
-                    <SubscriptionStatus subscriptionState={userData.estado_suscripcion}></SubscriptionStatus>
-
-                    <div className='mini-vertical-separator-dos'></div>
-
-                    <div id='logout-closeAccoint-container'>
-                    
-                    <div className='fake-group'>
-                        <label> Cerrar sesión</label>
-                    <button className="delete-btn" onClick={logOut}>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D32124"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>                         
-                    </button>
-                    </div>  
-                    
-                <div className='fake-group'>
-                    <label> Eliminar cuenta</label>
-                    <button className="delete-btn" onClick={handleProfileDeletion}>
-                            <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.5 5.00008H4.16667M4.16667 5.00008H17.5M4.16667 5.00008L4.16667 16.6667C4.16667 17.1088 4.34226 17.5327 4.65482 17.8453C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8453C15.6577 17.5327 15.8333 17.1088 15.8333 16.6667V5.00008M6.66667 5.00008V3.33341C6.66667 2.89139 6.84226 2.46746 7.15482 2.1549C7.46738 1.84234 7.89131 1.66675 8.33333 1.66675H11.6667C12.1087 1.66675 12.5326 1.84234 12.8452 2.1549C13.1577 2.46746 13.3333 2.89139 13.3333 3.33341V5.00008M8.33333 9.16675V14.1667M11.6667 9.16675V14.1667" stroke="#D32124" strokeOpacity="0.86" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>                            
-                    </button>
-                    </div>
-                    </div>
-
+                        {/* Solo mostrar si NO es student */}
+                        {role !== "student" && (
+                            <>
+                                <SubscriptionStatus subscriptionState={userData.estado_suscripcion} />
+                                <div className='mini-vertical-separator-dos'></div>
+                                <div id='logout-closeAccoint-container'>
+                                    <div className='fake-group'>
+                                        <label> Cerrar sesión</label>
+                                        <button className="delete-btn" onClick={logOut}>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D32124"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>                   
+                                        </button>
+                                    </div>  
+                                    <div className='fake-group'>
+                                        <label> Eliminar cuenta</label>
+                                        <button className="delete-btn" onClick={handleProfileDeletion}>
+                                             <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2.5 5.00008H4.16667M4.16667 5.00008H17.5M4.16667 5.00008L4.16667 16.6667C4.16667 17.1088 4.34226 17.5327 4.65482 17.8453C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8453C15.6577 17.5327 15.8333 17.1088 15.8333 16.6667V5.00008M6.66667 5.00008V3.33341C6.66667 2.89139 6.84226 2.46746 7.15482 2.1549C7.46738 1.84234 7.89131 1.66675 8.33333 1.66675H11.6667C12.1087 1.66675 12.5326 1.84234 12.8452 2.1549C13.1577 2.46746 13.3333 2.89139 13.3333 3.33341V5.00008M8.33333 9.16675V14.1667M11.6667 9.16675V14.1667" stroke="#D32124" strokeOpacity="0.86" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>   
+                                        </button>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+                        {/* Si es student, solo mostrar cerrar sesión */}
+                        {role === "student" && (
+                            <div id='logout-closeAccoint-container'>
+                                <div className='fake-group'>
+                                    <label> Cerrar sesión</label>
+                                    <button className="delete-btn" onClick={logOut}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D32124"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>                   
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     
 

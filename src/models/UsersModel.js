@@ -1,5 +1,5 @@
 import APIurl from './APIurl';  // Importamos la clase APIurl para obtener la URL base
-
+import customFetch from '../utils/customFetch';
 class UsersModel {
   constructor(id, nombre, email, contraseña, tipo, estado_suscripcion) {
     this.id = id;
@@ -20,7 +20,7 @@ class UsersModel {
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ static async registerStudent(nombre, email, contraseña, cursos, aula_id) {
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ static async uploadStudent(data) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ static async uploadStudent(data) {
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ static async uploadStudent(data) {
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -250,7 +250,7 @@ static async uploadStudent(data) {
     }
 
     try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -296,7 +296,7 @@ static async uploadStudent(data) {
     }
 
     try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -347,7 +347,7 @@ static async uploadUserImage(id, file) {
   console.log("iddddddddddddd", formData.get('id'));
 
   try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
           method: 'POST',
           headers: {
               'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
@@ -385,7 +385,7 @@ static async deleteUserImage() {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
@@ -422,7 +422,7 @@ static async uploadUserName(name) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -464,7 +464,7 @@ static async uploadUserName(name) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -507,7 +507,7 @@ static async verifyEmailCode(verificationCode) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -549,7 +549,7 @@ static async uploadUserMail(mail) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -587,7 +587,7 @@ static async uploadUserPassword(pass) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -628,7 +628,7 @@ static async deleteUserProfile() {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
@@ -662,7 +662,7 @@ static async deleteStudentProfile(id) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
@@ -696,7 +696,7 @@ static async setUserToTeacher(precio, classroomName) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -743,7 +743,7 @@ static async cancelUserSuscription() {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + token // Incluye el token en el encabezado
@@ -752,7 +752,12 @@ static async cancelUserSuscription() {
     });
 
     if (response.ok) {
-      const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
+      
+
+       const errorText = await response.text();
+        console.error('Cuerpo de la respuesta de error:', errorText);
+
+        const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrad
           if(data.success){
               console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
               return true;
@@ -768,7 +773,7 @@ static async cancelUserSuscription() {
 }
 
 
-static async sendInfoMail(email) {
+static async sendInfoMail(aula_name) {
   const apiUrl = APIurl.getAPIurl("sendInfoMail");  // Necesitarías agregar un caso en la clase APIurl para esta operación
   const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
   const action = "sendInfoMail";
@@ -780,7 +785,7 @@ static async sendInfoMail(email) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -788,10 +793,13 @@ static async sendInfoMail(email) {
       }, 
       body: JSON.stringify({
         action,
+        aula_name,
       }),
     });
 
     if (response.ok) {
+          //const errorText = await response.text();
+            //console.error('Cuerpo de la respuesta de error:', errorText);
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
               console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);

@@ -6,5 +6,5 @@
 #noTasks{
     font-family: var(--title-font);
     font-size: 23px;
-    color: var(--class-accent-color);
+    color: var(--class-text-disabled-color);
 }

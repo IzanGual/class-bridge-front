@@ -1,5 +1,5 @@
 import APIurl from '../models/APIurl';
-
+import customFetch from '../utils/customFetch';
 class TasksModel {
   constructor(id, alumno_id, categoria_id, comentario, nota, nombre, fecha_limite, estado, fecha_entrega, archivo_url) {
     this.id = id;
@@ -25,7 +25,7 @@ class TasksModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ class TasksModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ class TasksModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ class TasksModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ class TasksModel {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ class TasksModel {
         }
       
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -252,7 +252,7 @@ static async deleteTask(id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

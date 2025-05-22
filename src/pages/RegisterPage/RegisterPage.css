@@ -12,7 +12,6 @@
     font-size: 2.5rem!important;  /* Aumenta el tamaño */
     font-weight: 800;   /* Lo hace más grueso */
     margin-bottom: 30px!important;
-    color: var(--accent-background-color-l) !important;
   }
   
   form {

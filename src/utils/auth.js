@@ -1,5 +1,6 @@
 import APIurl from "../models/APIurl";
 import { jwtDecode } from "jwt-decode";
+import customFetch from "./customFetch";
 
 export const checkAuthStatus = async () => {
     const token = localStorage.getItem("jwt");
@@ -12,7 +13,7 @@ export const checkAuthStatus = async () => {
     
 
     try {
-        const response = await fetch(validateEndPoint, {
+        const response = await customFetch(validateEndPoint, {
             method: "GET", // Asegúrate de usar el método adecuado (GET o POST según tu backend)
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -51,7 +52,7 @@ export const checkTeacherAuthStatus = async (aulaID) => {
     
 
     try {
-        const response = await fetch(validateEndPoint, {
+        const response = await customFetch(validateEndPoint, {
             method: "GET", // Asegúrate de usar el método adecuado (GET o POST según tu backend)
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -91,7 +92,7 @@ export const checkStudentAuthStatus = async (aulaID) => {
     
 
     try {
-        const response = await fetch(validateEndPoint, {
+        const response = await customFetch(validateEndPoint, {
             method: "GET", // Asegúrate de usar el método adecuado (GET o POST según tu backend)
             headers: { Authorization: `Bearer ${token}` }
         });

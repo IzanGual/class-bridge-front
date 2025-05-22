@@ -1,5 +1,5 @@
 import APIurl from './APIurl';
-
+import customFetch from '../utils/customFetch';
 class AulasModel {
   constructor(id, nombre, profesor_id) {
     this.id = id;
@@ -17,7 +17,7 @@ class AulasModel {
     }
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await customFetch(apiUrl);
       if (!response.ok) {
         throw new Error('Error al obtener las aulas');
       }
@@ -45,7 +45,7 @@ class AulasModel {
     }
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await customFetch(apiUrl);
       if (!response.ok) {
         throw new Error('Error al obtener las aulas');
       }
@@ -80,7 +80,7 @@ class AulasModel {
     }
   
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ class AulasModel {
     }
   
     try {
-      const response = await fetch(apiUrl, {
+      const response = await customFetch(apiUrl, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

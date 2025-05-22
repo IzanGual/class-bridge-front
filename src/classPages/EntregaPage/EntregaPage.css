@@ -70,8 +70,8 @@
 }
 
 .entrega-action-btn.danger {
-  background: var( --class-button-color);
-  color: var(--class-text-color-h);
+  background: var(--class-red-color-background);
+  color: var(--class-red-color);
 }
 
 /* EntregaPage.css */
@@ -167,6 +167,20 @@
     
 }
 
+.entrega-save-btn {
+    background: var(--class-green-color-background);
+    color: var(--class-green-color);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    min-width:130px;
+    transition: all 0.2s;
+}
+
 .action-entrega-btns-container{
   display: flex;
   justify-content: space-between;
@@ -176,6 +190,14 @@
 
 
 @media (max-width: 700px) {
+  .entrega-actions-row{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .entrega-actions-row button{
+    width: 100%;
+  }
 
   .action-entrega-btns-container{
   flex-direction: column;

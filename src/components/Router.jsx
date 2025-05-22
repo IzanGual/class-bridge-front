@@ -31,6 +31,7 @@ import HomeStPage from "../classPages/HomeStPage/HomeStPage";
 import ClassStNavigator from "../classComponents/ClassStNavigator/ClassStNavigator";
 import ClassRoomPage from "../classPages/ClassroomPage/ClassroomPage";
 import EntregaPage from "../classPages/EntregaPage/EntregaPage";
+import GualiStPage from "../classPages/GualiStPage/GualiStPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
@@ -103,6 +104,8 @@ export default function Router() {
                       <Route path="home" element={<HomeStPage aula={aula}/>} />
                       <Route path="course" element={<ClassRoomPage aula={aula}/>} />
                       <Route path="submit" element={<EntregaPage aula={aula}/>} />
+                      <Route path="myprofile" element={<ProfilePage />} />
+                      <Route path="guali" element={<GualiStPage aula={aula}/>} />
 
                       {/* Página 404 */}
                     <Route path="*" element={<NotFoundPage />} />

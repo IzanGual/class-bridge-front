@@ -1,4 +1,5 @@
 import APIurl from '../models/APIurl';
+import customFetch from '../utils/customFetch';
 
 class DocumentosModel {
   constructor(id, categoria_id, nombre, url) {
@@ -18,7 +19,7 @@ class DocumentosModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ static async updateDocumento(id, nombreDocumento, file) {
     console.log("accion", formData.get('accion'));
 
     try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData
@@ -109,7 +110,7 @@ static async deleteDocumento(documento_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -168,7 +169,7 @@ static async deleteDocumento(documento_id) {
          
           
             try {
-                const response = await fetch(apiUrl, {
+                const response = await customFetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData

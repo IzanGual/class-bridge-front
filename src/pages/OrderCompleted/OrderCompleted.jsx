@@ -18,8 +18,8 @@ export default function OrderCompleted() {
             <p className='question'>¿Y ahora qué?</p>
 
             <p className='normal-text'>
-                Puedes acceder al panel administrativo de tu aula iniciando sesión con tu usuario de class-bridge desde el siguiente enlace:  
-                <a href={classLink}>{classroomName}</a>
+                Puedes acceder al panel administrativo de tu aula iniciando sesión con tu usuario de class-bridge desde el siguiente enlace:   
+                <a href={classLink}> {classroomName}</a>
             </p>
 
             <p className='normal-text'>

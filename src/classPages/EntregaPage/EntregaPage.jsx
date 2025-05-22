@@ -136,6 +136,7 @@ const handleSave = async () => {
     if (data) {
       showAlert("Se ha entregado todo con éxito");
       setActiveAction(null);
+      setSelectedFile(null);
       await fetchEntregaInfo(); // <-- Recarga la entrega para actualizar los botones
     } else {
       console.log("Hubo un error al entregar la entrega:", data);
@@ -203,75 +204,140 @@ const handleDelete = async () => {
 
       {/* Contenido dinámico según acción */}
       {activeAction === "editar" && (
-        <div className="entrega-action-content">
-          <h3>Editar entrega</h3>
-          <p>Aquí iría el formulario o contenido para editar la entrega.</p>
-          <button className="entrega-action-btn" onClick={handleVolver}>Volver</button>
+                <div className='apartado entrega-info-container'>
+            <h3 className="entrega-titulo">{entrega.nombre_tarea}</h3>
 
-        </div>
-      )}
+            <div className="entrega-info-row">
+              <span className="entrega-label">La entrega vence el:</span>
+              <span className="entrega-value">{fechaLimite.text}
+                <span className={`entrega-status-dot ${fechaLimite.color}`} />
+              </span>
+            </div>
+              <div className="entrega-info-row">
+              <span className="entrega-label">La entrega se realizó:</span>
+              <span className="entrega-value">{fechaEntrega.text}
+                <span className={`entrega-status-dot ${fechaEntrega.color}`} />
+              </span>
+            </div>
+            <div className="entrega-info-row">
+              <span className="entrega-label">Archivo actual:</span>
+              <span className="entrega-value">{archivoEntrega.text}
+                <span className={`entrega-status-dot ${archivoEntrega.color}`} />
+              </span>
+            </div>
+
+            <div className="entrega-info-row">
+              <span className="entrega-label">Para editar tu entrega selecciona el nuevo archivo y dale a guardar:</span>
+            </div>
+            <div
+              className="entrega-dropzone"
+              onDragOver={e => e.preventDefault()}
+              onDrop={e => {
+                e.preventDefault();
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                  setSelectedFile(e.dataTransfer.files[0]);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+            >
+              <input
+                type="file"
+                id="file-upload"
+                className="entrega-file-input"
+                style={{ display: 'none' }}
+                onChange={e => {
+                  if (e.target.files && e.target.files[0]) {
+                    setSelectedFile(e.target.files[0]);
+                  }
+                }}
+              />
+              <label htmlFor="file-upload" className="entrega-dropzone-label">
+                Arrastra y suelta un archivo aquí o <span className="entrega-file-link">haz clic para seleccionar</span>
+              </label>
+              {selectedFile && (
+                <div className="entrega-file-selected">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                    <path d="M4 4v12a2 2 0 002 2h8a2 2 0 002-2V8.828a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0011.172 3H6a2 2 0 00-2 2z" stroke="#2C2C2C" strokeWidth="1.5" />
+                    <path d="M9 13h2M9 10h2" stroke="#2C2C2C" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span className="entrega-file-name">{selectedFile.name}</span>
+                  <button className="entrega-file-remove" onClick={() => setSelectedFile(null)} title="Quitar archivo">
+                    ×
+                  </button>
+                </div>
+              )}
+            </div>
+            <p className='entrega-ifo'>Solo puedes subir un archivo y puede medir un máximo de (10MB)</p>
+              <div className='action-entrega-btns-container'>
+                  <button className="entrega-return-btn" onClick={handleVolver}>Volver</button>
+                  <button className="entrega-save-btn" onClick={handleSave}>Guardar</button>
+              </div>
+
+          </div>
+        )}
       
       {activeAction === "realizar" && (
-  <div className='apartado entrega-info-container'>
-    <h3 className="entrega-titulo">{entrega.nombre_tarea}</h3>
+          <div className='apartado entrega-info-container'>
+            <h3 className="entrega-titulo">{entrega.nombre_tarea}</h3>
 
-    <div className="entrega-info-row">
-      <span className="entrega-label">La entrega vence el:</span>
-      <span className="entrega-value">{fechaLimite.text}
-        <span className={`entrega-status-dot ${fechaLimite.color}`} />
-      </span>
-    </div>
+            <div className="entrega-info-row">
+              <span className="entrega-label">La entrega vence el:</span>
+              <span className="entrega-value">{fechaLimite.text}
+                <span className={`entrega-status-dot ${fechaLimite.color}`} />
+              </span>
+            </div>
 
-    <div className="entrega-info-row">
-      <span className="entrega-label">Añade el fichero con tu respuesta aquí:</span>
-    </div>
-    <div
-      className="entrega-dropzone"
-      onDragOver={e => e.preventDefault()}
-      onDrop={e => {
-        e.preventDefault();
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-          setSelectedFile(e.dataTransfer.files[0]);
-        }
-      }}
-      tabIndex={0}
-      role="button"
-    >
-      <input
-        type="file"
-        id="file-upload"
-        className="entrega-file-input"
-        style={{ display: 'none' }}
-        onChange={e => {
-          if (e.target.files && e.target.files[0]) {
-            setSelectedFile(e.target.files[0]);
-          }
-        }}
-      />
-      <label htmlFor="file-upload" className="entrega-dropzone-label">
-        Arrastra y suelta un archivo aquí o <span className="entrega-file-link">haz clic para seleccionar</span>
-      </label>
-      {selectedFile && (
-        <div className="entrega-file-selected">
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-            <path d="M4 4v12a2 2 0 002 2h8a2 2 0 002-2V8.828a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0011.172 3H6a2 2 0 00-2 2z" stroke="#2C2C2C" strokeWidth="1.5" />
-            <path d="M9 13h2M9 10h2" stroke="#2C2C2C" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          <span className="entrega-file-name">{selectedFile.name}</span>
-          <button className="entrega-file-remove" onClick={() => setSelectedFile(null)} title="Quitar archivo">
-            ×
-          </button>
-        </div>
-      )}
-    </div>
-    <p className='entrega-ifo'>Solo puedes subir un archivo y puede medir un máximo de (10MB)</p>
-      <div className='action-entrega-btns-container'>
-          <button className="entrega-return-btn" onClick={handleVolver}>Volver</button>
-          <button className="entrega-return-btn" onClick={handleSave}>Guardar</button>
-      </div>
+            <div className="entrega-info-row">
+              <span className="entrega-label">Añade el fichero con tu respuesta aquí:</span>
+            </div>
+            <div
+              className="entrega-dropzone"
+              onDragOver={e => e.preventDefault()}
+              onDrop={e => {
+                e.preventDefault();
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                  setSelectedFile(e.dataTransfer.files[0]);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+            >
+              <input
+                type="file"
+                id="file-upload"
+                className="entrega-file-input"
+                style={{ display: 'none' }}
+                onChange={e => {
+                  if (e.target.files && e.target.files[0]) {
+                    setSelectedFile(e.target.files[0]);
+                  }
+                }}
+              />
+              <label htmlFor="file-upload" className="entrega-dropzone-label">
+                Arrastra y suelta un archivo aquí o <span className="entrega-file-link">haz clic para seleccionar</span>
+              </label>
+              {selectedFile && (
+                <div className="entrega-file-selected">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                    <path d="M4 4v12a2 2 0 002 2h8a2 2 0 002-2V8.828a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0011.172 3H6a2 2 0 00-2 2z" stroke="#2C2C2C" strokeWidth="1.5" />
+                    <path d="M9 13h2M9 10h2" stroke="#2C2C2C" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span className="entrega-file-name">{selectedFile.name}</span>
+                  <button className="entrega-file-remove" onClick={() => setSelectedFile(null)} title="Quitar archivo">
+                    ×
+                  </button>
+                </div>
+              )}
+            </div>
+            <p className='entrega-ifo'>Solo puedes subir un archivo y puede medir un máximo de (10MB)</p>
+              <div className='action-entrega-btns-container'>
+                  <button className="entrega-return-btn" onClick={handleVolver}>Volver</button>
+                  <button className="entrega-return-btn" onClick={handleSave}>Guardar</button>
+              </div>
 
-  </div>
-)}
+          </div>
+        )}
 
       {/* Info de la entrega solo si no hay acción activa */}
       {!activeAction && (

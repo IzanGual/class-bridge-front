@@ -1,5 +1,5 @@
 import APIurl from '../models/APIurl';
-
+import customFetch from '../utils/customFetch';
 class EntregasModel {
   constructor(id, alumno_id, tarea_id, comentario, nota, estado, fecha_entrega, archivo_url, estado_correccion) {
     this.id = id;
@@ -24,7 +24,7 @@ class EntregasModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ class EntregasModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ class EntregasModel {
       }
   
       try {
-        const response = await fetch(apiUrl, {
+        const response = await customFetch(apiUrl, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ static async correctEntrega(data) {
   }
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await customFetch(apiUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ static async deleteEntrega(entrega_id) {
         }
     
         try {
-          const response = await fetch(apiUrl, {
+          const response = await customFetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -235,7 +235,7 @@ static async entregarEntrega(entrega_id, fechaActualEntrega, file) {
          
           
             try {
-                const response = await fetch(apiUrl, {
+                const response = await customFetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + token, // No agregamos `Content-Type`, fetch lo hace automáticamente con FormData

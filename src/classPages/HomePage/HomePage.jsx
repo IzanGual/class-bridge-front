@@ -106,18 +106,33 @@ export default function HomePage({ aula }) {
             <div className='section-container'>
                 <h2 className='section-header'>Tus usuarios</h2>
                 <div className='stuff-container'>
-                    {users.slice(0, 5).map((user) => (
+                    {users.length > 0 ? (
+                    
+                    users.slice(0, 5).map((user) => (
                         <MiniUserCard key={user.id} user={user} aula={aula} />
-                    ))}
+                    ))
+
+                    ) : (
+                        <p id='noTasks'>Aún no has creado ningún usuario :(</p>
+                    )}
+
+                    
                 </div>
             </div>
             <div className='section-container'>
                 <h2 className='section-header'>Tus Cursos</h2>
             </div>
             <div className='course-card-container'>
-                    {courses.slice(0, 4).map((course) => (
+
+                    {courses.length > 0 ? (
+                    
+                    courses.slice(0, 4).map((course) => (
                         <CourseCard key={course.id} course={course} aula={aula} />
-                    ))}
+                    ))
+
+                    ) : (
+                        <p id='noTasks'>Aún no has creado ningún curso :(</p>
+                    )}
             </div>
 
             
