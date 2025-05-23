@@ -12,7 +12,7 @@ export default function OrderCompleted() {
     };
 
     return (
-        <div id='order-completed-container' className='page-container'>
+        <div  className='landing-option-container mg-top'>
             <h1 id='order-completed-message'>SERVICIO CONTRATADO CON ÉXITO</h1>
 
             <p className='question'>¿Y ahora qué?</p>

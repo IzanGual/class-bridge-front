@@ -78,6 +78,7 @@
     padding: 15px 20px;
     cursor: pointer;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 .menu-options li a{

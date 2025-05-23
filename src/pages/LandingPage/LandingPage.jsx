@@ -19,6 +19,8 @@ export default function LandingPage({aulas}) {
       }
     };
 
+    window.scrollTo(0, 0);
+
     fetchPlanes();
   }, []);
 

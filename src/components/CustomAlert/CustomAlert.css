@@ -24,6 +24,17 @@
     animation: slideFromTop 0.4s ease-in;
 }
 
+@media screen and (max-width: 550px) {
+    .custom-alert {
+        width: calc(100% - 40px);
+    }
+    .custom-confirm {
+        width: calc(100% - 40px);
+    }
+
+
+}
+
 
 /* Botón de cerrar en la esquina superior derecha */
 .close-btn {

@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import "./RegisterPage.css";
 import UsersModel from '../../models/UsersModel'; 
 import { useNavigate } from "react-router-dom";
-import { getPasswordStrength } from '../../utils/validationUtils'; // Importar la función de fortaleza de contraseña
-import { checkAuthStatus } from "../../utils/auth.js"; // Importar la función de verificación de autenticación
+import { getPasswordStrength } from '../../utils/validationUtils';
+import { checkAuthStatus } from "../../utils/auth.js";
+import { useAlert } from '../../utils/AlertProvider';
 
 export default function RegisterPage() {
     const [nombre, setNombre] = useState('');
@@ -11,32 +12,33 @@ export default function RegisterPage() {
     const [contraseña, setContraseña] = useState('');
     const [confirmarContraseña, setConfirmarContraseña] = useState('');
     const [passwordStrength, setPasswordStrength] = useState({ level: "Dificultad", score: 0 });
-    const [mensaje, setMensaje] = useState('');
     const navigate = useNavigate();
+    const showAlert = useAlert();
 
-
-     useEffect(() => {
-                const verifyAuth = async () => {
-                const isLoggedIn = await checkAuthStatus();
-                console.log("Esta loggueado?",isLoggedIn);
-        
-                if (isLoggedIn) {
-                window.location.href = `/`;
+    useEffect(() => {
+        const verifyAuth = async () => {
+            const isLoggedIn = await checkAuthStatus();
+            console.log("Esta loggueado?", isLoggedIn);
     
-                }else {
+            if (isLoggedIn) {
+                window.location.href = `/`;
+            } else {
                 console.log("No está logueado");
-                }
-                };
+            }
+        };
 
-                verifyAuth();
-            }, []); 
+        window.scrollTo(0, 0);
+
+
+        verifyAuth();
+    }, []); 
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
-        const locParam = queryParams.get('loc'); // Obtén el valor del parámetro 'loc'
+        const locParam = queryParams.get('loc');
 
         if (locParam === 'plan') {
-            setMensaje('Antes de seleccionar el plan debes registrarte');
+            showAlert('Antes de seleccionar el plan debes registrarte');
         } 
     }, []);
 
@@ -49,9 +51,8 @@ export default function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validar que las contraseñas coincidan
         if (contraseña !== confirmarContraseña) {
-            setMensaje('Las contraseñas no coinciden.');
+            showAlert('Las contraseñas no coinciden.');
             return;
         }
 
@@ -60,22 +61,22 @@ export default function RegisterPage() {
 
             switch(response){
                 case "insertCorrect":
-                    setMensaje('Usuario registrado con éxito');
+                    showAlert('Usuario registrado con éxito');
                     handleLoginAfterRegister(email, contraseña);
                     break;
                 case "emailDup":
-                    setMensaje('El email ya está registrado');
+                    showAlert('El email ya está registrado');
                     break;
                 case "insertError":
-                    setMensaje('Error al registrar el usuario');
+                    showAlert('Error al registrar el usuario');
                     break;
                 default:
-                    setMensaje('Error al registrar el usuario');
+                    showAlert('Error al registrar el usuario');
                     break;
             }
 
         } catch (error) {
-            setMensaje(`Error: ${error.message}`);
+            showAlert(`Error: ${error.message}`);
         }
     };
 
@@ -85,79 +86,140 @@ export default function RegisterPage() {
     
             switch(response) {
                 case "correctLogin":
-                    setMensaje('Inicio de sesión exitoso');
+                    showAlert('Inicio de sesión exitoso');
                     navigate("/");
                     break;
                 case "incorrectCredentials":
-                    setMensaje('Email o contraseña incorrectos');
+                    showAlert('Email o contraseña incorrectos');
                     break;
                 case "consultError":
-                    setMensaje('Error al iniciar sesión');
+                    showAlert('Error al iniciar sesión');
                     break;
                 default:
-                    setMensaje('Error al iniciar sesión');
+                    showAlert('Error al iniciar sesión');
                     break;
             }
         } catch (error) {
-            setMensaje(`Error: ${error.message}`);
+            showAlert(`Error: ${error.message}`);
         }
     };
 
     return (
-        <div className="registro-container">
-            <h2>Registro</h2>
-            {mensaje && <p className='message-text'>{mensaje}</p>}
-            <form onSubmit={handleSubmit}>
-                <input
-                    placeholder='Nombre'
-                    type="text" 
-                    value={nombre} 
-                    onChange={(e) => setNombre(e.target.value)} 
-                    required 
-                />
+        <div className='landing-option-container mg-top'>
 
-                <input
-                placeholder='Correo electrónico'
-                    type="email" 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
-                    required 
-                />
-
-                <input 
-                placeholder='Contraseña'
-                    type="password" 
-                    value={contraseña} 
-                    onChange={(e) => handlePasswordChange(e.target.value)} 
-                    required 
-                />
-
-                <input
-                    placeholder='Confirmar Contraseña' 
-                    type="password" 
-                    value={confirmarContraseña} 
-                    onChange={(e) => setConfirmarContraseña(e.target.value)} 
-                    required 
-                />
-                {/* Barra de seguridad */}
-                <div className="password-strength">
-                    <div 
-                        className="strength-bar" 
-                        style={{ 
-                            width: `${passwordStrength.score}%`, 
-                            backgroundColor: getStrengthColor(passwordStrength.level) 
-                        }}
-                    ></div>
+        
+        <div className="register-page">
+            <div className="register-page__container">
+                <div className="register-page__header">
+                    <h2 className="register-page__title">Crear cuenta</h2>
+                    <p className="register-page__subtitle">
+                        Únete a nuestra plataforma educativa
+                    </p>
                 </div>
-                <p>{passwordStrength.level}</p>
 
-                <button type="submit" className="btn-success">
-                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FAFAF5"><path d="m480-320 160-160-160-160-56 56 64 64H320v80h168l-64 64 56 56Zm0 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-                </button>
-            </form>
-            <div id='login-pont-container'>
-                <p>¿Ya tienes una cuenta? <a href="/login">Entra aqui.</a></p>
+                <form className="register-page__form" onSubmit={handleSubmit}>
+                    <div className="register-page__form-group">
+                        <label className="register-page__label" htmlFor="nombre">
+                            Nombre completo
+                        </label>
+                        <input
+                            id="nombre"
+                            className="register-page__input"
+                            placeholder="Ingresa tu nombre completo"
+                            type="text" 
+                            value={nombre} 
+                            onChange={(e) => setNombre(e.target.value)} 
+                            required 
+                        />
+                    </div>
+
+                    <div className="register-page__form-group">
+                        <label className="register-page__label" htmlFor="email">
+                            Correo electrónico
+                        </label>
+                        <input
+                            id="email"
+                            className="register-page__input"
+                            placeholder="tu@email.com"
+                            type="email" 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            required 
+                        />
+                    </div>
+
+                    <div className="register-page__form-group">
+                        <label className="register-page__label" htmlFor="password">
+                            Contraseña
+                        </label>
+                        <input 
+                            id="password"
+                            className="register-page__input"
+                            placeholder="Crea una contraseña segura"
+                            type="password" 
+                            value={contraseña} 
+                            onChange={(e) => handlePasswordChange(e.target.value)} 
+                            required 
+                        />
+                        
+                        {contraseña && (
+                            <div className="register-page__password-strength">
+                                <div className="register-page__password-strength-bar">
+                                    <div 
+                                        className="register-page__password-strength-fill" 
+                                        style={{ 
+                                            width: `${passwordStrength.score}%`, 
+                                            backgroundColor: getStrengthColor(passwordStrength.level) 
+                                        }}
+                                    ></div>
+                                </div>
+                                <span className="register-page__password-strength-text">
+                                    {passwordStrength.level}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="register-page__form-group">
+                        <label className="register-page__label" htmlFor="confirmPassword">
+                            Confirmar contraseña
+                        </label>
+                        <input
+                            id="confirmPassword"
+                            className="register-page__input"
+                            placeholder="Confirma tu contraseña" 
+                            type="password" 
+                            value={confirmarContraseña} 
+                            onChange={(e) => setConfirmarContraseña(e.target.value)} 
+                            required 
+                        />
+                    </div>
+
+                    <button type="submit" className="btn-seleccionar">
+                        <span className="register-page__submit-btn-text">Crear cuenta</span>
+                        <svg 
+                            className="register-page__submit-btn-icon"
+                            xmlns="http://www.w3.org/2000/svg" 
+                            height="20px" 
+                            viewBox="0 -960 960 960" 
+                            width="20px" 
+                            fill="currentColor"
+                        >
+                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+                        </svg>
+                    </button>
+                </form>
+
+                <div className="register-page__login-link">
+                    <p className="register-page__login-text">
+                        ¿Ya tienes una cuenta? 
+                        <a href="/login" className="register-page__login-anchor">
+                            Inicia sesión aquí
+                        </a>
+                    </p>
+                </div>
             </div>
+        </div>
         </div>
     );
 }
@@ -166,12 +228,12 @@ export default function RegisterPage() {
 const getStrengthColor = (level) => {
     switch (level) {
         case "Débil":
-            return "red";
+            return "var(--class-red-color)";
         case "Media":
-            return "orange";
+            return "rgba(var(--class-accent-color-rgb), 0.8)";
         case "Fuerte":
-            return "green";
+            return "var(--class-green-color)";
         default:
-            return "gray";
+            return "var(--class-text-grey-color)";
     }
 };

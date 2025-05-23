@@ -87,6 +87,16 @@ h1, h2, h3 {
   box-sizing: border-box;
 }
 
+p{
+  margin-bottom:0!important ;
+}
+
+a{
+  color: var(--class-text-color)!important;
+  font-weight: bold;
+  text-decoration: none!important;
+}
+
 .separator {
   width: 100%; /* Ocupa el 90% del ancho del contenedor */
   height: 1px; /* Una línea delgada */

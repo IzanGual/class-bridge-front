@@ -2,7 +2,8 @@
 
 #order-completed-message{
     color: var(--success-color);
-    margin-top: 100px!important;
+    
+    text-align: center;
 }
 
 #order-completed-container{
@@ -24,14 +25,14 @@
 }
 
 .black-btn {
-    width: 90%;
-    padding: 10px 20px; /* Espaciado interno */
+    width: 36px;
+    height: 36px;
     font-size: 16px; /* Tamaño de texto */
     font-weight: 600; /* Texto más destacado */
-    background: var(--mega-dark-color); /* Color de fondo usando tu color de acento */
+    background: var(--class-button-color); /* Color de fondo usando tu color de acento */
     color: var(--text-color-light); /* Texto en color claro para contraste */
     border: none; /* Borde usando el color del texto principal */
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 50%; /* Bordes redondeados */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
     outline: none; /* Elimina el borde al hacer clic */

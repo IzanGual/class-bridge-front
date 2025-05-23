@@ -216,6 +216,8 @@ margin-right: 0!important;
     width: 100%;
 }
 
+
+
 .navbar {  
   width: calc(100% - 40px); /* Resta 40px a cada lado */ 
 }
@@ -240,7 +242,7 @@ margin-right: 0!important;
 }
 
 .tab-button{
-    width: 100%;
+    width: 100%!important;
     max-width: none;
 }
 

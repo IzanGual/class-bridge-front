@@ -2,7 +2,7 @@ import './PrivacyPage.css';
 
 export default function PrivacyPage() {
     return (
-        <div className='page-container'>
+        <div className='landing-option-container mg-top'>
             <div id="privacy">
             <h1>Política de Privacidad</h1>
             <p><strong>Última actualización:</strong> 16-02-2025</p>

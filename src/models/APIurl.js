@@ -1,5 +1,5 @@
 export default class APIurl {
-    static URLbase = "http://localhost/classbridgeapi/";
+    static URLbase = "http://192.168.1.130/classbridgeapi/";
 
     static  getAPIurl(aim, id, id2) {
         switch (aim) {
