@@ -149,7 +149,7 @@ export default function CreateDocs({ newCourseId }) {
             
                                    {activeTab === 'subirDoc' && (
                                         selectedCategoria ? (
-                                            <SubirDocTab apartado={selectedApartado} course={newCourseId} categoria={selectedCategoria}/> 
+                                            <SubirDocTab apartado={selectedApartado} course={{ id: newCourseId }} categoria={selectedCategoria}/> 
                                         ) : (
                                             <div className='margin-top' style={{ opacity: 0.6 }}>Selecciona una categoría para subir un documento</div>
                                         )

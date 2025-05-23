@@ -3,7 +3,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     color: var(--text-color-light);
 
-    width: 90%;
+    width: calc(100% - 80px); /* Resta 40px a cada lado */ 
     min-height: 66px;
     position: fixed !important;
     top: 10px;

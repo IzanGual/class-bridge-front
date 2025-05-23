@@ -31,7 +31,6 @@ export default function SubirDocTab({ course, categoria, apartado }) {
     }
 
         
-
         const response = await DocumentosModel.createDocumento(nombreDocumento, categoria.id, archivo, course.id, apartado.id);
             if (response) {
                 showAlert("Documento creado y subido correctamente");

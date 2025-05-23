@@ -61,6 +61,22 @@ export default function UserPageEdit({ aula }) {
             }
         };
 
+        const fetchCoursesByUserId = async (userID) => {
+            try {
+                const data = await CoursesModel.getCoursesByUserId(userID);
+                if (data) {
+                    setUserCourses(data); // Cursos del usuario
+                    setSelectedCourses(data); // Selecciona automáticamente los cursos
+                    console.log("Cursos dispoibles:", data);
+                    console.log("Cursos del usuario:", userCourses);
+                } else {
+                    console.log("Error al obtener los cursos del usuario:", data.error);
+                }
+            } catch (error) {
+                console.error("Error al obtener los cursos del usuario:", error);
+            }
+        };
+
         const fetchUsers = async () => {
             try {
                 const data = await UsersModel.getOwnUsers(aula.id);
@@ -77,7 +93,7 @@ export default function UserPageEdit({ aula }) {
                             setNombre(user.nombre);
                             setCorreo(user.email);
                             setContrasena(''); // No mostramos la contraseña actual
-                            setSelectedCourses(user.courses || []); // Cursos actuales del usuario
+                            fetchCoursesByUserId(user.id);
                             console.log("Usuario seleccionado:", user);
                         }
                     }
@@ -121,7 +137,7 @@ export default function UserPageEdit({ aula }) {
                 if (data) {
                     setUserCourses(data); // Cursos del usuario
                     setSelectedCourses(data); // Selecciona automáticamente los cursos
-                    console.log("Cursos del usuario:", data);
+                    console.log("Cursos dispoibles:", data);
                     console.log("Cursos del usuario:", userCourses);
                 } else {
                     console.log("Error al obtener los cursos del usuario:", data.error);

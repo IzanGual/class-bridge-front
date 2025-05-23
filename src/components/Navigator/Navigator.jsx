@@ -30,7 +30,7 @@ export default function Navigator() {
             </svg>
           </button>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#planes">Planes</a></li>
+            <li><a className="dropdown-item" href="#planes">Plan</a></li>
             <li><a className="dropdown-item" href="#nosotros">¿Por qué nosotros?</a></li>
             <li><a className="dropdown-item" href="#faq">FAQ</a></li>
             <li><a className="dropdown-item" href="#contacto">Contacto</a></li>

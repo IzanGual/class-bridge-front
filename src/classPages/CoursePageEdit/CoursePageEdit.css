@@ -1,5 +1,6 @@
 .course-dropdown {
     width: auto;
+    max-width: 200px;
     padding: 8px;
     font-size: 16px;
     border: 2px solid var(--class-border-color);
@@ -211,7 +212,12 @@ margin-right: 0!important;
 
 @media screen and (max-width: 550px) {
 .course-dropdown{
+    max-width: none!important;
     width: 100%;
+}
+
+.navbar {  
+  width: calc(100% - 40px); /* Resta 40px a cada lado */ 
 }
 .tab-container{
     flex-direction: column;

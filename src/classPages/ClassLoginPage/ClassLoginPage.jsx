@@ -4,6 +4,7 @@ import UsersModel from '../../models/UsersModel';
 import { useState, useEffect } from 'react';
 import { useAlert } from '../../utils/AlertProvider'; 
 import { checkAuthStatus, getUserRole } from "../../utils/auth.js"; 
+import { checkTeacherAuthStatus } from '../../utils/auth.js';
 
 
 
@@ -23,7 +24,15 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
         console.log("Rol del usuario:", role);
         if (role === "teacher") {
             console.log("El usuario es profesor");
-            window.location.href = `/bridgeto/${aulaInfo.nombre}/dashboard/home`;
+            
+            const isTheTeacher = await checkTeacherAuthStatus(aulaID);
+
+            if (!isTheTeacher) {
+                
+                showAlert("No eres el profesor de este aula!")
+            }else{
+                window.location.href = `/bridgeto/${aulaInfo.nombre}/dashboard/home`;
+            }
 
         } else if (role === "student") {
             console.log("El usuario es alumno");
@@ -37,9 +46,11 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
 
         };
         verifyAuth();
-    }, [aulaInfo.nombre]); 
+    }, [aulaInfo.nombre, aulaID, showAlert]); 
 
    
+
+
 
     useEffect(() => {
         const fetchAula = async () => {

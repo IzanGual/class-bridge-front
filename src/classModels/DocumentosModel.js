@@ -152,7 +152,8 @@ static async deleteDocumento(documento_id) {
                 console.error('Token no encontrado');
                 return false;
             }
-            
+
+             console.log("El id del curso antesd e crear el doc es:", curso_id);
             const formData = new FormData();
             formData.append('docName', nombreDocumento);
             formData.append('catId', categoriaId);

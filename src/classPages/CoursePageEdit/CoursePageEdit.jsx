@@ -132,6 +132,8 @@ export default function CoursePageEdit({ aula }) {
                     setCourseInfo(null);
                 }
             } else {
+                setSelectedCourse(null);
+                setCourseInfo(null);
                 console.log("Hubo un error consiguiendo los cursos:", data.error);
             }
         } catch (error) {

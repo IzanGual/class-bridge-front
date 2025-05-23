@@ -8,7 +8,7 @@ export default function ClassUnDeliveredTask({ task, aula }) {
 
     const handleClick = () => {
         // Redirige a la URL deseada con el ID de la tarea, alli aun no se cotrola
-        navigate(`/bridgeto/${aula.nombre}/class/submit?id=${task.id}`);
+        navigate(`/bridgeto/${aula.nombre}/class/submit?id=${task.tarea_id}`);
     };
     return (
         <div onClick={handleClick} className="class-undone-task">

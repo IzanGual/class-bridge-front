@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -35,6 +34,28 @@ import GualiStPage from "../classPages/GualiStPage/GualiStPage";
 
 export default function Router() {
   const [aulas, setAulas] = useState([]);
+
+    class RoutePage {
+  constructor(title, path, element, isProtected = false) {
+    this.title = title;
+    this.path = path;
+    this.element = element;
+    this.isProtected = isProtected;
+  }
+}
+
+const ROUTE_LIST = [
+  new RoutePage("home", "", <LandingPage aulas={aulas}/>),
+  new RoutePage("register", "register", <RegisterPage />),
+  new RoutePage("login", "login", <LoginPage />),
+  new RoutePage("myprofile", "myprofile", <div className="mg-top"><ProfilePage /></div>, true),
+  new RoutePage("planSelection", "planSelection", <PlanSelectionPage />, true),
+  new RoutePage("orderCompleted", "orderCompleted", <OrderCompleted />, true),
+  new RoutePage("privacy", "privacy", <PrivacyPage />),
+  new RoutePage("contact", "contact", <ContactPage />),
+  new RoutePage("tutorial", "tutorial", <TutorialPage />),
+];
+
 
   useEffect(() => {
     const fetchAulas = async () => {
@@ -99,6 +120,7 @@ export default function Router() {
                 path="class/*"
                 element={
                   <>
+                    <AulaColorProvider color={aula.color} /> {/* ← Aplica el color */}
                     <ClassStNavigator aula={aula} />
                     <Routes>
                       <Route path="home" element={<HomeStPage aula={aula}/>} />
@@ -128,25 +150,7 @@ export default function Router() {
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
+
+
 }
 
-class RoutePage {
-  constructor(title, path, element, isProtected = false) {
-    this.title = title;
-    this.path = path;
-    this.element = element;
-    this.isProtected = isProtected;
-  }
-}
-
-const ROUTE_LIST = [
-  new RoutePage("home", "", <LandingPage />),
-  new RoutePage("register", "register", <RegisterPage />),
-  new RoutePage("login", "login", <LoginPage />),
-  new RoutePage("myprofile", "myprofile", <ProfilePage />, true),
-  new RoutePage("planSelection", "planSelection", <PlanSelectionPage />, true),
-  new RoutePage("orderCompleted", "orderCompleted", <OrderCompleted />, true),
-  new RoutePage("privacy", "privacy", <PrivacyPage />),
-  new RoutePage("contact", "contact", <ContactPage />),
-  new RoutePage("tutorial", "tutorial", <TutorialPage />),
-];

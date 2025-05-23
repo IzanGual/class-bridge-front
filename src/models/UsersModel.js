@@ -754,8 +754,8 @@ static async cancelUserSuscription() {
     if (response.ok) {
       
 
-       const errorText = await response.text();
-        console.error('Cuerpo de la respuesta de error:', errorText);
+       //const errorText = await response.text();
+            //console.error('Cuerpo de la respuesta de error:', errorText);
 
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrad
           if(data.success){

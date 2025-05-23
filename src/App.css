@@ -90,6 +90,20 @@
     font-size: 12px;
 }
 
+.landing-option-container {
+    background-color: var(--class-background-color);
+    width: 100%;
+    min-height: 100dvh !important;
+    padding: 40px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mg-top{
+    margin-top: 80px;
+}
+
 @media (max-width: 568px) {
     .class-title-header{
         text-align: left;
@@ -99,6 +113,12 @@
     .class-subtitle-header{
         text-align: left;
     }
+
+    .landing-option-container {
+
+    padding: 20px;
+
+}
     
 
   }

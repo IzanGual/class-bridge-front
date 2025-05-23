@@ -1,6 +1,6 @@
 .navbar {
   backdrop-filter: blur(7px);    
-  width: 90%; 
+  width: calc(100% - 80px); /* Resta 40px a cada lado */ 
   min-height: 66px;
   position: fixed !important;
   top: 10px; 
@@ -8,7 +8,7 @@
   transform: translateX(-50%); 
   padding: 10px 0; 
   border-radius: 8px; 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1); 
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -56,8 +56,8 @@
     background: var(--accent-color);
     color: var(--text-color-light);
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 10px 10px;
+    border-radius: 100%;
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s;
     margin-right: 10px;
