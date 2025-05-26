@@ -26,9 +26,9 @@ export default function ApartadosTab({ course }) {
             const data = await ApartadosModel.getApartadosByCourseId(course.id);
             if (data) {
                 setApartados(data);
-                console.log("Apartados del curso:", data);
+                // console.log("Apartados del curso:", data);
             } else {
-                console.log("Este curso aún no tiene apartados:");
+                // console.log("Este curso aún no tiene apartados:");
                 setApartados([]);
             }
         } catch (error) {
@@ -43,9 +43,9 @@ export default function ApartadosTab({ course }) {
                 const data = await ApartadosModel.getApartadosByCourseId(course.id);
                 if (data) {
                     setApartados(data);
-                    console.log("Apartados del curso:", data);
+                    // console.log("Apartados del curso:", data);
                 } else {
-                    console.log("Este curso aún no tiene apartados:");
+                    // console.log("Este curso aún no tiene apartados:");
                     setApartados([]);
                 }
             } catch (error) {
@@ -61,7 +61,7 @@ export default function ApartadosTab({ course }) {
         const apartadoId = parseInt(event.target.value, 10); // Convierte el valor a número
         const apartado = apartados.find((a) => a.id === apartadoId); // Busca el apartado por ID
         setSelectedApartado(apartado);
-        console.log("Apartado seleccionado:", apartado); // Log con el ID y el nombre
+        // console.log("Apartado seleccionado:", apartado); // Log con el ID y el nombre
     };
 
  
@@ -76,7 +76,7 @@ export default function ApartadosTab({ course }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        //console.log("NOMBRE DEL NUEVO APARTADO:", nombreNuevoApartado)
+        //// console.log("NOMBRE DEL NUEVO APARTADO:", nombreNuevoApartado)
 
         const response = await ApartadosModel.createApartado(nombreNuevoApartado, course.id);
             if (response) {

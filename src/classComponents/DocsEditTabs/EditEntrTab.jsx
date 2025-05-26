@@ -19,9 +19,9 @@ export default function EditEntrTab({ course, categoria }) {
             const data = await TasksModel.getTasksByCategoriaId(categoria.id);
             if (data) {
                 setTareas(data);
-                console.log("Tareas de la categoría:", data);
+                // console.log("Tareas de la categoría:", data);
             } else {
-                console.log("Esta categoría aún no tiene tareas.");
+                // console.log("Esta categoría aún no tiene tareas.");
                 setTareas([]);
             }
         } catch (error) {
@@ -36,9 +36,9 @@ export default function EditEntrTab({ course, categoria }) {
             const data = await TasksModel.getTasksByCategoriaId(categoria.id);
             if (data) {
                 setTareas(data);
-                console.log("Tareas de la categoría:", data);
+                // console.log("Tareas de la categoría:", data);
             } else {
-                console.log("Esta categoría aún no tiene tareas.");
+                // console.log("Esta categoría aún no tiene tareas.");
                 setTareas([]);
             }
         } catch (error) {
@@ -57,12 +57,12 @@ export default function EditEntrTab({ course, categoria }) {
             setSelectedTarea(tarea); // Actualizar la tarea seleccionada
             setNombreTarea(tarea.nombre); // Actualizar el nombre de la tarea
             setFechaLimite(tarea.fecha_limite); // Actualizar la fecha límite
-            console.log("Tarea seleccionada:", tarea);
+            // console.log("Tarea seleccionada:", tarea);
         } else {
             setSelectedTarea(null); // Reiniciar la tarea seleccionada si no se encuentra
             setNombreTarea(''); // Reiniciar el nombre de la tarea
             setFechaLimite(''); // Reiniciar la fecha límite
-            console.log("No se encontró una tarea con el ID seleccionado.");
+            // console.log("No se encontró una tarea con el ID seleccionado.");
         }
     };
 

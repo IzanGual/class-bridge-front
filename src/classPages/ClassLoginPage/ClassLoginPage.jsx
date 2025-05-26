@@ -17,13 +17,13 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
     useEffect(() => {
         const verifyAuth = async () => {
         const isLoggedIn = await checkAuthStatus();
-        console.log("Esta loggueado?",isLoggedIn);
+        // console.log("Esta loggueado?",isLoggedIn);
 
         if (isLoggedIn) {
         const role = getUserRole();
-        console.log("Rol del usuario:", role);
+        // console.log("Rol del usuario:", role);
         if (role === "teacher") {
-            console.log("El usuario es profesor");
+            // console.log("El usuario es profesor");
             
             const isTheTeacher = await checkTeacherAuthStatus(aulaID);
 
@@ -35,10 +35,10 @@ export default function ClassLoginPage({ aulaInfo, aulaID }) {
             }
 
         } else if (role === "student") {
-            console.log("El usuario es alumno");
+            // console.log("El usuario es alumno");
             window.location.href = `/bridgeto/${aulaInfo.nombre}/class/home`;
         } else {
-            console.log("Rol no reconocido o no definido");
+            // console.log("Rol no reconocido o no definido");
         }
         }
 

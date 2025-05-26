@@ -40,7 +40,7 @@ function GualiFace() {
       });
 
       const data = await response.json();
-      console.log("Respuesta del modelo de Hugging Face:", data);
+      // console.log("Respuesta del modelo de Hugging Face:", data);
 
       const aiReply = data?.[0]?.generated_text?.replace(prompt, "").trim() || "No hay respuesta.";
       setChat((prev) => [...prev, { role: "assistant", content: aiReply }]);

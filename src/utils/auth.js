@@ -5,7 +5,7 @@ import customFetch from "./customFetch";
 export const checkAuthStatus = async () => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-        console.log("No token found in localStorage.");
+        // console.log("No token found in localStorage.");
         return false;
     }
 
@@ -19,18 +19,18 @@ export const checkAuthStatus = async () => {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.log("Token validation failed:", errorData.error);
+            //const errorData = await response.json();
+            // console.log("Token validation failed:", errorData.error);
             return false;
         }
 
         // Si la respuesta es exitosa, puedes verificar el mensaje
         const data = await response.json();
         if (data.success) {
-            console.log(data.message);
+            // console.log(data.message);
             return true;
         } else {
-            console.log("Token validation failed:", data.error);
+            // console.log("Token validation failed:", data.error);
             return false;
         }
 
@@ -42,9 +42,9 @@ export const checkAuthStatus = async () => {
 
 export const checkTeacherAuthStatus = async (aulaID) => {
     const token = localStorage.getItem("jwt");
-    //console.log("Token:", token); // Debugging line to check the token value
+    //// console.log("Token:", token); // Debugging line to check the token value
     if (!token) {
-        console.log("No token found in localStorage.");
+        // console.log("No token found in localStorage.");
         return false;
     }
 
@@ -58,18 +58,18 @@ export const checkTeacherAuthStatus = async (aulaID) => {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.log("Token validation failed:", errorData.error);
+            //const errorData = await response.json();
+            // console.log("Token validation failed:", errorData.error);
             return false;
         }
 
         // Si la respuesta es exitosa, puedes verificar el mensaje
         const data = await response.json();
         if (data.success) {
-            console.log(data.message);
+            // console.log(data.message);
             return true;
         } else {
-            console.log("Token validation failed:", data.error);
+            // console.log("Token validation failed:", data.error);
             return false;
         }
 
@@ -82,9 +82,9 @@ export const checkTeacherAuthStatus = async (aulaID) => {
 
 export const checkStudentAuthStatus = async (aulaID) => {
     const token = localStorage.getItem("jwt");
-    //console.log("Token:", token); // Debugging line to check the token value
+    //// console.log("Token:", token); // Debugging line to check the token value
     if (!token) {
-        console.log("No token found in localStorage.");
+        // console.log("No token found in localStorage.");
         return false;
     }
 
@@ -98,18 +98,18 @@ export const checkStudentAuthStatus = async (aulaID) => {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.log("Token validation failed:", errorData.error);
+            //const errorData = await response.json();
+            // console.log("Token validation failed:", errorData.error);
             return false;
         }
 
         // Si la respuesta es exitosa, puedes verificar el mensaje
         const data = await response.json();
         if (data.success) {
-            console.log(data.message);
+            // console.log(data.message);
             return true;
         } else {
-            console.log("Token validation failed:", data.error);
+            // console.log("Token validation failed:", data.error);
             return false;
         }
 

@@ -20,7 +20,7 @@ export default function CreateApartados({ newCourseId }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        //console.log("NOMBRE DEL NUEVO APARTADO:", nombreNuevoApartado)
+        //// console.log("NOMBRE DEL NUEVO APARTADO:", nombreNuevoApartado)
 
         const response = await ApartadosModel.createApartado(nombreNuevoApartado, newCourseId);
             if (response) {

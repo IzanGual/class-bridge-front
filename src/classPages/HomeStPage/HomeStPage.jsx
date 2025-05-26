@@ -19,7 +19,7 @@ export default function HomeStPage({ aula }) {
         useEffect(() => {
             const verifyAuth = async () => {
                 const loggedIn = await checkStudentAuthStatus(aula.id);
-                console.log("islogged", loggedIn);
+                // console.log("islogged", loggedIn);
     
                 if (!loggedIn) {
                     
@@ -32,10 +32,10 @@ export default function HomeStPage({ aula }) {
                     const data = await TasksModel.getUnDeliveredTasks(aula.id, alumno_id); 
                     if (data) {
                         setTasks(data); 
-                        console.log("Tasks sin corregir:", data);
-                        //console.log("Tasks sin corregir de TASKS:", tasks);
+                        // console.log("Tasks sin corregir:", data);
+                        //// console.log("Tasks sin corregir de TASKS:", tasks);
                     }else{
-                        console.log("Huvo un error cosiguiendo las tareas:", data.error);
+                        // console.log("Huvo un error cosiguiendo las tareas:", data.error);
 
                     }
                     
@@ -51,9 +51,9 @@ export default function HomeStPage({ aula }) {
                     const data = await CoursesModel.getStudentCourses(aula.id, alumno_id); 
                     if (data) {
                         setCourses(data); 
-                        console.log("Courses:", data);
+                        // console.log("Courses:", data);
                     }else{
-                        console.log("Huvo un error cosiguiendo los cursos:", data.error);
+                        // console.log("Huvo un error cosiguiendo los cursos:", data.error);
                     }
                     
                   } catch (error) {

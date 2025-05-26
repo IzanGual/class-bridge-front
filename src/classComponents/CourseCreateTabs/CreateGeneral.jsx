@@ -19,9 +19,9 @@ export default function CreateGeneral({ aula, setNewCourseId , newCourseId, hand
             const data = await UsersModel.getOwnUsers(aula.id);
             if (data) {
                 setUsers(data);
-                console.log("Usuarios del aula:", data);
+                // console.log("Usuarios del aula:", data);
             } else {
-                console.log("Error al obtener los usuarios del aula:", data.error);
+                // console.log("Error al obtener los usuarios del aula:", data.error);
             }
         } catch (error) {
             console.error("Error al obtener los usuarios del aula:", error);
@@ -69,13 +69,13 @@ export default function CreateGeneral({ aula, setNewCourseId , newCourseId, hand
             return;
         }
 
-        const dataToSave = {
-            courseName: nombreCurso,
-            selectedFile: selectedFile || null,
-            selectedUsers: courseUsers,
-        };
+        //const dataToSave = {
+        //    courseName: nombreCurso,
+        //    selectedFile: selectedFile || null,
+        //    selectedUsers: courseUsers,
+        //};
 
-        console.log('Datos a guardar:', dataToSave);
+        // console.log('Datos a guardar:', dataToSave);
 
         try {
             const response = await CoursesModel.createCourse({

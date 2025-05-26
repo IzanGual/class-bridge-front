@@ -41,7 +41,7 @@ class TasksModel {
         if(data.success){
           return data.tasks;
         }else{
-          console.log(data.error)
+          // console.log(data.error)
           return false;
         }
         
@@ -183,11 +183,11 @@ class TasksModel {
           if (response.ok) {
             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
                 if(data.success){
-                    console.log("Respuesta del instert del la tarea",data.message);
+                    // console.log("Respuesta del instert del la tarea",data.message);
                     
                     return true;
                 }else{
-                        console.log("Respuesta del instert de la tarea de ERROR", data.error);
+                        // console.log("Respuesta del instert de la tarea de ERROR", data.error);
                         return false
                     }
                 
@@ -226,10 +226,10 @@ class TasksModel {
           if (response.ok) {
             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
                 if(data.success){
-                    console.log("Respuesta de la actyuaslizacion de la tarea",data.message);
+                    // console.log("Respuesta de la actyuaslizacion de la tarea",data.message);
                     return true;
                 }else{
-                  console.log("Error actualizando la tarea ERROR:",data.error);
+                  // console.log("Error actualizando la tarea ERROR:",data.error);
                   return false;
                 
             }
@@ -269,7 +269,7 @@ static async deleteTask(id) {
           if(data.success){
             return true;
           }else{
-            console.log(data.error);
+            // console.log(data.error);
             return false;
             
           }

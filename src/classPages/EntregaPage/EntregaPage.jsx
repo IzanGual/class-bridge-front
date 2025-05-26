@@ -84,7 +84,7 @@ const EntregaPage = ({ aula }) => {
         if (data) {
           setEntrega(data);
         } else {
-          console.log("Hubo un error consiguiendo la info de la entrega:", data);
+          // console.log("Hubo un error consiguiendo la info de la entrega:", data);
         }
       } catch (error) {
         console.error("Error al obtener la entrega:", error);
@@ -101,7 +101,7 @@ const EntregaPage = ({ aula }) => {
         if (data) {
           setEntrega(data);
         } else {
-          console.log("Hubo un error consiguiendo la info de la entrega:", data);
+          // console.log("Hubo un error consiguiendo la info de la entrega:", data);
         }
       } catch (error) {
         console.error("Error al obtener la entrega:", error);
@@ -139,7 +139,7 @@ const handleSave = async () => {
       setSelectedFile(null);
       await fetchEntregaInfo(); // <-- Recarga la entrega para actualizar los botones
     } else {
-      console.log("Hubo un error al entregar la entrega:", data);
+      // console.log("Hubo un error al entregar la entrega:", data);
     }
   } catch (error) {
     console.error("Error al obtener la entrega:", error);

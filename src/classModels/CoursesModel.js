@@ -205,10 +205,10 @@ static async getCoursesByUserId(user_id) {
       formData.append('courseUsers', data.selectedUsers);
       formData.append('accion', "uploadCourse");
     
-      console.log("formaDFattaaaa", formData.get('imagen'));
-      console.log("iddddddddddddd", formData.get('id'));
-      console.log("courseName", formData.get('courseName'));
-      console.log("courseUsers", formData.get('courseUsers'));
+      // console.log("formaDFattaaaa", formData.get('imagen'));
+      // console.log("iddddddddddddd", formData.get('id'));
+      // console.log("courseName", formData.get('courseName'));
+      // console.log("courseUsers", formData.get('courseUsers'));
     
       try {
           const response = await customFetch(apiUrl, {
@@ -222,7 +222,7 @@ static async getCoursesByUserId(user_id) {
           if (response.ok) {
               const data = await response.json();
               if (data.success) {
-                  console.log("respuesta de la actualizacioon del curso:",data.message);
+                  // console.log("respuesta de la actualizacioon del curso:",data.message);
                   return true; 
               } else {
                   console.error("Error en la API:", data.error);
@@ -277,7 +277,7 @@ static async getCoursesByUserId(user_id) {
           if (response.ok) {
               const data = await response.json();
               if (data.success) {
-                  console.log("respuesta de la creación del curso:",data.message);
+                  // console.log("respuesta de la creación del curso:",data.message);
                   return data.id; 
               } else {
                   console.error("Error en la API:", data.error);
@@ -361,7 +361,7 @@ static async getCoursesByUserId(user_id) {
           if(data.success){
             return true;
           }else{
-            console.log(data.error);
+            // console.log(data.error);
             return false;
             
           }

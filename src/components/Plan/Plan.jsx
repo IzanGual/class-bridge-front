@@ -13,8 +13,8 @@ export default function Plan({ fullPlan }) {
     else {
         const role = getUserRole(); // Obtén el rol del usuario
         if (role === "teacher") {
-            console.log("El usuario es profesor");
-            console.log(`Plan seleccionado: ${fullPlan.id} pero no puede voler a contrratar nada` );
+            // console.log("El usuario es profesor");
+            // console.log(`Plan seleccionado: ${fullPlan.id} pero no puede voler a contrratar nada` );
           }else{
             navigate(`/planSelection?planId=${fullPlan.id}`);
 

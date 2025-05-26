@@ -10,7 +10,7 @@ export default function GualiPage({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 

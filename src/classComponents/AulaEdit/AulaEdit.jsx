@@ -61,7 +61,7 @@ export default function AulaEdit({ aula }) {
 
   
     const handleColorSave = async () => {
-         console.log("Nuevo color seleccionado:", hexToRgb(selectedColor));
+         // console.log("Nuevo color seleccionado:", hexToRgb(selectedColor));
 
         let color = hexToRgb(selectedColor);
 
@@ -75,7 +75,7 @@ export default function AulaEdit({ aula }) {
     };
 
     const handleAulaNameSave = async () => {
-        console.log("Nuevo nombre de aula:", aulaName);
+        // console.log("Nuevo nombre de aula:", aulaName);
 
         const response = await AulasModel.updateAulaName(aula.id, aulaName);
             if (response === "nameDup") {
@@ -99,7 +99,7 @@ export default function AulaEdit({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 navigate(`/bridgeto/${aula.nombre}`);

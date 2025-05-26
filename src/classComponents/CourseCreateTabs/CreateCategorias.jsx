@@ -19,9 +19,9 @@ export default function CreateCategorias({ newCourseId }) {
                 const data = await ApartadosModel.getApartadosByCourseId(newCourseId);
                 if (data) {
                     setApartados(data);
-                    console.log("Apartados del curso:", data);
+                    // console.log("Apartados del curso:", data);
                 } else {
-                    console.log("Este curso aún no tiene apartados:");
+                    // console.log("Este curso aún no tiene apartados:");
                     setApartados([]);
                 }
             } catch (error) {
@@ -52,7 +52,7 @@ export default function CreateCategorias({ newCourseId }) {
             return; // Detener la ejecución si la validación falla
         }
 
-        //console.log("NOMBRE DEL NUEVO categoria:", nombreNuevaCategoria)
+        //// console.log("NOMBRE DEL NUEVO categoria:", nombreNuevaCategoria)
 
         const response = await CategoriasModel.createCategoria(nombreNuevaCategoria, newCourseId, selectedApartado.id);
             if (response) {

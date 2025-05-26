@@ -13,7 +13,7 @@ export default function LandingPage({aulas}) {
       try {
         const data = await PlansModel.getAllPlans(); 
         setPlanes(data); 
-        console.log("Planes:", data);
+        // console.log("Planes:", data);
       } catch (error) {
         console.error("Error al obtener los planes:", error);
       }

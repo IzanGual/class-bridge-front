@@ -12,7 +12,7 @@ export default function UserPage({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 
@@ -25,9 +25,9 @@ export default function UserPage({ aula }) {
                     const data = await UsersModel.getOwnUsers(aula.id); 
                     if (data) {
                         setUsers(data); 
-                        console.log("Users:", data);
+                        // console.log("Users:", data);
                     }else{
-                        console.log("Huvo un error cosiguiendo los usuarios:", data.error);
+                        // console.log("Huvo un error cosiguiendo los usuarios:", data.error);
                     }
                     
                   } catch (error) {

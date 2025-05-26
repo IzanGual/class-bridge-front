@@ -9,7 +9,7 @@ export default function GualiStPage({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkStudentAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 

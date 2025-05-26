@@ -21,7 +21,7 @@ export default function UserPageCreate({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 navigate(`/bridgeto/${aula.nombre}`);
@@ -37,9 +37,9 @@ export default function UserPageCreate({ aula }) {
                 const data = await CoursesModel.getOwnCourses(aula.id);
                 if (data) {
                     setCourses(data);
-                    console.log("Cursos disponibles:", data);
+                    // console.log("Cursos disponibles:", data);
                 } else {
-                    console.log("Error al obtener los cursos:", data.error);
+                    // console.log("Error al obtener los cursos:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los cursos:", error);
@@ -104,12 +104,12 @@ export default function UserPageCreate({ aula }) {
 
     const handleSave = async () => {
         if (validateInputs()) {
-            console.log({
-                nombre: nombreAlumno,
-                correo: correoAlumno,
-                contrasena: contrasenaAlumno,
-                cursos: selectedCourses,
-            });
+            // console.log({
+            //    nombre: nombreAlumno,
+            //    correo: correoAlumno,
+           //     contrasena: contrasenaAlumno,
+             //   cursos: selectedCourses,
+          //  });
             try {
             const response = await UsersModel.registerStudent(nombreAlumno, correoAlumno, contrasenaAlumno, selectedCourses, aula.id);
 

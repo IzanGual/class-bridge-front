@@ -12,13 +12,13 @@ const ClassRoomPage = ( {aula} ) => {
   const [curso, setCurso] = useState(null);
   const navigate = useNavigate();
 
-  console.log("Aula en ClassroomPage id:", id);
+  // console.log("Aula en ClassroomPage id:", id);
 
   useEffect(() => {
 
     const verifyAuth = async () => {
                 const loggedIn = await checkStudentAuthStatus(aula.id);
-                console.log("islogged", loggedIn);
+                // console.log("islogged", loggedIn);
     
                 if (!loggedIn) {
                     
@@ -31,9 +31,9 @@ const ClassRoomPage = ( {aula} ) => {
         const data = await CoursesModel.getFullCourseInfo(id);
         if (data) {
           setCurso(data);
-          console.log("Curso:", data);
+          // console.log("Curso:", data);
         } else {
-          console.log("Hubo un error consiguiendo la info del curso:", data);
+          // console.log("Hubo un error consiguiendo la info del curso:", data);
         }
       } catch (error) {
         console.error("Error al obtener el curso:", error);

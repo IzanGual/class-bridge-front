@@ -27,9 +27,9 @@ export default function DocsTab({ course }) {
             const data = await CategoriasModel.getCategoriasByApartadoId(apartadoId);
             if (data) {
                 setCategorias(data);
-                console.log("Categorías del apartado:", data);
+                // console.log("Categorías del apartado:", data);
             } else {
-                console.log("Este apartado aún no tiene categorías:");
+                // console.log("Este apartado aún no tiene categorías:");
                 setCategorias([]);
             }
         } catch (error) {
@@ -44,9 +44,9 @@ export default function DocsTab({ course }) {
                 const data = await ApartadosModel.getApartadosByCourseId(course.id);
                 if (data) {
                     setApartados(data);
-                    console.log("Apartados del curso:", data);
+                    // console.log("Apartados del curso:", data);
                 } else {
-                    console.log("Este curso aún no tiene apartados:");
+                    // console.log("Este curso aún no tiene apartados:");
                     setApartados([]);
                 }
             } catch (error) {

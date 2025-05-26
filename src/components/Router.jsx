@@ -62,7 +62,7 @@ const ROUTE_LIST = [
       try {
         const data = await AulasModel.getAllAulas();
         setAulas(data);
-        console.log("AULAS:", data);
+        // console.log("AULAS:", data);
       } catch (error) {
         console.error("Error al obtener los aulas:", error);
       }

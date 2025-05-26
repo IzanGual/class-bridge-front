@@ -28,9 +28,9 @@ export default function DeliverPage({ aula }) {
                 const data = await EntregasModel.getOwnEntregas(aula.id);
                 if (data) {
                     setEntregas(data);
-                    console.log("Entregas", data)
+                    // console.log("Entregas", data)
                 } else {
-                    console.log("Hubo un error consiguiendo las entregas:", data.error);
+                    // console.log("Hubo un error consiguiendo las entregas:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener las entregas:", error);
@@ -42,9 +42,9 @@ export default function DeliverPage({ aula }) {
                 const data = await TasksModel.getTasks(aula.id);
                 if (data) {
                     setTareas(data);
-                    console.log("Tareas:", data);
+                    // console.log("Tareas:", data);
                 } else {
-                    console.log("Hubo un error consiguiendo las tareas:", data.error);
+                    // console.log("Hubo un error consiguiendo las tareas:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener las tareas:", error);
@@ -57,7 +57,7 @@ export default function DeliverPage({ aula }) {
                 if (data) {
                     setUsers(data);
                 } else {
-                    console.log("Hubo un error consiguiendo los usuarios:", data.error);
+                    // console.log("Hubo un error consiguiendo los usuarios:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los usuarios:", error);
@@ -81,7 +81,7 @@ export default function DeliverPage({ aula }) {
         if (data) {
             setEntregas(data);
         } else {
-            console.log("Hubo un error consiguiendo las entregas:", data.error);
+            // console.log("Hubo un error consiguiendo las entregas:", data.error);
         }
     } catch (error) {
         console.error("Error al obtener las entregas:", error);
@@ -92,14 +92,14 @@ export default function DeliverPage({ aula }) {
     const handleUserChange = (event) => {
         const userId = parseInt(event.target.value, 10); // Convierte el valor a número
         setSelectedUser(userId);
-        console.log("Usuario seleccionado:", userId); // Imprime el ID del usuario seleccionado
+        // console.log("Usuario seleccionado:", userId); // Imprime el ID del usuario seleccionado
         fecthEntregas(userId, selectedTask); // Llama a fecthEntregas con el usuario seleccionado y la tarea actual
     };
 
     const handleTaskChange = (event) => {
         const taskId = parseInt(event.target.value, 10); // Convierte el valor a número
         setSelectedTask(taskId);
-        console.log("Tarea seleccionada:", taskId); // Imprime el ID de la tarea seleccionada
+        // console.log("Tarea seleccionada:", taskId); // Imprime el ID de la tarea seleccionada
         fecthEntregas(selectedUser, taskId); // Llama a fecthEntregas con la tarea seleccionada y el usuario actual
     };
 

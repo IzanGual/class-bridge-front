@@ -28,7 +28,7 @@ export default function UserPageEdit({ aula }) {
                 const data = await UsersModel.getOwnUsers(aula.id);
                 if (data) {
                     setUsers(data);
-                    console.log("Usuarios disponibles:", data);
+                    // console.log("Usuarios disponibles:", data);
 
                     // Detecta el parámetro `id` en la URL
                     const userId = searchParams.get('id');
@@ -40,11 +40,11 @@ export default function UserPageEdit({ aula }) {
                             setCorreo(user.email);
                             setContrasena(''); // No mostramos la contraseña actual
                             setSelectedCourses(user.courses || []); // Cursos actuales del usuario
-                            console.log("Usuario seleccionado:", user);
+                            // console.log("Usuario seleccionado:", user);
                         }
                     }
                 } else {
-                    console.log("Hubo un error consiguiendo los usuarios:", data.error);
+                    // console.log("Hubo un error consiguiendo los usuarios:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los usuarios:", error);
@@ -54,7 +54,7 @@ export default function UserPageEdit({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 navigate(`/bridgeto/${aula.nombre}`);
@@ -67,10 +67,10 @@ export default function UserPageEdit({ aula }) {
                 if (data) {
                     setUserCourses(data); // Cursos del usuario
                     setSelectedCourses(data); // Selecciona automáticamente los cursos
-                    console.log("Cursos dispoibles:", data);
-                    console.log("Cursos del usuario:", userCourses);
+                    // console.log("Cursos dispoibles:", data);
+                    // console.log("Cursos del usuario:", userCourses);
                 } else {
-                    console.log("Error al obtener los cursos del usuario:", data.error);
+                    // console.log("Error al obtener los cursos del usuario:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los cursos del usuario:", error);
@@ -82,7 +82,7 @@ export default function UserPageEdit({ aula }) {
                 const data = await UsersModel.getOwnUsers(aula.id);
                 if (data) {
                     setUsers(data);
-                    console.log("Usuarios disponibles:", data);
+                    // console.log("Usuarios disponibles:", data);
 
                     // Detecta el parámetro `id` en la URL
                     const userId = searchParams.get('id');
@@ -94,11 +94,11 @@ export default function UserPageEdit({ aula }) {
                             setCorreo(user.email);
                             setContrasena(''); // No mostramos la contraseña actual
                             fetchCoursesByUserId(user.id);
-                            console.log("Usuario seleccionado:", user);
+                            // console.log("Usuario seleccionado:", user);
                         }
                     }
                 } else {
-                    console.log("Hubo un error consiguiendo los usuarios:", data.error);
+                    // console.log("Hubo un error consiguiendo los usuarios:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los usuarios:", error);
@@ -110,9 +110,9 @@ export default function UserPageEdit({ aula }) {
                 const data = await CoursesModel.getOwnCourses(aula.id);
                 if (data) {
                     setCourses(data);
-                    console.log("Cursos disponibles:", data);
+                    // console.log("Cursos disponibles:", data);
                 } else {
-                    console.log("Error al obtener los cursos:", data.error);
+                    // console.log("Error al obtener los cursos:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los cursos:", error);
@@ -137,10 +137,10 @@ export default function UserPageEdit({ aula }) {
                 if (data) {
                     setUserCourses(data); // Cursos del usuario
                     setSelectedCourses(data); // Selecciona automáticamente los cursos
-                    console.log("Cursos dispoibles:", data);
-                    console.log("Cursos del usuario:", userCourses);
+                    // console.log("Cursos dispoibles:", data);
+                    // console.log("Cursos del usuario:", userCourses);
                 } else {
-                    console.log("Error al obtener los cursos del usuario:", data.error);
+                    // console.log("Error al obtener los cursos del usuario:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los cursos del usuario:", error);
@@ -155,7 +155,7 @@ export default function UserPageEdit({ aula }) {
             setSelectedCourses(user.courses || []); // Cursos actuales del usuario
             fetchCoursesByUserId();
         }
-        console.log("Usuario seleccionado:", user);
+        // console.log("Usuario seleccionado:", user);
     };
 
     const handleCheckboxChange = (courseId) => {
@@ -201,13 +201,13 @@ export default function UserPageEdit({ aula }) {
     }
 
     // Si todas las validaciones pasan, muestra los datos en la consola
-    console.log({
-        id: selectedUser.id,
-        nombre,
-        correo,
-        contrasena,
-        cursos: selectedCourses,
-    });
+    // console.log({
+     //   id: selectedUser.id,
+     //   nombre,
+     //   correo,
+     //   contrasena,
+     //   cursos: selectedCourses,
+   // });
 
     const dataToSave = {
         id: selectedUser.id,

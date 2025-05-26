@@ -17,7 +17,7 @@ class EntregasModel {
   
     const apiUrl = APIurl.getAPIurl("getEntregas", usuario_id, tarea_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
-    console.log("LLamada a la URL:", apiUrl);
+    // console.log("LLamada a la URL:", apiUrl);
     if (!apiUrl) {
         console.error('URL no válida');
         return false; 
@@ -40,7 +40,7 @@ class EntregasModel {
         if(data.success){
           return data.entregas;
         }else{
-          console.log(data.error)
+          // console.log(data.error)
           return false;
         }
         
@@ -54,7 +54,7 @@ class EntregasModel {
   
     const apiUrl = APIurl.getAPIurl("getOwnEntregas", aula_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
-    console.log("LLamada a la URL:", apiUrl);
+    // console.log("LLamada a la URL:", apiUrl);
     if (!apiUrl) {
         console.error('URL no válida');
         return false; 
@@ -77,7 +77,7 @@ class EntregasModel {
         if(data.success){
           return data.entregas;
         }else{
-          console.log(data.error)
+          // console.log(data.error)
           return false;
         }
         
@@ -91,7 +91,7 @@ class EntregasModel {
   
     const apiUrl = APIurl.getAPIurl("getEntregaById", entrega_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
-    console.log("LLamada a la URL:", apiUrl);
+    // console.log("LLamada a la URL:", apiUrl);
     if (!apiUrl) {
         console.error('URL no válida');
         return false; 
@@ -114,7 +114,7 @@ class EntregasModel {
         if(data.success){
           return data.entrega;
         }else{
-          console.log(data.error)
+          // console.log(data.error)
           return false;
         }
         
@@ -130,7 +130,7 @@ class EntregasModel {
   
     const apiUrl = APIurl.getAPIurl("getOwnEntregaByTareaId", tarea_id);
     const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
-    console.log("LLamada a la URL:", apiUrl);
+    // console.log("LLamada a la URL:", apiUrl);
     if (!apiUrl) {
         console.error('URL no válida');
         return false; 
@@ -153,7 +153,7 @@ class EntregasModel {
         if(data.success){
           return data.entrega;
         }else{
-          console.log(data.error)
+          // console.log(data.error)
           return false;
         }
         
@@ -188,10 +188,10 @@ static async correctEntrega(data) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion de la retroaccion de la entrega",data.message);
+              // console.log("Respuesta de la actyuaslizacion de la retroaccion de la entrega",data.message);
               return true;
           }else{
-            console.log("Error actualizando la retroacción:",data.error);
+            // console.log("Error actualizando la retroacción:",data.error);
             return false;
           
       }
@@ -231,7 +231,7 @@ static async deleteEntrega(entrega_id) {
           if(data.success){
             return true;
           }else{
-            console.log(data.error);
+            // console.log(data.error);
             return false;
             
           }
@@ -265,10 +265,10 @@ static async entregarEntrega(entrega_id, fechaActualEntrega, file) {
             formData.append('accion', "entregarEntrega");
         
           
-            console.log("entregaID", formData.get('entregaId'));
-            console.log("fecha", formData.get('fecha'));
-            console.log("file", formData.get('file'));
-            console.log("accion", formData.get('accion'));
+            // console.log("entregaID", formData.get('entregaId'));
+            // console.log("fecha", formData.get('fecha'));
+            // console.log("file", formData.get('file'));
+            // console.log("accion", formData.get('accion'));
          
           
             try {
@@ -285,7 +285,7 @@ static async entregarEntrega(entrega_id, fechaActualEntrega, file) {
                     //console.error('Cuerpo de la respuesta de error:', errorText);
                     const data = await response.json();
                     if (data.success) {
-                        console.log("ulr publica del archivo:", data.url)
+                        // console.log("ulr publica del archivo:", data.url)
                         return true; 
                     } else {
                         console.error("Error en la API:", data.error);

@@ -70,7 +70,7 @@ class PlansModel {
              const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario
  
              if (data.success) {
-                 console.log("Datos del plan:", data);
+                 // console.log("Datos del plan:", data);
                  return data.plan;  
              } else {
                  console.error('Error en la respuesta de la API:', data.error);

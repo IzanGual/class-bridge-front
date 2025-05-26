@@ -64,10 +64,10 @@ static async updateDocumento(id, nombreDocumento, file) {
     formData.append('file', file); 
     formData.append('accion', "updateDoc");
     
-    console.log("id", formData.get('id'));
-    console.log("file", formData.get('file'));
-    console.log("docName", formData.get('docName'));
-    console.log("accion", formData.get('accion'));
+    // console.log("id", formData.get('id'));
+    // console.log("file", formData.get('file'));
+    // console.log("docName", formData.get('docName'));
+    // console.log("accion", formData.get('accion'));
 
     try {
         const response = await customFetch(apiUrl, {
@@ -83,7 +83,7 @@ static async updateDocumento(id, nombreDocumento, file) {
             //console.error('Cuerpo de la respuesta de error:', errorText);
             const data = await response.json();
             if (data.success) {
-                console.log("Documento actualizado correctamente:", data.message);
+                // console.log("Documento actualizado correctamente:", data.message);
                 return true;
             } else {
                 console.error("Error en la API:", data.error);
@@ -127,7 +127,7 @@ static async deleteDocumento(documento_id) {
           if(data.success){
             return true;
           }else{
-            console.log(data.error);
+            // console.log(data.error);
             return false;
             
           }
@@ -153,7 +153,7 @@ static async deleteDocumento(documento_id) {
                 return false;
             }
 
-             console.log("El id del curso antesd e crear el doc es:", curso_id);
+             // console.log("El id del curso antesd e crear el doc es:", curso_id);
             const formData = new FormData();
             formData.append('docName', nombreDocumento);
             formData.append('catId', categoriaId);
@@ -163,10 +163,10 @@ static async deleteDocumento(documento_id) {
             formData.append('accion', "createDoc");
         
           
-            console.log("file", formData.get('file'));
-            console.log("catId", formData.get('catId'));
-            console.log("docName", formData.get('docName'));
-            console.log("accion", formData.get('accion'));
+            // console.log("file", formData.get('file'));
+            // console.log("catId", formData.get('catId'));
+            // console.log("docName", formData.get('docName'));
+            // console.log("accion", formData.get('accion'));
          
           
             try {
@@ -181,7 +181,7 @@ static async deleteDocumento(documento_id) {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.success) {
-                        console.log("ulr publica del archivo:", data.url)
+                        // console.log("ulr publica del archivo:", data.url)
                         return true; 
                     } else {
                         console.error("Error en la API:", data.error);

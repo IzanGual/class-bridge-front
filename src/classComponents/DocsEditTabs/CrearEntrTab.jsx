@@ -35,8 +35,8 @@ export default function CrearEntrTab({ course, categoria}) {
 
 
         // Log de los datos
-        console.log("Nombre de la tarea:", nombreTarea);
-        console.log("Fecha límite:", fechaLimite);
+        // console.log("Nombre de la tarea:", nombreTarea);
+        // console.log("Fecha límite:", fechaLimite);
          const response = await TasksModel.createTask(nombreTarea, fechaLimite, course.id, categoria.id);
             if (response) {
                 showAlert("Tarea creada y subida correctamente");

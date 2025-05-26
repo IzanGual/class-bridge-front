@@ -15,7 +15,7 @@ export function useLogout() {
     }
 
     window.location.reload(); // Recargar la página
-    console.log("Logged out successfully.");
+    // console.log("Logged out successfully.");
   };
 
   return logOut;

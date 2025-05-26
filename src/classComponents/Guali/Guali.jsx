@@ -41,7 +41,7 @@ const navigate = useNavigate();
       );
 
       const data = await response.json();
-      console.log("Respuesta de la api de la IA:",data);
+      // console.log("Respuesta de la api de la IA:",data);
       const aiReply = data.choices?.[0]?.message?.content || "No hay respuesta";
       setChat((prev) => [...prev, { role: "assistant", content: aiReply }]);
     } catch (error) {

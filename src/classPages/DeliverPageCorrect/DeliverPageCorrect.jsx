@@ -47,7 +47,7 @@ export default function DeliverPageCorrect({ aula }) {
                     setEntrega(data); // Guarda la entrega en el estado
                     setComentarioEntrega(data.comentario); 
                     setNotaEntrega(data.nota);
-                    console.log("Entrega obtenida:", data);
+                    // console.log("Entrega obtenida:", data);
                 } else {
                     console.error("Error al obtener la entrega:", data.error);
                 }
@@ -105,7 +105,7 @@ const handleSave = async () => {
             accion: "correctEntrega",
         };
 
-        console.log('Datos a guardar:', dataToSave);
+        // console.log('Datos a guardar:', dataToSave);
 
         try {
             const response = await EntregasModel.correctEntrega(dataToSave);

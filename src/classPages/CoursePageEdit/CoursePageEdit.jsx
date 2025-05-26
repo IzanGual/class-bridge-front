@@ -29,11 +29,11 @@ export default function CoursePageEdit({ aula }) {
             const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
             if (data) {
                 
-                console.log("Info del curso para la preview:", data);
+                // console.log("Info del curso para la preview:", data);
                 setCourseInfo(data);
 
             } else {
-                console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+                // console.log("Hubo un error consiguiendo la info del cursooooo:", data);
             }
         } catch (error) {
             console.error("Error al obtener el curso:", error);
@@ -56,13 +56,13 @@ export default function CoursePageEdit({ aula }) {
             try {
                 const data = await CoursesModel.getFullCourseInfo(selectedCourse.id); 
                 if (data) {
-                    console.log("Info del curso para la preview:", data);
+                    // console.log("Info del curso para la preview:", data);
                     setCourseInfo(data);
                 } else {
-                    console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+                    // console.log("Hubo un error consiguiendo la info del cursooooo:", data);
                 }
             } catch (error) {
-                console.log("Error al obtener el curso:");
+                // console.log("Error al obtener el curso:");
             }
         };
         fetchCourseFullInfo();
@@ -72,7 +72,7 @@ export default function CoursePageEdit({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 navigate(`/bridgeto/${aula.nombre}`);
@@ -84,7 +84,7 @@ export default function CoursePageEdit({ aula }) {
                 const data = await CoursesModel.getOwnCourses(aula.id); 
                 if (data) {
                     setCourses(data); 
-                    console.log("Courses:", data);
+                    // console.log("Courses:", data);
 
                     // Detecta el parámetro `id` en la URL
                     const courseId = searchParams.get('id');
@@ -95,7 +95,7 @@ export default function CoursePageEdit({ aula }) {
                         }
                     }
                 } else {
-                    console.log("Hubo un error consiguiendo los cursos:", data.error);
+                    // console.log("Hubo un error consiguiendo los cursos:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los cursos:", error);
@@ -110,7 +110,7 @@ export default function CoursePageEdit({ aula }) {
         const courseId = parseInt(event.target.value, 10); // Convierte el valor a número
         const course = courses.find((c) => c.id === courseId); // Busca el curso por ID
         setSelectedCourse(course);
-        console.log("Curso seleccionado:", course);
+        // console.log("Curso seleccionado:", course);
     };
 
     const updateCourseUpdatedData = async (preserveSelectedId = null) => {
@@ -134,7 +134,7 @@ export default function CoursePageEdit({ aula }) {
             } else {
                 setSelectedCourse(null);
                 setCourseInfo(null);
-                console.log("Hubo un error consiguiendo los cursos:", data.error);
+                // console.log("Hubo un error consiguiendo los cursos:", data.error);
             }
         } catch (error) {
             console.error("Error al obtener los cursos:", error);

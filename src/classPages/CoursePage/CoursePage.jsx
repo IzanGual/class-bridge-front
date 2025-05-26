@@ -12,7 +12,7 @@ export default function CoursePage({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 
@@ -25,9 +25,9 @@ export default function CoursePage({ aula }) {
                 const data = await CoursesModel.getOwnCourses(aula.id); 
                 if (data) {
                     setCourses(data); 
-                    console.log("Courses:", data);
+                    // console.log("Courses:", data);
                 }else{
-                    console.log("Huvo un error cosiguiendo los cursos:", data.error);
+                    // console.log("Huvo un error cosiguiendo los cursos:", data.error);
                 }
                 
               } catch (error) {

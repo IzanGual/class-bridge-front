@@ -19,7 +19,7 @@ export default function HomePage({ aula }) {
         useEffect(() => {
             const verifyAuth = async () => {
                 const loggedIn = await checkTeacherAuthStatus(aula.id);
-                console.log("islogged", loggedIn);
+                // console.log("islogged", loggedIn);
     
                 if (!loggedIn) {
                     
@@ -32,10 +32,10 @@ export default function HomePage({ aula }) {
                     const data = await TasksModel.getUnDoneTasks(aula.id); 
                     if (data) {
                         setTasks(data); 
-                        console.log("Tasks sin corregir:", data);
-                        //console.log("Tasks sin corregir de TASKS:", tasks);
+                        // console.log("Tasks sin corregir:", data);
+                        //// console.log("Tasks sin corregir de TASKS:", tasks);
                     }else{
-                        console.log("Huvo un error cosiguiendo las tareas:", data.error);
+                        // console.log("Huvo un error cosiguiendo las tareas:", data.error);
 
                     }
                     
@@ -49,9 +49,9 @@ export default function HomePage({ aula }) {
                     const data = await UsersModel.getOwnUsers(aula.id); 
                     if (data) {
                         setUsers(data); 
-                        console.log("Users:", data);
+                        // console.log("Users:", data);
                     }else{
-                        console.log("Huvo un error cosiguiendo los usuarios:", data.error);
+                        // console.log("Huvo un error cosiguiendo los usuarios:", data.error);
                     }
                     
                   } catch (error) {
@@ -64,9 +64,9 @@ export default function HomePage({ aula }) {
                     const data = await CoursesModel.getOwnCourses(aula.id); 
                     if (data) {
                         setCourses(data); 
-                        console.log("Courses:", data);
+                        // console.log("Courses:", data);
                     }else{
-                        console.log("Huvo un error cosiguiendo los cursos:", data.error);
+                        // console.log("Huvo un error cosiguiendo los cursos:", data.error);
                     }
                     
                   } catch (error) {

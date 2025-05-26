@@ -14,12 +14,12 @@ export default function LoginPage() {
     useEffect(() => {
         const verifyAuth = async () => {
             const isLoggedIn = await checkAuthStatus();
-            console.log("Esta loggueado?", isLoggedIn);
+            // console.log("Esta loggueado?", isLoggedIn);
     
             if (isLoggedIn) {
                 window.location.href = `/`;
             } else {
-                console.log("No está logueado");
+                // console.log("No está logueado");
             }
         };
 

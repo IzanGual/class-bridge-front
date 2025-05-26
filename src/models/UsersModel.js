@@ -34,15 +34,15 @@ class UsersModel {
       if (response.ok) {
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
             if(data.success){
-                console.log("Respuesta del instert del usuario",data.message);
-                console.log("Respuesta del instert del usuario de DATA",data);
+                // console.log("Respuesta del instert del usuario",data.message);
+                // console.log("Respuesta del instert del usuario de DATA",data);
                 return "insertCorrect";
             }else{
 
                 if(data.error === "emailDup"){
                     return "emailDup"
                 }else{
-                    console.log("Respuesta del instert del usuario de ERROR", data.error);
+                    // console.log("Respuesta del instert del usuario de ERROR", data.error);
                     return "insertError"
                 }
             
@@ -80,15 +80,15 @@ static async registerStudent(nombre, email, contraseña, cursos, aula_id) {
       if (response.ok) {
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
             if(data.success){
-                console.log("Respuesta del instert del usuario",data.message);
-                console.log("Respuesta del instert del usuario de DATA",data);
+                // console.log("Respuesta del instert del usuario",data.message);
+                // console.log("Respuesta del instert del usuario de DATA",data);
                 return "insertCorrect";
             }else{
 
                 if(data.error === "emailDup"){
                     return "emailDup"
                 }else{
-                    console.log("Respuesta del instert del usuario de ERROR", data.error);
+                    // console.log("Respuesta del instert del usuario de ERROR", data.error);
                     return "insertError"
                 }
             
@@ -169,8 +169,8 @@ static async uploadStudent(data) {
       if (response.ok) {
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
             if(data.success){
-                console.log("Respuesta del instert del usuario",data.message);
-                console.log("Respuesta del instert del usuario de DATA",data);
+                // console.log("Respuesta del instert del usuario",data.message);
+                // console.log("Respuesta del instert del usuario de DATA",data);
                 localStorage.setItem('jwt', data.token);
                 return "correctLogin";
             }else{
@@ -178,7 +178,7 @@ static async uploadStudent(data) {
                 if(data.error === "incorrectCredentials"){
                     return "incorrectCredentials"
                 }else{
-                    console.log("Respuesta del instert del usuario de ERROR", data.error);
+                    // console.log("Respuesta del instert del usuario de ERROR", data.error);
                     return "consultError"
                 }
             
@@ -214,8 +214,8 @@ static async uploadStudent(data) {
       if (response.ok) {
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
             if(data.success){
-                console.log("Respuesta del instert del usuario",data.message);
-                console.log("Respuesta del instert del usuario de DATA",data);
+                // console.log("Respuesta del instert del usuario",data.message);
+                // console.log("Respuesta del instert del usuario de DATA",data);
                 localStorage.setItem('jwt', data.token);
                 localStorage.setItem('userName', data.userName);
                
@@ -309,7 +309,7 @@ static async uploadStudent(data) {
             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario
 
             if (data.success) {
-                console.log("Datos del usuario:", data);
+                // console.log("Datos del usuario:", data);
                 return data.user;  // Puedes retornar los datos del usuario aquí
             } else {
                 console.error('Error en la respuesta de la API:', data.error);
@@ -343,8 +343,8 @@ static async uploadUserImage(id, file) {
   formData.append('id', id);
   formData.append('imagen', file); // `imagen` debe coincidir con el campo esperado en el backend
 
-  console.log("formaDFattaaaa", formData.get('imagen'));
-  console.log("iddddddddddddd", formData.get('id'));
+  // console.log("formaDFattaaaa", formData.get('imagen'));
+  // console.log("iddddddddddddd", formData.get('id'));
 
   try {
       const response = await customFetch(apiUrl, {
@@ -358,7 +358,7 @@ static async uploadUserImage(id, file) {
       if (response.ok) {
           const data = await response.json();
           if (data.success) {
-              console.log("respuesta:",data.message);
+              // console.log("respuesta:",data.message);
               return data.imageUrl; // Devuelve la URL de la imagen
           } else {
               console.error("Error en la API:", data.error);
@@ -396,11 +396,11 @@ static async deleteUserImage() {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Imagen Borrada, RESPUESTA DEL SERVER:",data.message);
-              console.log("URL",data.imageUrl);
+              // console.log("Imagen Borrada, RESPUESTA DEL SERVER:",data.message);
+              // console.log("URL",data.imageUrl);
               return data.imageUrl;
           }else{
-              console.log("Error al borrar la imagen, ERROR DEL SERIDOR:", data.error);
+              // console.log("Error al borrar la imagen, ERROR DEL SERIDOR:", data.error);
               return false;     
           }
     }
@@ -436,10 +436,10 @@ static async uploadUserName(name) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              // console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
               return true;
           }else{
-            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            // console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
           
       }
@@ -479,10 +479,10 @@ static async uploadUserName(name) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              // console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
               return true;
           }else{
-            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            // console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
           
       }
@@ -522,10 +522,10 @@ static async verifyEmailCode(verificationCode) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              // console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
               return true;
           }else{
-            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            // console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
           
       }
@@ -601,10 +601,10 @@ static async uploadUserPassword(pass) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion dela pass del usuario",data.message);
+              // console.log("Respuesta de la actyuaslizacion dela pass del usuario",data.message);
               return true;
           }else{
-            console.log("Error actualizando la pass de usuario ERROR:",data.error);
+            // console.log("Error actualizando la pass de usuario ERROR:",data.error);
             return false;
           
       }
@@ -639,10 +639,10 @@ static async deleteUserProfile() {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
+              // console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
               return true;
           }else{
-              console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
+              // console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
               return false;     
           }
     }
@@ -673,10 +673,10 @@ static async deleteStudentProfile(id) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Estudiante Borrado, RESPUESTA DEL SERVER:",data.message);
+              // console.log("Estudiante Borrado, RESPUESTA DEL SERVER:",data.message);
               return true;
           }else{
-              console.log("Error al borrar el perfil de aluno, ERROR DEL SERIDOR:", data.error);
+              // console.log("Error al borrar el perfil de aluno, ERROR DEL SERIDOR:", data.error);
               return false;     
           }
     }
@@ -710,7 +710,7 @@ static async setUserToTeacher(precio, classroomName) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta del upgrade a techer del usuario",data.message);
+              // console.log("Respuesta del upgrade a techer del usuario",data.message);
               return "insertCorrect";
           }else{
 
@@ -721,7 +721,7 @@ static async setUserToTeacher(precio, classroomName) {
                   return "teacherHasAClass"
               }
               else{
-                  console.log("Respuesta del instert del usuario de ERROR", data.error);
+                  // console.log("Respuesta del instert del usuario de ERROR", data.error);
                   return "insertError"
               } 
           }
@@ -759,10 +759,10 @@ static async cancelUserSuscription() {
 
         const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrad
           if(data.success){
-              console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
+              // console.log("Usuario Borrado, RESPUESTA DEL SERVER:",data.message);
               return true;
           }else{
-              console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
+              // console.log("Error al borrar el perfil, ERROR DEL SERIDOR:", data.error);
               return false;     
           }
     }
@@ -802,10 +802,10 @@ static async sendInfoMail(aula_name) {
             //console.error('Cuerpo de la respuesta de error:', errorText);
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
+              // console.log("Respuesta de la actyuaslizacion del nombre del usuario",data.message);
               return true;
           }else{
-            console.log("Error actualizando el nombre de usuario ERROR:",data.error);
+            // console.log("Error actualizando el nombre de usuario ERROR:",data.error);
             return false;
           
       }

@@ -35,9 +35,9 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
                 const data = await CoursesModel.getUsersByCourseId(course.id);
                 if (data) {
                     setCourseUsers(data.map((user) => user.id));
-                    console.log("Usuarios del curso:", data);
+                    // console.log("Usuarios del curso:", data);
                 } else {
-                    console.log("Este curso au no tiene usuarios:")
+                    // console.log("Este curso au no tiene usuarios:")
                     setCourseUsers([]);
                 }
             } catch (error) {
@@ -50,9 +50,9 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
                 const data = await UsersModel.getOwnUsers(aula.id);
                 if (data) {
                     setUsers(data);
-                    console.log("Usuarios del aula:", data);
+                    // console.log("Usuarios del aula:", data);
                 } else {
-                    console.log("Error al obtener los usuarios del aula:", data.error);
+                    // console.log("Error al obtener los usuarios del aula:", data.error);
                 }
             } catch (error) {
                 console.error("Error al obtener los usuarios del aula:", error);
@@ -106,7 +106,7 @@ export default function GeneralTab({ course, aula, onCourseUpdated }) {
             selectedUsers: courseUsers || 'noUsers', 
         };
     
-        console.log('Datos guardados:', dataToSave);
+        // console.log('Datos guardados:', dataToSave);
 
         const response = await CoursesModel.uploadCourse(course.id, dataToSave);
             if (response) {

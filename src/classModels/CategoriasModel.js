@@ -71,10 +71,10 @@ static async uploadCategoria(id, nombreCategoria) {
     if (response.ok) {
       const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
           if(data.success){
-              console.log("Respuesta de la actyuaslizacion de la categoria",data.message);
+              // console.log("Respuesta de la actyuaslizacion de la categoria",data.message);
               return true;
           }else{
-            console.log("Error actualizando la categoria ERROR:",data.error);
+            // console.log("Error actualizando la categoria ERROR:",data.error);
             return false;
           
       }
@@ -113,7 +113,7 @@ static async deleteCategoria(categoria_id) {
           if(data.success){
             return true;
           }else{
-            console.log(data.error);
+            // console.log(data.error);
             return false;
             
           }
@@ -151,11 +151,11 @@ static async deleteCategoria(categoria_id) {
           if (response.ok) {
             const data = await response.json();  // Suponiendo que la respuesta de la API contiene los datos del usuario registrado
                 if(data.success){
-                    console.log("Respuesta del instert del la categoria",data.message);
+                    // console.log("Respuesta del instert del la categoria",data.message);
                     
                     return true;
                 }else{
-                        console.log("Respuesta del instert del categoria de ERROR", data.error);
+                        // console.log("Respuesta del instert del categoria de ERROR", data.error);
                         return false
                     }
                 

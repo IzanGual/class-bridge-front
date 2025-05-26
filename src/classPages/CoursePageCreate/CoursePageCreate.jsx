@@ -28,11 +28,11 @@ export default function CoursePageCreate({ aula }) {
             const data = await CoursesModel.getFullCourseInfo(newCourseId); 
             if (data) {
                 
-                console.log("Info del curso para la preview:", data);
+                // console.log("Info del curso para la preview:", data);
                 setCourseInfo(data);
 
             } else {
-                console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+                // console.log("Hubo un error consiguiendo la info del cursooooo:", data);
             }
         } catch (error) {
             console.error("Error al obtener el curso:", error);
@@ -53,7 +53,7 @@ export default function CoursePageCreate({ aula }) {
     useEffect(() => {
         const verifyAuth = async () => {
             const loggedIn = await checkTeacherAuthStatus(aula.id);
-            console.log("islogged", loggedIn);
+            // console.log("islogged", loggedIn);
 
             if (!loggedIn) {
                 navigate(`/bridgeto/${aula.nombre}`);
@@ -70,13 +70,13 @@ export default function CoursePageCreate({ aula }) {
             try {
                 const data = await CoursesModel.getFullCourseInfo(newCourseId); 
                 if (data) {
-                    console.log("Info del curso para la preview:", data);
+                    // console.log("Info del curso para la preview:", data);
                     setCourseInfo(data);
                 } else {
-                    console.log("Hubo un error consiguiendo la info del cursooooo:", data);
+                    // console.log("Hubo un error consiguiendo la info del cursooooo:", data);
                 }
             } catch (error) {
-                console.log("Error al obtener el curso:");
+                // console.log("Error al obtener el curso:");
             }
         };
         fetchCourseFullInfo();
