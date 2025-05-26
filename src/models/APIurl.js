@@ -1,5 +1,5 @@
 export default class APIurl {
-    static URLbase = "http://192.168.1.130/classbridgeapi/";
+    static URLbase = "https://classbridge.es/api/";
 
     static  getAPIurl(aim, id, id2) {
         switch (aim) {
@@ -95,6 +95,9 @@ export default class APIurl {
 
           case "getOwnEntregaByTareaId":
               return this.URLbase+"entregas.php?accion=getOwnEntregaByTareaId&tarea_id="+id;
+
+          case "getOwnEntregas":
+              return this.URLbase+"entregas.php?accion=getOwnEntregas&aula_id="+id;
               
           case "getTasks":
               return this.URLbase+"tasks.php?accion=getTasks&aula_id="+id;

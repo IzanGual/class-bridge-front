@@ -50,6 +50,43 @@ class EntregasModel {
       }
   }
 
+  static async getOwnEntregas(aula_id) {
+  
+    const apiUrl = APIurl.getAPIurl("getOwnEntregas", aula_id);
+    const token = localStorage.getItem('jwt'); // Asegúrate de que el token se guarda en algún lugar accesible
+    console.log("LLamada a la URL:", apiUrl);
+    if (!apiUrl) {
+        console.error('URL no válida');
+        return false; 
+      }
+  
+      try {
+        const response = await customFetch(apiUrl, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token 
+          }
+          
+      });
+        if (!response.ok) {
+          throw new Error('Error al obtener las entregas ');
+        }
+  
+        const data = await response.json(); // Suponemos que la respuesta es un JSON con las aulas
+        if(data.success){
+          return data.entregas;
+        }else{
+          console.log(data.error)
+          return false;
+        }
+        
+      } catch (error) {
+        console.error(error);
+        return false; // Retornamos un array vacío en caso de error
+      }
+  }
+
  static async getEntregaById(entrega_id) {
   
     const apiUrl = APIurl.getAPIurl("getEntregaById", entrega_id);

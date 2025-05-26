@@ -134,7 +134,7 @@ const handleSave = async () => {
             <div className='section-container'>
                 <h2 id='marg-bt' className='section-header'>Entrega de la tarea: <strong>{entrega.nombre_tarea}</strong></h2>
                 <div className='entrega-info-container'>
-                    <p id='marg-bt'>Entregada por tu alumno/a:<strong> {entrega.nombre_alumno}</strong></p>
+                    <p id='marg-bt'>Esta tarea pertenece a tu alumno/a:<strong> {entrega.nombre_alumno}</strong></p>
                     <div className='input-file-container' id='max-h'>
                     <div className='infut-text-cotainer'>
                     <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -151,10 +151,14 @@ const handleSave = async () => {
                     </button>
 
                     </div>
-                    <p id='marg-bt'>La fecha de la entrega tenie el limita el:<strong> {entrega.fecha_limite_tarea}</strong></p>
+                    <p id='marg-bt'>La fecha de la entrega tiene el limita el:<strong> {entrega.fecha_limite_tarea}</strong></p>
 
-                    <p id='marg-bt'>La entrega se realizó un:<strong> {entrega.fecha_entrega}</strong></p>
-
+                    {entrega.fecha_entrega && (
+                    <p id='marg-bt'>
+                        La entrega se realizó un:<strong> {entrega.fecha_entrega}</strong>
+                    </p>
+                    )}
+                    
                     {/* Nuevo párrafo para mostrar la diferencia de días */}
                     <p id='marg-bt'>
                         {diferenciaDias === null

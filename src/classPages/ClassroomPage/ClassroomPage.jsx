@@ -1,5 +1,5 @@
 import './ClassroomPage.css';
-import { useSearchParams } from 'react-router-dom'; // Cambia esto
+import { useSearchParams } from 'react-router-dom'; 
 import { useEffect, useState } from 'react';
 import CoursesModel from '../../classModels/CoursesModel.js';
 import { checkStudentAuthStatus } from '../../utils/auth.js';

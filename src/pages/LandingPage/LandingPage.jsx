@@ -34,7 +34,7 @@ export default function LandingPage({aulas}) {
       <header className="hero">
         <div className="hero-content">
           <h1 className="hero-text">
-                Transforma la educación con <span className="class-name">class-bridge</span>
+                Transforma la educación con <span className="class-name">classbridge</span>
               </h1>
               <p className="landing-sub">
                 Plataforma de gestión de aprendizaje que conecta profesores y estudiantes en un entorno digital
@@ -289,7 +289,7 @@ export default function LandingPage({aulas}) {
               <span className="faq-toggle">*</span>
             </div>
             <div className="faq-answer">
-              <p>Sí, ofrecemos esta opción ya que es una plataforma nueva, si la contratas ahora mismo sera gratuita para siempre. Aprobecha que la oferta no durara para siempre!</p>
+              <p>Sí, ofrecemos esta opción ya que es una plataforma nueva, si la contratas ahora mismo sera gratuita para siempre. Aprovecha que la oferta no durara para siempre!</p>
             </div>
           </div>
           <div className="faq-item">
@@ -307,7 +307,7 @@ export default function LandingPage({aulas}) {
               <span className="faq-toggle">*</span>
             </div>
             <div className="faq-answer">
-              <p>No, es ua ia especializada en ayudar a realizar ejercicios si darle una respuesta concreta al alumno, asi que no te preocupes, el/la alumno/a aprenderá siempre.</p>
+              <p>No, es una ia especializada en ayudar a realizar ejercicios sin darle una respuesta concreta al alumno, asi que no te preocupes, el/la alumno/a aprenderá siempre.</p>
             </div>
           </div>
         </div>

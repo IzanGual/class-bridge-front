@@ -25,9 +25,10 @@ export default function DeliverPage({ aula }) {
 
         const fecthEntregas = async () => {
             try {
-                const data = await EntregasModel.getEntregas();
+                const data = await EntregasModel.getOwnEntregas(aula.id);
                 if (data) {
                     setEntregas(data);
+                    console.log("Entregas", data)
                 } else {
                     console.log("Hubo un error consiguiendo las entregas:", data.error);
                 }

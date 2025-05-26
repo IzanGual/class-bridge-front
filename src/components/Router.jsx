@@ -82,7 +82,7 @@ const ROUTE_LIST = [
       ))}
 
       {/* Rutas dinámicas para aulas */}
-      {aulas.map((aula) => (
+      {Array.isArray(aulas) && aulas.map((aula) => (
         <Route
           key={aula.id}
           path={`/bridgeto/${aula.nombre}/*`}

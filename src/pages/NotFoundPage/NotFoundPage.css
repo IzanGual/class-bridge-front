@@ -1,0 +1,8 @@
+.not-found{
+    text-align: center;
+    justify-content: center;
+}
+
+.not-found h1{
+   font-size: 2rem;
+}
