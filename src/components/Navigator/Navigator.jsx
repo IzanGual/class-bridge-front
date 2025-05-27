@@ -50,10 +50,12 @@ export default function Navigator() {
             <ProfileIcon />
           
         ) : (
-          <Link id="register-pont" to="/register">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FAFAF5">
-              <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+          <Link id="register-pont" to="/login">
+        
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 6H38C39.0609 6 40.0783 6.42143 40.8284 7.17157C41.5786 7.92172 42 8.93913 42 10V38C42 39.0609 41.5786 40.0783 40.8284 40.8284C40.0783 41.5786 39.0609 42 38 42H30M20 34L30 24M30 24L20 14M30 24H6" stroke="#FAFAF5" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
+
           </Link>
         )
       )}

@@ -24,7 +24,7 @@ export default function ProfilePage() {
     const navigate = useNavigate();
     const showAlert = useAlert();
     const showConfirm = useConfirm(); 
-    const role = getUserRole(); // Obtén el rol del usuario
+    const role = getUserRole();
 
 
 
@@ -37,6 +37,7 @@ export default function ProfilePage() {
                         ...data,
                         img_url: data.img_url ? `${data.img_url}?t=${new Date().getTime()}` : null
                     });
+                    //console.log(data)
                 }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
@@ -536,6 +537,28 @@ export default function ProfilePage() {
                             </div>
                         )}
                     </div>
+
+                    {userData && userData.estado_suscripcion === "activo" && (
+
+                        
+
+                        <div className='all-break'>
+                        <div className='class-horizontal-separator'></div>
+
+                            <p>
+                            Recuerda que el link de acceso a tu aula es:{" "}
+                            <a href={`https://classbridge.es/bridgeto/${encodeURIComponent(userData.nombre_aula)}`}>
+                                https://classbridge.es/bridgeto/{userData.nombre_aula}
+                            </a>
+                            </p>                    
+                        
+                        </div>
+
+
+                    )}
+
+
+
                     
 
                     

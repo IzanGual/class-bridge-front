@@ -13,6 +13,12 @@ background-color: var(--background-color);
     color: var(--class-text-color)!important;
 }
 
+.all-break a {
+  display: inline-block; /* O block si prefieres ocupar toda la línea */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
 
 
 .photo-name-container{

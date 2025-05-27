@@ -127,7 +127,7 @@ export default function PlanSelectionPage() {
                     <h2 className="checkout-section-title">Plan seleccionado</h2>
                     <div className="checkout-plan-details">
                         <div className="checkout-plan-name">{plan.nombre}</div>
-                        <div className="checkout-plan-price">${plan.precio}<span>/mes</span></div>
+                        <div className="checkout-plan-price">€{plan.precio}<span>/mes</span></div>
                         <p className="checkout-plan-description">{plan.descripcion}</p>
                     </div>
                 </div>
